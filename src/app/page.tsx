@@ -12,7 +12,7 @@ import Timeline from '@/components/TimeLine';
 import Team from '@/components/Team';
 import Gallery from '@/components/Gallery';
 import FaqSection from '@/components/FaqSection';
-import EventShowcase from '@/components/EventShowcase';
+// import EventShowcase from '@/components/EventShowcase';
 
 // 1. Dynamic Import for WhiteBot
 // This ensures the code for WhiteBot is NOT bundled with the main page.
@@ -50,14 +50,14 @@ export default function Home() {
   return (
     <main className="bg-black w-full min-h-screen">
       <HeroSection/>
-      {/* <HomeAbout/> */}
+      <HomeAbout/>
       {/* <EventShowcase/> */}
       <Timeline/>
       <Team/>
       <Sponsors/>
-      {/* <Gallery/> */}
+      <Gallery/>
       <FaqSection/>
-      {/* {shouldLoadBot && <WhiteBot />} */}
+      {shouldLoadBot && <WhiteBot />}
       <Footer />
       
       {/* 4. Conditional Rendering 

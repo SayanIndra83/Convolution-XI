@@ -1,313 +1,196 @@
+
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import Image from "next/image";
-import { ReactLenis } from "lenis/react";
-// Import the desktop image
-import AboutBlackhole from "../assets/images/AboutBlackhole.jpg";
 
-// --- 1. SPARKLES COMPONENT ---
-const Sparkles = ({
-  density = 80, // Increased density slightly
-  speed = 0.5,
-  minSize = 0.6,
-  maxSize = 2.2 // Increased max size for brighter effect
-}) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import Lenis from "lenis";
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-    let particles: Array<{
-      x: number;
-      y: number;
-      size: number;
-      opacity: number;
-      speedY: number;
-      speedX: number;
-      opacitySpeed: number;
-      brightness: number;
-    }> = [];
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    const createParticles = () => {
-      particles = [];
-      for (let i = 0; i < density; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * (maxSize - minSize) + minSize,
-          opacity: Math.random(),
-          speedY: (Math.random() - 0.5) * speed,
-          speedX: (Math.random() - 0.5) * speed,
-          opacitySpeed: Math.random() * 0.02 + 0.005,
-          // BRIGHTNESS: Multiplier increased (1.0 to 2.0) for stronger glow
-          brightness: Math.random() * 1.0 + 1.0, 
-        });
-      }
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((p) => {
-        p.y += p.speedY;
-        p.x += p.speedX;
-
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-
-        p.opacity += p.opacitySpeed;
-        if (p.opacity > 1 || p.opacity < 0.2) {
-          p.opacitySpeed = -p.opacitySpeed;
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        
-        // CALCULATION: Allow opacity to go slightly above 1 visually using brightness
-        const visualOpacity = Math.min(Math.abs(p.opacity) * p.brightness, 1);
-        ctx.fillStyle = `rgba(255, 255, 255, ${visualOpacity})`;
-        
-        // GLOW: Add shadow to larger/brighter stars
-        if (p.size > 1.5) {
-            ctx.shadowBlur = 6;
-            ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
-        } else {
-            ctx.shadowBlur = 0;
-        }
-
-        ctx.fill();
-        ctx.shadowBlur = 0; // Reset for next particle
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    resizeCanvas();
-    createParticles();
-    animate();
-
-    window.addEventListener("resize", () => {
-      resizeCanvas();
-      createParticles();
-    });
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, [density, speed, minSize, maxSize]);
+// --- 1. ScrubText Components (Header) ---
+const ScrubText = ({ text, className }: { text: string; className?: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"],
+  });
+  const chars = text.split("");
+  const totalChars = chars.length;
+  const spreadFactor = 150;
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none z-0"
-    />
+    <div ref={containerRef} className={className} style={{ display: "flex", justifyContent: "center", overflow: "hidden", width: "100%" }}>
+      {chars.map((char, i) => {
+        const middleIndex = (totalChars - 1) / 2;
+        const startX = (i - middleIndex) * spreadFactor;
+        return <CharItem key={i} char={char} startX={startX} progress={scrollYProgress} />;
+      })}
+    </div>
   );
 };
 
-// --- 2. REUSABLE TYPEWRITER COMPONENT ---
-const Typewriter = ({
-  text,
-  start,
-  speed = 30,
-  onComplete,
-  showCursor = true,
-  className = "",
-  cursorClassName = "bg-cyan-400"
-}: {
-  text: string;
-  start: boolean;
-  speed?: number;
-  onComplete?: () => void;
-  showCursor?: boolean;
-  className?: string;
-  cursorClassName?: string;
-}) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
-
-  useEffect(() => {
-    if (!start) return;
-
-    if (displayedText.length === 0 && text.length > 0) {
-      setIsComplete(false);
-    }
-
-    if (displayedText.length < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(text.slice(0, displayedText.length + 1));
-      }, speed);
-      return () => clearTimeout(timeout);
-    } else if (!isComplete) {
-      setIsComplete(true);
-      if (onComplete) onComplete(); 
-    }
-  }, [start, displayedText, text, speed, isComplete, onComplete]);
-
+const CharItem = ({ char, startX, progress }: { char: string; startX: number; progress: MotionValue<number> }) => {
+  const x = useTransform(progress, [0, 1], [startX, 0]);
+  const opacity = useTransform(progress, [0, 0.4, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [0, 1], [0.8, 1]);
   return (
-    <span className={className}>
-      {displayedText}
-      {showCursor && (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-          className={`inline-block ml-1 w-[3px] md:w-[4px] h-[0.9em] align-middle ${cursorClassName}`}
-        />
-      )}
-    </span>
+    <motion.span style={{ x, opacity, scale, display: "inline-block", whiteSpace: "pre", willChange: "transform, opacity" }}>
+      {char}
+    </motion.span>
   );
 };
 
-// --- 3. MAIN COMPONENT ---
-export default function HomeAbout() {
-  const [phase, setPhase] = useState(0);
-  const [isAboutTyped, setIsAboutTyped] = useState(false);
-  
-  const [isMobileOrTab, setIsMobileOrTab] = useState(false);
-  const [isIpadPro, setIsIpadPro] = useState(false);
+// --- 2. TextReveal Component ---
+const TextReveal = ({ text, className }: { text: string; className?: string }) => {
+  const words = text.split(" ");
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.015, delayChildren: 0.2 } },
+  };
+  const wordVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", damping: 20, stiffness: 100 } },
+  };
 
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+  return (
+    <motion.p
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", letterSpacing: "0.02em" }}
+    >
+      {words.map((word, i) => (
+        <span key={i} style={{ marginRight: "6px", display: "inline-block", overflow: "hidden" }}>
+          <motion.span variants={wordVariants} style={{ display: "inline-block" }}>{word}</motion.span>
+        </span>
+      ))}
+    </motion.p>
+  );
+};
 
+// --- 3. Main Layout ---
+const HomeAbout = () => {
   useEffect(() => {
-    const checkScreen = () => {
-      const width = window.innerWidth;
-      setIsMobileOrTab(width < 1280);
-      setIsIpadPro(width >= 1024 && width < 1280);
-    };
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
+    const lenis = new Lenis({ lerp: 0.08, duration: 1.8, smoothWheel: true });
+    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
   }, []);
 
-  useEffect(() => {
-    if (isInView && phase === 0) {
-      const timer = setTimeout(() => setPhase(1), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, phase]);
-
-  const paragraphText =
-    "At Convo 25 Lution, we bridge the gap between organic cognition and synthetic processing. We envision a future defined by the seamless integration of technology and humanity, unlocking unprecedented possibilities for innovation.";
+  const loremText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
   return (
-    <ReactLenis root>
-      <div
-        ref={containerRef}
-        className="relative w-full h-screen bg-black overflow-hidden font-sans flex items-center justify-center selection:bg-cyan-500/30"
-      >
-        {/* --- LAYER 0: SPARKLES (Deepest Layer) --- */}
-        <Sparkles density={100} speed={0.2} minSize={0.8} maxSize={2.5} />
+    <section className="about-section">
+      <style>{`
+        .about-section {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          background: #000000;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start; 
+          perspective: 1000px;
+        }
 
-        {/* --- LAYER 1: BACKGROUND GRADIENT --- */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000000_100%)] z-0 pointer-events-none" />
+        .header-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 30; 
+          padding-top: 200px; 
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-        {/* --- LAYER 2: IMAGES & BLOCKER --- */}
-        <motion.div
-          className="absolute bottom-0 xl:bottom-[0%] right-0 xl:right-[-5%] w-full xl:w-[60vw] z-10 flex items-end justify-center xl:block pointer-events-none"
-          initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-          animate={phase >= 2 ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
-          transition={{ duration: 2.5, ease: "easeOut" }}
-        >
-          <motion.div
-            animate={{ y: [-10, 10, -10], rotate: [0, 2, 0] }}
-            transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-            className="w-full h-full flex justify-center items-end relative"
-          >
-            {/* --- BLOCKER DIV --- 
-               This black circle sits BEHIND the image but ABOVE the sparkles (z-0).
-               It prevents stars from being visible through the transparent/black parts of the image.
-            */}
-            <div className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-black rounded-full blur-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
+        .header-title {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-weight: 700;
+          font-size: 3rem;
+          line-height: 1.1;
+          color: #ffffff;
+          margin: 0;
+          letter-spacing: 12px;
+          text-align: center;
+        }
 
-            {/* Desktop Image */}
-            <Image
-              src={AboutBlackhole}
-              alt="Event Horizon"
-              className="hidden xl:block object-contain mix-blend-screen relative z-10"
-              priority
-            />
+        .text-reveal-container {
+          position: relative;
+          z-index: 30;
+          max-width: 900px; 
+          padding: 0 40px;
+          margin-top: 60px; 
+          font-family: 'Times New Roman', serif; 
+          font-size: 2.2rem; 
+          color: #ffffff; 
+          line-height: 1.2;
+        }
+        
+        /* --- MOBILE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+           .about-section {
+              height: 100vh; /* Lock height to prevent empty space */
+              display: flex;
+              flex-direction: column;
+           }
 
-            {/* Mobile/Tablet Image */}
-            <Image
-              src="/assets/images/HomeAboutPhonebg.jpg"
-              width={500}
-              height={800}
-              alt="Mobile Background"
-              className="block xl:hidden object-cover w-full h-auto mix-blend-screen contrast-125 brightness-90 translate-y-4 opacity-100 md:opacity-70 relative z-10"
-              priority
-            />
-          </motion.div>
-        </motion.div>
+           .header-container {
+              position: relative;
+              padding-top: 60px; /* Closer to top */
+              padding-bottom: 10px;
+           }
+           
+           .header-title { 
+              font-size: 2.2rem; 
+              letter-spacing: 6px;
+           }
+           
+           .text-reveal-container { 
+              font-size: 1.15rem; 
+              max-width: 80%;      /* Narrower width */
+              line-height: 1.7;    /* Increased height per line */
+              margin-top: 10px; 
+              padding: 0;
+              text-align: center;
+              z-index: 20; 
+           }
 
-        {/* --- LAYER 3: TEXT CONTENT (Top Layer) --- */}
-        <motion.div
-          className="absolute z-40"
-          initial={{ top: "50%", left: "50%", x: "-50%", y: "-50%", scale: 1.5 }}
-          animate={
-            phase >= 2 
-              ? { 
-                  top: "12%", 
-                  left: isIpadPro ? "3.8%" : (isMobileOrTab ? "4%" : "8%"), 
-                  x: "0%", 
-                  y: "0%", 
-                  scale: 1 
-                } 
-              : { top: "50%", left: "50%", x: "-50%", y: "-50%", scale: 1.5 }
+          .image-wrapper-mobile {
+              flex-grow: 0;         /* 1. Stop it from growing to fill the page */
+              height: 35vh;        /* 2. Set it to 40% of the screen height (adjust as needed) */
+              width: 100%;
+              margin-top: 30px;   /* Keep the overlap */
+              display: flex;
+              justify-content: center;
           }
-          transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
-          onAnimationComplete={() => { if (phase === 2) setPhase(3); }}
-        >
-          <h1 className="font-bold text-white tracking-tighter text-6xl md:text-8xl lg:text-9xl whitespace-nowrap drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]">
-            <Typewriter
-              text="ABOUT"
-              start={phase >= 1}
-              speed={60}
-              showCursor={!isAboutTyped}
-              onComplete={() => {
-                setIsAboutTyped(true);
-                setTimeout(() => setPhase(2), 500);
-              }}
-            />
-          </h1>
-        </motion.div>
+        }
+      `}</style>
 
-        <motion.div
-          className="absolute top-[22%] left-[4%] xl:left-[8%] xl:top-[32%] z-30 max-w-xl text-left pr-4 xl:pr-0"
-          initial={{ opacity: 0 }}
-          animate={phase >= 3 ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.div
-            className="w-12 h-1 bg-cyan-500 mb-6"
-            initial={{ width: 0 }}
-            animate={phase >= 3 ? { width: 200 } : { width: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: "circOut" }}
-          />
-
-          <div className="text-lg md:text-2xl text-gray-300 font-light leading-relaxed min-h-[200px] tracking-wide">
-            <Typewriter
-              text={paragraphText}
-              start={phase === 3}
-              speed={15}
-              showCursor={true}
-            />
-          </div>
-        </motion.div>
+      {/* Header */}
+      <div className="header-container">
+        <ScrubText text="ABOUT" className="header-title" />
       </div>
-    </ReactLenis>
+
+      {/* Text Reveal Paragraph */}
+      <div className="text-reveal-container">
+        <TextReveal text={loremText} className="" />
+      </div>
+
+      {/* Background/Bottom Image */}
+      <div className="image-wrapper-mobile pointer-events-none z-0 relative md:absolute md:top-0 md:left-0 md:w-full md:h-full md:mt-0">
+        <img
+          src="/assets/images/aboutBg.png"
+          alt="Solar System Background"
+          className="w-full h-full object-cover object-top opacity-100 md:opacity-55 md:object-contain md:object-left"
+        />
+      </div>
+
+    </section>
   );
-}
+};
+
+export default HomeAbout;

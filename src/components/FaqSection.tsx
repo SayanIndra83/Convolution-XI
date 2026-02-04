@@ -1,33 +1,104 @@
-'use client';
 
-import React, { useState } from 'react';
-import Image from "next/image";
-import droneImage from "../assets/images/Faq_Drone.png"; 
-import { FaPlus, FaMinus } from 'react-icons/fa6';
-import Particles from './Particles';
+"use client";
 
-const Data = [
+import React, { useEffect, useRef, useState } from 'react';
+import Lenis from 'lenis';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+
+const faqData = [
   {
     question: "What is Convolution?",
     answer: "Convolution is the annual tech fest organised by JUEE, where technology, creativity, and innovation come together. It features exciting events, workshops, competitions, and opportunities to showcase talent.",
   },
   {
     question: "When and where is Convolution happening?",
-    answer: "Convolution will take place from 20th to 22nd February, 2025 at the Department of Electrical Engineering, Jadavpur University. Further updates about the time, date and venue of specific events will be available on our website soon.",
+    answer: "Convolution will take place from 20th to 22nd February, 2025 at the Department of Electrical Engineering, Jadavpur University. Further updates about specific events will be available on our website soon.",
   },
   {
     question: "Who can participate in Convolution?",
-    answer: "Any student enrolled in any undergraduate programme interested in exploring, engaging in enthralling activities and undertaking mind boggling challenges are welcome to participate in Convolution.",
+    answer: "Any student enrolled in any undergraduate programme interested in exploring, engaging in enthralling activities and undertaking mind-boggling challenges is welcome to participate.",
   },
   {
     question: "How do I register on the website?",
-    answer: "To register for any event, click on the “Register” button and create an account. You will receive a verification email. After verifying your email, log in using your credentials. Voilà! You are all set.",
+    answer: "To register for any event, click on the “Register” button and create an account. You will receive a verification email. After verifying, log in using your credentials.",
   },
   {
     question: "Is there any registration fee?",
     answer: "No, the registrations for the events are completely free of cost.",
   },
 ];
+
+// --- 1. ScrubText Component ---
+const ScrubText = ({ text, className }: { text: string; className?: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"], 
+  });
+
+  const chars = text.split("");
+  const totalChars = chars.length;
+  const spreadFactor = 150; 
+
+  return (
+    <div
+      ref={containerRef}
+      className={className}
+      style={{
+        display: "flex",
+        justifyContent: "center", 
+        overflow: "hidden",
+        width: "100%",
+        gap: "10px" 
+      }}
+    >
+      {chars.map((char, i) => {
+        const middleIndex = (totalChars - 1) / 2;
+        const startX = (i - middleIndex) * spreadFactor;
+        
+        return (
+          <CharItem 
+            key={i} 
+            char={char} 
+            startX={startX} 
+            progress={scrollYProgress} 
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+// --- CharItem ---
+const CharItem = ({ 
+  char, 
+  startX, 
+  progress 
+}: { 
+  char: string; 
+  startX: number; 
+  progress: MotionValue<number> 
+}) => {
+  const x = useTransform(progress, [0, 1], [startX, 0]);
+  const opacity = useTransform(progress, [0, 0.4, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [0, 1], [0.8, 1]);
+
+  return (
+    <motion.span
+      style={{
+        x,
+        opacity,
+        scale,
+        display: "inline-block",
+        whiteSpace: "pre",
+        willChange: "transform, opacity",
+      }}
+    >
+      {char}
+    </motion.span>
+  );
+};
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -36,149 +107,186 @@ export default function FaqSection() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  useEffect(() => {
+    const lenis = new Lenis({
+        lerp: 0.1, 
+        duration: 1.5,
+        smoothWheel: true,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
+
   return (
-    <div id="faq" className="relative w-full h-auto bg-[#03050d] -mt-0.5 overflow-hidden py-5">
-      
-      {/* Background*/}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div 
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-     maskImage: 'linear-gradient(to bottom, black 0%, black 96%, transparent 100%)',
-       WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 96%, transparent 100%)'
-}}
-      >
-          <div className="absolute inset-0 bg-[#03050c]/90 z-0"></div>
+    <div id="faq" className="relative w-full min-h-screen bg-black text-white overflow-hidden pt-32 pb-24 px-4 sm:px-10 font-sans selection:bg-cyan-500/30">
 
-          {/* Nebulas */}
-          <div className="hidden sm:block absolute top-[10%] left-[-10%] w-[50vw] h-[70vw] rounded-full bg-violet-950/20 blur-[120px] z-0"></div>
-          <div className="hidden sm:block absolute bottom-[5%] right-[-10%] w-[60vw] h-[40vw] rounded-full bg-cyan-950/40 blur-[120px] z-0"></div>
-          {/* for mobile vissibility */}
-          <div className="block sm:hidden absolute top-[10%] left-[2%] w-[50vw] h-[50vw] rounded-full bg-violet-900/40 blur-[120px] z-0"></div>
-          <div className="block sm:hidden absolute bottom-[5%] right-[3%] w-[60vw] h-[50vw] rounded-full bg-cyan-900/40 blur-[120px] z-0"></div>
+      {/* --- CSS ANIMATIONS --- */}
+      <style>{`
+        @keyframes float-tilt {
+          0% { transform: translateY(0) rotateX(0) rotateY(0); }
+          25% { transform: translateY(-12px) rotateX(5deg) rotateY(5deg); }
+          50% { transform: translateY(0) rotateX(0) rotateY(0); }
+          75% { transform: translateY(12px) rotateX(-5deg) rotateY(-5deg); }
+          100% { transform: translateY(0) rotateX(0) rotateY(0); }
+        }
+      `}</style>
 
-          {/* Grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-5 z-0"></div>
+      {/* --- MOBILE VIDEO BACKGROUND (Visible ONLY on Mobile) --- */}
+      <div className="absolute inset-0 z-0 lg:hidden pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-60" 
+        >
+           <source src="/assets/images/boxrobo.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/50" />
       </div>
-       
-       {/* top gradient */}
-       <div className="absolute top-0 left-0 w-full h-15 bg-linear-to-b from-[#03000d]/30 via-[#03000d]/20 to-transparent z-20 pointer-events-none"></div>
-      
-       {/* bottom gradient*/}
-<div className="absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-[#03050cf3] via-[#03050c]/60 to-transparent z-20 pointer-events-none"></div>     
- </div>
 
-      {/* main content*/}
-      <div className="maxWidthForSections relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto flex flex-col justify-center">
-        
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-20 space-y-4 flex flex-col items-center">
-            <div className="relative inline-block">
-                <h1 className="text-center text-xl sm:text-3xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-gray-400 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">
-                    FREQUENTLY ASKED QUESTIONS
-                </h1>
-                <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-cyan-500/80 to-transparent"></span>
-            </div>
-        </div>
+      {/* --- BACKGROUND GRADIENTS (Visible ONLY on Desktop) --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden hidden lg:block">
+        <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-purple-900/15 rounded-full blur-[150px] mix-blend-screen animate-pulse-slow"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-cyan-900/15 rounded-full blur-[150px] mix-blend-screen animate-pulse-slow"></div>
+      </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-            
-            <div className="hidden lg:flex lg:col-span-5 flex-col items-center justify-center lg:sticky lg:top-32 order-1">
-                <div className="relative w-full flex flex-col items-center animate-float_drone">
-                    <div className="relative w-90 h-90 md:w-150 md:h-150 flex items-center justify-center z-10 -mb-10 -mt-15">
-                        <Image 
-                            src={droneImage} 
-                            alt="Drone" 
-                            className="w-full h-full object-contain"
-                        />
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+        {/* --- LEFT COLUMN: FAQ --- */}
+        <div className="flex flex-col gap-12">
+
+          <div className="text-left space-y-6">
+            <ScrubText 
+              text="FAQ" 
+              className="text-4xl md:text-7xl font-bold tracking-tighter text-white font-[Orbitron] drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            />
+          </div>
+
+          {/* MOBILE: gap-3 (Reduced gap)
+              DESKTOP: lg:gap-6 (Original gap) 
+          */}
+          <div className="flex flex-col gap-3 lg:gap-6">
+            {faqData.map((data, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => toggleFAQ(index)}
+                  className={`
+                    group relative overflow-hidden rounded-2xl border 
+                    backdrop-blur-xl shadow-lg transition-all duration-500 cursor-pointer
+                    ${isOpen 
+                      ? 'border-cyan-500/50 bg-black/60 shadow-cyan-500/20' 
+                      : 'border-white/20 bg-black/40 hover:border-white/40 hover:bg-black/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]'
+                    }
+                  `}
+                >
+                  <div className="flex items-center justify-between w-full px-8 py-7 select-none gap-4">
+                    <span className={`
+                      text-xl font-medium tracking-wide transition-all duration-300 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)] flex-1
+                      ${isOpen ? 'text-white drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]' : 'text-cyan-50 group-hover:text-white'}
+                    `}>
+                      {data.question}
+                    </span>
+
+                    {/* Arrow Aligned */}
+                    <div className={`
+                      relative flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-all duration-500 shrink-0
+                      ${isOpen ? 'bg-cyan-500 border-cyan-400 rotate-180 shadow-[0_0_15px_rgba(6,182,212,0.8)]' : 'group-hover:border-white/40'}
+                    `}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={`transition-colors duration-300 ${isOpen ? 'text-black' : 'text-white'}`}
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
                     </div>
-                </div>
-            </div>
+                  </div>
 
-            {/* main section*/}
-            <div className="col-span-12 lg:col-span-7 flex flex-col gap-3 w-full">
-                {Data.map((data, index) => {
-                    const isOpen = openIndex === index;
-
-                    return (
-                        <div
-                            key={index}
-                            onClick={() => toggleFAQ(index)}
-                            className={`group relative w-full cursor-pointer transition-all duration-300 ${isOpen ? 'z-10' : 'z-0'}`}
+                  <div 
+                    className={`
+                      grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+                      ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}
+                    `}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-8 pb-8 pt-0">
+                        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mb-5"></div>
+                        <p 
+                          className={`
+                            text-slate-200 text-lg leading-relaxed font-light tracking-wide transition-all duration-500
+                            ${isOpen ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 -translate-y-2'}
+                          `}
                         >
-                           {/* Cards */}
-                            <div 
-                                className={`
-                                    relative w-full overflow-hidden transition-colors duration-300 border
-                                    [clip-path:polygon(0_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]
-                                    ${isOpen 
-                                        ? 'border-cyan-500/40 bg-[#080a0c]' 
-                                        : 'border-white/5 bg-white/5 hover:border-cyan-300/10 hover:bg-white/10'}
-                                `}
-                            >
-                                {isOpen && (
-                                    <div className="absolute inset-0 opacity-10 pointer-events-none" 
-                                         style={{ backgroundImage: 'repeating-linear-gradient(45deg, #22d3ee 0, #22d3ee 1px, transparent 0, transparent 50%)', backgroundSize: '8px 8px' }}>
-                                    </div>
-                                )}
-
-                                <div className="flex items-center justify-between w-full p-3 sm:p-4 gap-4 relative z-10">
-                                    
-                                    <div className={`
-                                        flex items-center justify-center w-8 h-8 rounded-[1px] border font-mono text-xs font-bold transition-colors duration-300
-                                        ${isOpen ? 'bg-cyan-950/30 border-cyan-500 text-cyan-400' : 'bg-transparent border-transparent text-gray-400 group-hover:text-gray-300'}
-                                    `}>
-                                        0{index + 1}
-                                    </div>
-
-                                    <h3 className={`
-                                        flex-1 text-sm sm:text-[15px] font-bold capitalize tracking-wide transition-colors duration-300
-                                        ${isOpen ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-200'}
-                                    `}>
-                                        {data.question}
-                                    </h3>
-
-
-                                    <div className={`text-xs transition-colors duration-300 ${isOpen ? 'text-cyan-400' : 'text-gray-500'}`}>
-                                        {isOpen ? <FaMinus /> : <FaPlus />}
-                                    </div>
-                                </div>
-
-                                <div 
-                                    className={`
-                                        grid transition-[grid-template-rows] duration-300 ease-out will-change-[grid-template-rows]
-                                        ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}
-                                    `}
-                                >
-                                    <div className="overflow-hidden">
-                                        <div className="px-4 pb-4 pl-14 sm:pl-16 relative z-10">
-                                            
-                                            <div className="absolute left-8 top-0 bottom-4 w-px bg-white/5">
-                                                <div className={`absolute top-0 w-full bg-cyan-500/30 transition-all duration-500 ${isOpen ? 'h-full opacity-100' : 'h-0 opacity-0'}`}></div>
-                                            </div>
-                                            
-                                            <p className={`
-                                                text-gray-400 text-xs sm:text-sm font-medium leading-relaxed
-                                                transition-opacity duration-300 delay-100
-                                                ${isOpen ? 'opacity-100' : 'opacity-0'}
-                                            `}>
-                                                {data.answer}
-                                            </p>
-                                            {isOpen && (
-                                                <div className="mt-3 inline-flex items-center gap-2">
-                                                    <span className="h-1 w-1 bg-cyan-500 rounded-full animate-pulse"></span>
-                                                    <span className="text-[10px] font-mono text-cyan-700">READ_ONLY_ACCESS</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
+                          {data.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
+        {/* --- RIGHT COLUMN: Bot (RESTORED TO ORIGINAL DESKTOP SPECS) --- */}
+        <div className="hidden lg:flex flex-col sticky top-20 w-full items-center gap-0">
+
+          {/* Video Bot - Restored Height h-[450px] */}
+          <div className="relative w-full h-[450px]">
+            <div className="absolute inset-0 z-10 pointer-events-none [mask-image:radial-gradient(circle_at_center,black_45%,transparent_70%)]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                // Restored Scale to 100
+                className="w-full h-full object-cover mix-blend-screen opacity-100 scale-100 contrast-125"
+              >
+                <source src="/assets/videos/boxrobo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-indigo-500/20 rounded-full blur-[100px] animate-pulse"></div>
+          </div>
+
+          <div
+            className="
+              relative -mt-8 z-20 flex items-center justify-center w-auto px-6 h-20 
+              rounded-2xl border border-white/20 bg-white/5 backdrop-blur-xl 
+              shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] overflow-hidden
+            "
+            style={{
+              animation: 'float-tilt 6s ease-in-out infinite',
+              perspective: '1000px',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
+
+            <span className="relative font-[Orbitron] z-10 text-center text-xs md:text-sm font-bold tracking-[0.15em] leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400 drop-shadow-sm">
+              CHECK ALL YOUR SPAM MAILS FOR UPDATES
+            </span>
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
