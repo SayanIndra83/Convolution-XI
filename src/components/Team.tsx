@@ -100,26 +100,26 @@ const teamMembers: TeamMember[] = [
 ];
 
 function Team() {
-  // Calculate total members for curve distribution
-  const totalMembers = teamMembers.length;
-  const centerIndex = Math.floor(totalMembers / 2);
+  // // Calculate total members for curve distribution
+  // const totalMembers = teamMembers.length;
+  // const centerIndex = Math.floor(totalMembers / 2);
 
-  const getCardRotation = (index: number): number => {
-    // Calculate rotation based on distance from center
-    // Center cards are upright (0 deg), side cards are tilted (-15 to 15 deg)
-    const distance = Math.abs(index - centerIndex);
-    const maxDistance = centerIndex;
-    const rotationDegree = (distance / maxDistance) * 15;
-    return index < centerIndex ? -rotationDegree : rotationDegree;
-  };
+  // const getCardRotation = (index: number): number => {
+  //   // Calculate rotation based on distance from center
+  //   // Center cards are upright (0 deg), side cards are tilted (-15 to 15 deg)
+  //   const distance = Math.abs(index - centerIndex);
+  //   const maxDistance = centerIndex;
+  //   const rotationDegree = (distance / maxDistance) * 15;
+  //   return index < centerIndex ? -rotationDegree : rotationDegree;
+  // };
 
-  const getCardTranslateY = (index: number): number => {
-    // Center cards stay lower, side cards move up slightly for curve effect
-    const distance = Math.abs(index - centerIndex);
-    const maxDistance = centerIndex;
-    const translateY = (distance / maxDistance) * 30;
-    return translateY;
-  };
+  // const getCardTranslateY = (index: number): number => {
+  //   // Center cards stay lower, side cards move up slightly for curve effect
+  //   const distance = Math.abs(index - centerIndex);
+  //   const maxDistance = centerIndex;
+  //   const translateY = (distance / maxDistance) * 30;
+  //   return translateY;
+  // };
 
   const headerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -128,25 +128,12 @@ function Team() {
 
   const containerVariants = {
     hidden: { opacity: 0, },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      }
-    }
+    visible: {opacity: 1, transition: {staggerChildren: 0.15, delayChildren: 0.3,}}
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 60 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: easeInOut
-      }
-    }
+    visible: {opacity: 1, y: 0, transition: {duration: 0.4, ease: easeInOut}}
   };
 
   return (
@@ -167,7 +154,7 @@ function Team() {
         </h1>
       </motion.div>
 
-      {/* Curved Cards Container */}
+      {/*Cards Container */}
       <motion.div
         className="team-cards-container"
         variants={containerVariants}
@@ -179,11 +166,11 @@ function Team() {
           <div
             key={index}
             className="team-card-wrapper"
-            style={{
-              '--card-rotation': `${getCardRotation(index)}deg`,
-              '--card-translate-y': `${getCardTranslateY(index)}px`,
-              '--animation-delay': `${index * 0.1}s`,
-            } as React.CSSProperties}
+            // style={{
+            //   '--card-rotation': `${getCardRotation(index)}deg`,
+            //   '--card-translate-y': `${getCardTranslateY(index)}px`,
+            //   '--animation-delay': `${index * 0.1}s`,
+            // } as React.CSSProperties}
           >
             {/* Card with floating animation */}
             <motion.div

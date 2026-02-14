@@ -2,7 +2,7 @@
 /* Root animations for floating effect */
 @keyframes floating {
   0%, 100% { transform: translateY(0px);}
-  50% { transform: translateY(-2px); }
+  50% { transform: translateY(-5px); }
 }
 
 @keyframes spotlightPulse {
@@ -160,7 +160,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   padding: 20px 10px;
   max-width: 1400px;
   /* Flex properties for curved arrangement */

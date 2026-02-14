@@ -167,7 +167,7 @@ const Navbar = () => {
     <>
       <header
         className={`
-          fixed top-0 left-0 w-full z-1000 
+          fixed top-0 left-0 w-full z-1000 px-4 
           transition-transform duration-500 ease-in-out
           ${navVisibilityClass}
           bg-black/5 backdrop-blur-xl border-b border-white/10 lg:bg-transparent lg:backdrop-blur-none lg:border-none
