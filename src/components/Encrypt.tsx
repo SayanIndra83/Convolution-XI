@@ -71,14 +71,13 @@ export default function Leaderdashboard() {
         <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Home</FlipLink></span>
       </TransitionLink>
 
-      <Link
+      <TransitionLink
         href="/preview-dashboard"
-        rel="noopener noreferrer"
         className="flex absolute top-6 right-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
       >
         <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Preview</FlipLink></span>
         <ExternalLink className="text-gray-500 group-hover:text-[#1BA0E8] w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-      </Link>
+      </TransitionLink>
 
         {/* Header */}
         <div>
