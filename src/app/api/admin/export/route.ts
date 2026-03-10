@@ -89,7 +89,7 @@ export async function GET(req: NextRequest) {
 
            
             const headers = [
-                "Team ID", "Team Name", "Team Status", "Role", "Invite Status", 
+                 "Team Name","Team ID", "Team Status", "Role", "Invite Status", 
                 "Username", "User ID", "Institute", "Year", "Department", "Email", "Contact"
             ];
 

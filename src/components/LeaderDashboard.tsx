@@ -4,6 +4,9 @@ import React, { useContext, useMemo, useState } from 'react'
 import { userData } from '@/context/UserContext'
 import { motion } from 'framer-motion'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import FlipLink from './FlipLink'
+import TransitionLink from './TransitionLink'
+import { IoArrowBack } from 'react-icons/io5'
 
 interface User {
   _id: string;
@@ -13,22 +16,39 @@ interface User {
   dept: string;
   year: string;
   phone: string;
-  eventsRegistered: string[]; // This array is CRITICAL
+  eventsRegistered: string[]; 
+}
+
+interface TeamMember {
+  status: string;
+  user: User | null;
+}
+
+interface Team {
+  _id: string;
+  teamName: string;
+  eventName: string;
+  status: string;
+  leader: User | null;
+  members: TeamMember[];
 }
 
 interface DashboardProps {
-  users: User[]; // We will pass the full list from the server
+  users: User[]; 
+  teams: Team[]; 
 }
 
-function page({ users }: DashboardProps) {
+export default function LeaderDashboard({ users, teams }: DashboardProps) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const data = useContext(userData)
 
   const [activeTab, setActiveTab] = useState("All Participants");
-  const navItems = ["All Participants", "algomaniac", "aboltabol", "decisia", "inquizzitive", "sparkhack", "jutalks", "eureka", "circuistics", "frames"];
   
-  // Mapping for display names (what shows on the tab)
+  const navItems = ["All Participants", "algomaniac", "aboltabol", "decisia", "inquizzitive", "sparkhack", "jutalks", "eureka", "circuistics", "frames"];
+  const soloEvents = ["algomaniac", "jutalks", "frames"];
+  const teamEvents = ["aboltabol", "decisia", "inquizzitive", "sparkhack", "eureka", "circuistics"];
+  
   const displayNames: { [key: string]: string } = {
     "algomaniac": "Algomaniac",
     "aboltabol": "Abol Tabol",
@@ -41,140 +61,166 @@ function page({ users }: DashboardProps) {
     "frames": "24 Frames"
   };
 
-  // This automatically updates whenever 'activeTab' or 'users' changes
   const filteredUsers = useMemo(() => {
     if (activeTab === "All Participants") return users;
-    // Return users who have the activeTab name in their 'eventsRegistered' array
     return users.filter(user => user.eventsRegistered.includes(activeTab));
   }, [activeTab, users]);
 
+  const filteredTeams = useMemo(() => {
+    return teams.filter(team => team.eventName === activeTab);
+  }, [activeTab, teams]);
+
   return (
-    <div className='min-h-screen bg-zinc-900 flex flex-col gap-1 items-start justify-start px-3 sm:px-6 md:px-10 pt-4 sm:pt-6 md:pt-10 font-sans text-white'>
-      <h1 className='text-sm sm:text-base md:text-2xl uppercase font-semibold px-2 sm:px-4'>This is Leader's dashboard</h1>
-      {/* <h1 className='text-lg md:text-2xl'>Welcome <span className='text-purple-400 font-bold'>{data?.user?.name} 🤖</span></h1> */}
+    <div className='min-h-screen bg-gray-50 flex flex-col items-center px-4 sm:px-6 md:px-10 pt-8 pb-10 font-rajdhani text-gray-900'>
+      
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-6">
+         <TransitionLink
+        href="/lead-dashboard"
+        className="flex absolute top-6 left-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
+      >
+        <IoArrowBack className="text-gray-500 group-hover:text-[#1BA0E8] text-lg group-hover:-translate-x-1 transition-all duration-300" />
+        <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Back</FlipLink></span>
+      </TransitionLink>
 
-      {/* Tab-bar */}
-      <div className="py-1.5 sm:py-2 px-2 sm:px-4 bg-zinc-800 rounded-full w-full overflow-x-auto overflow-y-hidden no-scrollbar">
-        <ul className='flex justify-start sm:justify-between gap-1 sm:gap-2 min-w-max'>
-          {navItems.map((item) => (
-            <li
-              key={item}
-              onClick={() => setActiveTab(item)}
-              className="relative px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full cursor-pointer text-xs sm:text-sm md:text-base font-medium transition-colors duration-200"
-            >
-              {/* 1. The Moving Background (Only renders for the active tab) */}
-              {activeTab === item && (
-                <motion.span
-                  layoutId="active-pill"
-                  className="absolute inset-0 bg-zinc-600 rounded-full"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-
-              {/* 2. The Text (Must be z-10 to sit ON TOP of the background) */}
-              <span className={`relative z-10 ${activeTab === item ? "text-white" : "text-zinc-400 hover:text-zinc-200"}`}>
-                {item === "All Participants" ? item : displayNames[item] || item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Data table */}
-      <div className="max-h-[75vh] sm:max-h-[80vh] md:max-h-[90vh] bg-zinc-900 border border-zinc-800 rounded-xl overflow-y-auto w-full mt-2 no-scrollbar">
-        <div className="p-3 sm:p-4 border-b border-zinc-800 flex justify-between items-center">
-          <h2 className="text-base sm:text-lg md:text-xl font-bold text-white">{activeTab === "All Participants" ? activeTab : displayNames[activeTab] || activeTab}</h2>
-          <span className="text-[10px] sm:text-xs bg-zinc-800 text-zinc-400 px-2 py-1 rounded-md">
-            Total: {filteredUsers.length}
-          </span>
+        <div className="flex flex-col gap-2 text-center">
+          <h1 className='text-3xl font-orbitron font-bold text-gray-900'>Preview Dashboard</h1>
+          <p className="text-gray-500 font-medium">Detailed preview of all participant and team registrations</p>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm text-zinc-400">
-            <thead className="bg-zinc-950 text-zinc-200 uppercase font-medium">
-              <tr>
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Name</th>
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Email</th>
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Phone</th>
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">College</th>
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Dept</th>
-                {/* <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Year</th> */}
-                <th className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">Events</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-zinc-800">
-              {filteredUsers.length > 0 ? (
-                filteredUsers.map((user) => (
-                  <tr key={user._id} className="hover:bg-zinc-800/50 transition-colors">
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 font-medium text-white whitespace-nowrap">{user.name}</td>
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">{user.email}</td>
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">{user.phone}</td>
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 max-w-30 sm:max-w-40 truncate">{user.institution}</td>
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">{user.dept}-{user.year}</td>
-                    {/* <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">{user.year}</td> */}
-                    <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
-                      <div className="flex gap-1 flex-wrap min-w-20">
-                        {user.eventsRegistered.map((e) => (
-                          e === '--' ? (
-                            <span key={e} className="text-[9px] sm:text-[10px] bg-red-900/30 text-red-400 px-1.5 py-0.5 rounded border border-red-800/30 whitespace-nowrap">
-                              Not Participated
-                            </span>
-                          ) : (
-                            <span key={e} className="text-[9px] sm:text-[10px] bg-cyan-900/30 text-cyan-400 px-1.5 py-0.5 rounded border border-cyan-800/30 whitespace-nowrap">
-                              {e}
-                            </span>
+
+        {/* Navbar*/}
+        <div className="p-1.5 bg-white shadow-sm border border-gray-200 rounded-xl w-full overflow-x-auto ">
+          <ul className='flex justify-between w-full'>
+            {navItems.map((item) => (
+              <li
+                key={item}
+                onClick={() => setActiveTab(item)}
+                className="relative px-4 py-2 rounded-lg cursor-pointer text-sm font-bold transition-colors duration-200"
+              >
+                {activeTab === item && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-[#1BA0E8] rounded-lg shadow-sm"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className={`relative z-10 ${activeTab === item ? "text-white" : "text-gray-500 hover:text-gray-900"}`}>
+                  {item === "All Participants" ? item : displayNames[item] || item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Data table container */}
+        <div className="bg-white border border-gray-100 shadow-sm rounded-xl overflow-hidden w-full border-t-4 border-t-[#1BA0E8]">
+          <div className="p-5 border-b border-gray-100 flex justify-between items-center bg-white">
+            <h2 className="text-xl font-orbitron font-bold text-gray-800">
+              {activeTab === "All Participants" ? activeTab : displayNames[activeTab] || activeTab}
+            </h2>
+            <span className="text-xs bg-[#1BA0E8]/10 text-[#1BA0E8] font-bold px-3 py-1.5 rounded-md">
+              Total {teamEvents.includes(activeTab) ? "Teams" : "Users"}: {teamEvents.includes(activeTab) ? filteredTeams.length : filteredUsers.length}
+            </span>
+          </div>
+
+          <div className="overflow-x-auto max-h-[70vh] no-scrollbar">
+            <table className="w-full text-left text-sm text-gray-600">
+              <thead className="bg-gray-50 text-gray-800 uppercase font-bold text-sm tracking-wider sticky top-0 z-20 shadow-sm">
+                <tr>
+                  {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Team Name</th>}
+                  {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Role</th>}
+                  <th className="px-6 py-4 whitespace-nowrap">Name</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Email</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Contact No.</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Institution</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Department</th>
+                  {activeTab === "All Participants" && <th className="px-6 py-4 whitespace-nowrap">Events</th>}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+
+                {/*Team events*/}
+                {teamEvents.includes(activeTab) ? (
+                  filteredTeams.length > 0 ? (
+                    filteredTeams.map((team, index) => (
+                      <React.Fragment key={team._id}>
+                        {/* Leader Row */}
+                        {team.leader && (
+                          <tr className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-gray-50`}>
+                            <td className="px-2 py-4 font-orbitron font-bold text-gray-900 whitespace-nowrap">{team.teamName}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className="bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border border-blue-100">Leader</span>
+                            </td>
+                            <td className="px-2 py-4 font-bold text-gray-950 whitespace-nowrap">{team.leader.name}</td>
+                            <td className="px-2 py-4 whitespace-nowrap font-semibold">{team.leader.email}</td>
+                            <td className="px-2 py-4 whitespace-nowrap font-semibold">{team.leader.phone}</td>
+                            <td className="px-2 py-4 max-w-[200px] truncate font-semibold">{team.leader.institution}</td>
+                            <td className="px-2 py-4 whitespace-nowrap font-semibold">{team.leader.dept} - {team.leader.year}</td>
+                          </tr>
+                        )}
+                        {/* Member Rows */}
+                        {team.members.map((member, idx) => (
+                          member.user && (
+                            <tr key={`${team._id}-member-${idx}`} className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-gray-50`}>
+                              <td className="px-6 py-4 whitespace-nowrap text-gray-600 font-medium text-right pr-10">↳</td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <span className="bg-gray-100 text-gray-500 font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border border-gray-200">
+                                  Member
+                                </span>
+                              </td>
+                              <td className="px-2 py-4 font-bold text-gray-950 whitespace-nowrap">{member.user.name}</td>
+                              <td className="px-2 py-4 whitespace-nowrap font-semibold">{member.user.email}</td>
+                              <td className="px-2 py-4 whitespace-nowrap font-semibold">{member.user.phone}</td>
+                              <td className="px-2 py-4 max-w-[200px] truncate font-semibold">{member.user.institution}</td>
+                              <td className="px-2 py-4 whitespace-nowrap font-semibold">{member.user.dept} - {member.user.year}</td>
+                            </tr>
                           )
                         ))}
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={6} className="px-3 sm:px-6 py-4 sm:py-6 text-sm sm:text-base text-zinc-600">
-                    No participants found for {activeTab === "All Participants" ? activeTab : displayNames[activeTab] || activeTab}.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <tr><td colSpan={7} className="px-6 py-12 text-center text-gray-400 font-bold text-lg">No teams found for {displayNames[activeTab]}.</td></tr>
+                  )
+                  // solo
+                ) : (
+                  filteredUsers.length > 0 ? (
+                    filteredUsers.map((user, index) => (
+                      <tr key={user._id} className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-gray-50`}>
+                        <td className="px-4 py-4 font-bold text-gray-950 whitespace-nowrap">{user.name}</td>
+                        <td className="px-4 py-4 whitespace-nowrap font-semibold">{user.email}</td>
+                        <td className="px-4 py-4 whitespace-nowrap font-semibold">{user.phone}</td>
+                        <td className="px-4 py-4 max-w-[200px] truncate font-semibold">{user.institution}</td>
+                        <td className="px-4 py-4 whitespace-nowrap font-semibold">{user.dept} - {user.year}</td>
+                        
+                        {/* Only show Events column if on 'All Participants' Tab */}
+                        {activeTab === "All Participants" && (
+                          <td className="px-6 py-4">
+                            <div className="flex gap-1.5 flex-wrap min-w-[120px]">
+                              {user.eventsRegistered.map((e) => (
+                                e === '--' ? (
+                                  <span key={e} className="text-[12px] bg-red-50 text-red-500 px-2 py-1 rounded font-bold whitespace-nowrap border border-red-100">
+                                    Not Participated
+                                  </span>
+                                ) : (
+                                  <span key={e} className="text-[12px] bg-[#1BA0E8]/10 text-[#1BA0E8] px-2 py-1 rounded font-bold whitespace-nowrap border border-[#1BA0E8]/20">
+                                    {e}
+                                  </span>
+                                )
+                              ))}
+                            </div>
+                          </td>
+                        )}
+                      </tr>
+                    ))
+                  ) : (
+                    <tr><td colSpan={6} className="px-6 py-12 text-center text-gray-400 font-bold text-lg">No participants found.</td></tr>
+                  )
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
-
-      <footer className="w-full bg-zinc-900 py-2 mt-auto">
-        <div className="w-full mx-auto px-3 sm:px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-6">
-          {/* Left Side: Branding */}
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-              <h3 className="text-sm sm:text-base md:text-lg font-bold tracking-normal text-zinc-200">Convolution XI</h3>
-            </div>
-            <p className="text-[9px] sm:text-[10px] text-zinc-600 uppercase tracking-wider font-medium">Official Administration Portal</p>
-          </div>
-
-          {/* Right Side: Developer Credit */}
-          <div className="flex flex-col items-center md:items-end gap-1">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <a href="https://github.com/skmdJeesan" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-zinc-900 rounded-full">
-                <FaGithub size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a href="https://www.linkedin.com/in/smjeesan/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-blue-400 transition-colors p-1.5 sm:p-2 hover:bg-zinc-900 rounded-full">
-                <FaLinkedin size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a href="https://instagram.com/_skmdjeesan" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-pink-500 transition-colors p-1.5 sm:p-2 hover:bg-zinc-900 rounded-full">
-                <FaInstagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-            </div>
-            <div className="text-center md:text-right">
-              <p className="text-[9px] sm:text-[10px] text-zinc-500 font-medium">
-                System Architect & Developed by <span className="text-zinc-300 font-bold ml-1">Sk Md Jeesan</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
-
     </div>
   )
 }
-
-export default page

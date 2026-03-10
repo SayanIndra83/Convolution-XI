@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Users, User, UsersRound, Download, FileSpreadsheet, Loader2 } from "lucide-react";
+import { Users, User, UsersRound, Download, FileSpreadsheet, Loader2, ExternalLink } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import TransitionLink from "./TransitionLink";
 import { IoArrowBack } from "react-icons/io5";
 import FlipLink from "./FlipLink";
+import Link from "next/link"; // Added Next.js Link for the new tab functionality
 
 export default function Leaderdashboard() {
   const [data, setData] = useState<any>(null);
@@ -61,13 +62,25 @@ export default function Leaderdashboard() {
   return (
     <div className="min-h-screen bg-gray-50 p-6 md:p-10 pt-20 font-rajdhani">
       <div className="max-w-5xl mx-auto space-y-10">
+        
+
         <TransitionLink
         href="/"
-        className="flex absolute top-6 left-6 z-50 items-center gap-2 px-4 py-2.5 bg-cyan-950/40  border-cyan-500/50  lg:bg-black/30 lg:border-white/10 lg:hover:border-cyan-500/50 lg:hover:bg-cyan-950/40 lg:hover:shadow-cyan-500/20 backdrop-blur-md border  rounded-full transition-all duration-300 shadow-lg  group cursor-pointer overflow-hidden"
+        className="flex absolute top-6 left-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
       >
-        <IoArrowBack className="text-cyan-400 text-lg group-hover:-translate-x-1 transition-transform duration-300" />
-        <span className="font-orbitron text-xs font-bold tracking-[0.2em] text-cyan-100 group-hover:text-white uppercase transition-colors"><FlipLink>Return&nbsp;Home</FlipLink></span>
+        <IoArrowBack className="text-gray-500 group-hover:text-[#1BA0E8] text-lg group-hover:-translate-x-1 transition-all duration-300" />
+        <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Home</FlipLink></span>
       </TransitionLink>
+
+      {/* Preview Button (Top Right) - Clean Light Theme */}
+      <Link
+        href="/preview-dashboard"
+        rel="noopener noreferrer"
+        className="flex absolute top-6 right-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
+      >
+        <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Preview</FlipLink></span>
+        <ExternalLink className="text-gray-500 group-hover:text-[#1BA0E8] w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+      </Link>
 
         {/* Header */}
         <div>
