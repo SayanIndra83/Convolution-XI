@@ -3,7 +3,6 @@ import { useRouter } from 'next/navigation'
 import React, { useContext, useMemo, useState } from 'react'
 import { userData } from '@/context/UserContext'
 import { motion } from 'framer-motion'
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import FlipLink from './FlipLink'
 import TransitionLink from './TransitionLink'
 import { IoArrowBack } from 'react-icons/io5'
@@ -71,30 +70,33 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
   }, [activeTab, teams]);
 
   return (
-    <div className='min-h-screen bg-gray-50 flex flex-col items-center px-4 sm:px-6 md:px-10 pt-8 pb-10 font-rajdhani text-gray-900'>
+    <div className='min-h-screen bg-gray-50 flex flex-col items-center px-6 md:px-10 pt-10 pb-10 font-rajdhani text-gray-900'>
       
-      <div className="w-full max-w-7xl mx-auto flex flex-col gap-6">
-         <TransitionLink
+      <div className="w-full max-w-7xl mx-auto space-y-10">
+        
+        <TransitionLink
         href="/lead-dashboard"
         className="flex absolute top-6 left-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
       >
         <IoArrowBack className="text-gray-500 group-hover:text-[#1BA0E8] text-lg group-hover:-translate-x-1 transition-all duration-300" />
         <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Back</FlipLink></span>
       </TransitionLink>
+        
 
-        <div className="flex flex-col gap-2 text-center">
-          <h1 className='text-3xl font-orbitron font-bold text-gray-900'>Preview Dashboard</h1>
+        {/* Header */}
+        <div className="flex flex-col gap-2 text-center mt-10 sm:mt-0">
+          <h1 className='sm:text-3xl text-2xl font-orbitron font-bold text-gray-900'>Preview Dashboard</h1>
           <p className="text-gray-500 font-medium">Detailed preview of all participant and team registrations</p>
         </div>
 
         {/* Navbar*/}
-        <div className="p-1.5 bg-white shadow-sm border border-gray-200 rounded-xl w-full overflow-x-auto ">
+        <div className="p-1.5 bg-white shadow-sm border border-gray-200 rounded-xl w-full overflow-x-auto no-scrollbar">
           <ul className='flex justify-between w-full'>
             {navItems.map((item) => (
               <li
                 key={item}
                 onClick={() => setActiveTab(item)}
-                className="relative px-4 py-2 rounded-lg cursor-pointer text-sm font-bold transition-colors duration-200"
+                className="relative px-4 py-2 rounded-lg cursor-pointer text-sm font-bold transition-colors duration-200 whitespace-nowrap"
               >
                 {activeTab === item && (
                   <motion.span
@@ -191,7 +193,6 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
                         <td className="px-4 py-4 max-w-[200px] truncate font-semibold">{user.institution}</td>
                         <td className="px-4 py-4 whitespace-nowrap font-semibold">{user.dept} - {user.year}</td>
                         
-                        {/* Only show Events column if on 'All Participants' Tab */}
                         {activeTab === "All Participants" && (
                           <td className="px-6 py-4">
                             <div className="flex gap-1.5 flex-wrap min-w-[120px]">

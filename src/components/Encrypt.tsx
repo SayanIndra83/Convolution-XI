@@ -63,7 +63,6 @@ export default function Leaderdashboard() {
     <div className="min-h-screen bg-gray-50 p-6 md:p-10 pt-20 font-rajdhani">
       <div className="max-w-5xl mx-auto space-y-10">
         
-
         <TransitionLink
         href="/"
         className="flex absolute top-6 left-6 z-50 items-center gap-2 px-4 py-2 sm:py-2.5 bg-white border border-gray-200 hover:border-[#1BA0E8] hover:shadow-md rounded-full transition-all duration-300 shadow-sm group cursor-pointer overflow-hidden"
@@ -72,7 +71,6 @@ export default function Leaderdashboard() {
         <span className="font-orbitron text-xs font-bold tracking-[0.1em] text-gray-700 group-hover:text-[#1BA0E8] uppercase transition-colors"><FlipLink>Home</FlipLink></span>
       </TransitionLink>
 
-      {/* Preview Button (Top Right) - Clean Light Theme */}
       <Link
         href="/preview-dashboard"
         rel="noopener noreferrer"
