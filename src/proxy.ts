@@ -55,9 +55,10 @@ export async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Keep your existing matcher config
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|node_modules|.*\\..*).*)',
+    '/profile/:path*',
+    '/lead-dashboard/:path*', 
+    '/lead-access/:path*',    
   ],
 };
