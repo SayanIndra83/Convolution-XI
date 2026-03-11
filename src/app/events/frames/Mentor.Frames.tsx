@@ -17,7 +17,7 @@ const mentors: Mentor[] = [
         post: "Assistant Professor at Department of Electrical Engineering",
         university: "Jadavpur University",
         image: "/Mentors/stc.png",
-        profile: "https://jadavpuruniversity.in/faculty-profile/sovan-dalai/"
+        profile: "https://scholar.google.co.in/citations?user=IuZ4rFMAAAAJ&hl=en"
     },
 ];
 const Mentors = () => {
