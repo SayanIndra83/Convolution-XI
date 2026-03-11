@@ -239,7 +239,7 @@ export default function ProfilePage() {
                 }
             });
     }
-  }, [data?.user?._id, data?.user?.eventsRegistered]);
+  }, [data?.user?._id, JSON.stringify(data?.user?.eventsRegistered)]);
 
   const handleAction = async (teamId: string, action: "accept" | "decline") => {
       if(!data?.user?._id) return;
