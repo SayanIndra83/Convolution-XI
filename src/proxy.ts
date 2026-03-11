@@ -1,64 +1,44 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  
-  // 1. Define Public Routes
-  const publicRoutes = [
-    '/login', 
-    '/register', 
-    '/api/auth', 
-    '/favicon.ico', 
-    '/forget-password', 
-    '/reset-password', 
-    '/verify-email',
-    '/events' 
-  ];
-
-  // Helper to check if the current path is public
-  const isPublicRoute = publicRoutes.some((path) => pathname.startsWith(path));
-  const isHomePage = pathname === '/';
-
-  // 2. Public Access Check
-  if (isPublicRoute || isHomePage) {
-    return NextResponse.next();
-  }
-
-  // 3. Get Token
   const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
 
-  // 4. Unauthorized Check (Not Logged In)
-  if (!token) {
+  // 1. Kick logged-in users away from auth pages
+  if (token && (pathname.startsWith('/login') || pathname.startsWith('/register'))) {
+    return NextResponse.redirect(new URL('/profile', request.url));
+  }
+
+  // 2. Unauthorized Check (Not Logged In)
+  if (!token && !pathname.startsWith('/login') && !pathname.startsWith('/register')) {
     const loginUrl = new URL('/login', request.url);
     loginUrl.searchParams.set('callbackUrl', request.url);
     return NextResponse.redirect(loginUrl);
   }
 
-  // 5. Verification Check (Logged in, but not verified)
-  // Ensure your token actually has 'isVerified'. If your logic relies on DB, this might need adjustment,
-  // but assuming your NextAuth session strategy puts this in the token:
-  if (!token.isVerified) {
+  // 3. Verification Check (Logged in, but not verified)
+  if (token && !token.isVerified && !pathname.startsWith('/login') && !pathname.startsWith('/register')) {
     return NextResponse.redirect(new URL('/verify-email', request.url));
   }
 
-
-  // 6. Check if the user is trying to visit the Lead Dashboard
+  // 4. Check if the user is trying to visit the Lead Dashboard
   if (pathname.startsWith('/lead-dashboard')) {
-    // If their role is NOT 'LEAD', kick them to the Lead Access page
-    if (token.role !== 'LEAD') {
+    if (token?.role !== 'LEAD') {
       return NextResponse.redirect(new URL('/lead-access', request.url));
     }
   }
 
-  // 7. Allow access if all checks pass
   return NextResponse.next();
 }
 
+// The matcher remains the same and will save your Vercel limits!
 export const config = {
   matcher: [
     '/profile/:path*',
-    '/lead-dashboard/:path*', 
-    '/lead-access/:path*',    
+    '/lead-dashboard/:path*',
+    '/login',
+    '/register'
   ],
 };
