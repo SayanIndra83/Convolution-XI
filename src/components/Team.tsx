@@ -25,21 +25,22 @@ const teamMembers: TeamMember[] = [
     x: "https://x.com/ruddy168",
   },
   {
-    name: "Dipjyoti Dash",
-    post: "Joint secretary",
-    image: "/peoplePics/dipjyoti.jpeg",
-    linkedin: "https://www.linkedin.com/in/dipjyoti-dash-22508227a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    instagram: "https://www.instagram.com/dipjyotidash?igsh=djh2Nml1NDdwMnQ4",
-    x: "",
-  },
-  {
     name: "Md Rahiul Islam",
-    post: "Treasurer",
+    post: "Joint secretary",
     image: "/peoplePics/rahiul.jpg",
     linkedin: "",
     instagram: "https://www.instagram.com/rahiul_/",
     x: "",
   },
+  {
+    name: "Dipjyoti Dash",
+    post: "Treasurer",
+    image: "/peoplePics/dipjyoti.jpeg",
+    linkedin: "https://www.linkedin.com/in/dipjyoti-dash-22508227a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    instagram: "https://www.instagram.com/dipjyotidash?igsh=djh2Nml1NDdwMnQ4",
+    x: "",
+  },
+  
   {
     name: "Sayan Indra",
     post: "Tech Lead",
