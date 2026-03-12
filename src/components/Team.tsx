@@ -44,7 +44,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Sayan Indra",
     post: "Tech Lead",
-    image: "/peoplePics/Sayan.jpeg",
+    image: "/peoplePics/Sayan2.jpeg",
     linkedin: "https://www.linkedin.com/in/sayan-indra-a41319369/",
     instagram: "https://www.instagram.com/sayanindra143/",
     x: "",
