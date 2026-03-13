@@ -102,7 +102,7 @@ hover:bg-[#FCF0C4] shadow-[#FCF0C4] hover:shadow-[#512511]  bg-[#512511] hover:o
    };
   return (
     <section
-      className="min-h-screen pt-10 md:pb-15 md:pt-30 relative w-full flex items-center justify-center bg-[#FF97E3] px-6 overflow-hidden"
+      className="h-auto pt-15 md:pb-10 md:pt-20 relative w-full flex items-center justify-center bg-[#FF97E3] px-6 overflow-hidden"
     >
 
      {/* <TransitionLink 

@@ -69,7 +69,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full max-h-screen flex items-center justify-center bg-linear-to-b from-[#c4d79f] via-[#b1c880] to-[#83a252] pt-20  px-6 pb-10 overflow-hidden"
+      className="relative w-full h-auto flex items-center justify-center bg-linear-to-b from-[#c4d79f] via-[#b1c880] to-[#83a252] pt-20  px-6 pb-5 overflow-hidden"
     >
       <div 
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -94,7 +94,7 @@ export default function About() {
         </span>
       </TransitionLink> */}
 
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-10 z-10">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-5 z-10">
         
         {/* Logo */}
         <div className="relative w-[80vw] max-w-[450px] h-auto aspect-[3/1.2]">
@@ -113,6 +113,13 @@ mind-bending aptitude questions, this event pushes your analytical thinking and 
 their limits. Assemble your team, sharpen your intellect, and get ready to dive into Eureka’s
 thrilling challenges for an experience that is both unforgettable and intensely rewarding.
         </p>
+
+        <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#115211]/80 border border-[#115211]/50 shadow-[0_8px_20px_rgba(17,82,17,0.2)] backdrop-blur-md hover:border-yellow-400/80 hover:bg-[#115211] transition-all duration-300">
+            <span className="text-yellow-400 text-xl drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]">🏆</span>
+            <span className="font-orbitron font-bold text-yellow-400 tracking-widest uppercase text-sm md:text-base drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]">
+                Prize Pool: ₹ 13,500
+            </span>
+        </div>
 
         <div className="my-4">
           {RegisterBtn()}

@@ -23,7 +23,7 @@ const Rules = () => {
   return (
     <div
       id="rules"
-      className="relative w-full py-20 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#83a252] via-[#3e5e19] to-[#2c5111]"
+      className="relative w-full py-10 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#83a252] via-[#3e5e19] to-[#2c5111]"
     >
 
       {/* Background */}

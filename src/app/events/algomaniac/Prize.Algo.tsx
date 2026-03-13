@@ -16,7 +16,7 @@ const prizes: Prize[] = [
     {
         id: "silver",
         title: "Silver Prize",
-        amount: "TBD",
+        amount: "₹ 4000",
         image: "/Algomaniac/silver prize.png", 
         glow: "group-hover:shadow-[0_8px_32px_0_rgba(56,189,248,0.3)]",
         borderGlow: "group-hover:border-sky-400/50",
@@ -24,7 +24,7 @@ const prizes: Prize[] = [
     {
         id: "gold",
         title: "Gold Prize",
-        amount: "TBD",
+        amount: "₹ 6000",
         image: "/Algomaniac/gold prize.png", 
         glow: "group-hover:shadow-[0_8px_32px_0_rgba(250,204,21,0.3)]",
         borderGlow: "group-hover:border-yellow-400/50",
@@ -32,7 +32,7 @@ const prizes: Prize[] = [
     {
         id: "bronze",
         title: "Bronze Prize",
-        amount: "TBD",
+        amount: "₹ 2000",
         image: "/Algomaniac/bronze prize.png", 
         glow: "group-hover:shadow-[0_8px_32px_0_rgba(244,63,94,0.3)]",
         borderGlow: "group-hover:border-rose-400/50",
@@ -66,7 +66,7 @@ export default function Prizes() {
     };
 
     return (
-        <section id='prizes' className="relative w-full py-24 flex flex-col items-center justify-center bg-transparent z-10">
+        <section id='prizes' className="relative w-full py-10 h-auto flex flex-col items-center justify-center bg-transparent z-10">
 
             <div className='maxWidthForSections w-full flex flex-col items-center px-4'>
 

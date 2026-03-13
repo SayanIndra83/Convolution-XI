@@ -73,7 +73,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full max-h-screen flex items-center justify-center pt-20 px-6 pb-10  overflow-hidden "
+      className="relative w-full h-auto flex items-center justify-center pt-20 px-6 pb-10  overflow-hidden "
     >
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -120,7 +120,12 @@ export default function About() {
           confidence—for a chance to take the spotlight on stage.
 
         </p>
-
+        <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#010a5f]/40 border border-yellow-500/40 shadow-[0_0_20px_rgba(234,179,8,0.15)] backdrop-blur-md hover:border-yellow-400/80 hover:bg-[#010a5f]/60 transition-all duration-300">
+            <span className="text-yellow-400 text-xl drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]">🏆</span>
+            <span className="font-orbitron font-bold text-yellow-400 tracking-widest uppercase text-sm md:text-base drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]">
+                Prize Pool: ₹ 12,000
+            </span>
+        </div>
         <div className="mt-4">
           {RegisterBtn()}
         </div>

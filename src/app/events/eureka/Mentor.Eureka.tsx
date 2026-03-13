@@ -59,7 +59,7 @@ export default function Mentors() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
                 className="flex flex-col items-center pointer-events-none select-none mb-10 gap-2">
-                    <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-gray-300 to-white drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
+                    <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-gray-300 to-white drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] uppercase">
                         Judges & Mentors
                     </h1>
                     <p className="opacity-90 text-center text-white mt-3 text-base md:text-lg font-rajdhani font-bold tracking-wide">

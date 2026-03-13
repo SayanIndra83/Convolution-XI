@@ -81,7 +81,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full h-screen flex items-center justify-center bg-transparent pt-20 px-6 pb-10 overflow-hidden"
+      className="relative w-full h-auto flex items-center justify-center bg-transparent pt-20 px-6 pb-10 overflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -128,6 +128,14 @@ export default function About() {
           turn that spark into innovation.
 
         </p>
+
+
+       <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/10 border border-slate-300/30 shadow-sm shadow-slate-200/30 backdrop-blur-md hover:border-slate-400/80 hover:bg-white/20 transition-all duration-300">
+            <span className="text-slate-500 text-xl drop-shadow-[0_0_8px_rgba(148,163,184,0.4)]">🏆</span>
+            <span className="font-orbitron font-bold text-slate-700 tracking-widest uppercase text-sm md:text-base drop-shadow-sm">
+                Prize Pool: ₹ 13,500
+            </span>
+        </div>
 
         <div className="mt-4">
           {RegisterBtn()}

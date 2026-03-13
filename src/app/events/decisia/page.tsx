@@ -18,7 +18,7 @@ function page() {
         <Rules />
         <Timeline />
         <Mentors />
-        <Prizes/>
+        {/* <Prizes/> */}
         <Team />
         <Faq />
         <Footer />

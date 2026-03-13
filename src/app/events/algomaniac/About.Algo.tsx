@@ -101,7 +101,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen flex items-center justify-center mt-50 md:mt-0 bg-transparent py-20 px-6 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center mt-20 md:mt-0 bg-transparent py-20 px-6 overflow-hidden"
     >
       {/* Subtle background dots
       <div

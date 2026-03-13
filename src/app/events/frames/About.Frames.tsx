@@ -103,7 +103,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="md:max-h-screen pt-10 md:pt-20 pb-10 flex justify-center items-center  relative"
+      className="h-auto pt-10 md:pt-20 pb-10 flex justify-center items-center  relative"
     >
       {/* Background color */}
       <div className="absolute top-0 left-0 w-full h-full bg-[#52BAFF] -z-20"></div>
@@ -140,7 +140,6 @@ export default function About() {
                 src="/Frames/HeroBot.png"
                 alt="Frames Bot"
                 /> 
-                {/* The Big Cloud - Now locked safely behind and below the bot! */}
                 <Image 
                     src="/Frames/HerobigCloud.png" 
                     alt="cloud" 
@@ -171,7 +170,12 @@ Judges’ Choice and People’s Choice awards. The top 24 entries will be shortl
 showcased for public voting. Participants are required to adhere strictly to the event
 guidelines—original work only, with no plagiarism or watermarks. Let your lens do the talking.
         </p>
-
+        <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/30 border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur-md hover:bg-white/50 hover:border-white/80 transition-all duration-300 my-6">
+    <span className="text-yellow-500 text-xl drop-shadow-sm">🏆</span>
+    <span className="font-orbitron font-bold text-[#0c4a6e] tracking-widest uppercase text-sm md:text-base drop-shadow-sm">
+        Prize Pool: ₹ 5,000
+    </span>
+</div>
         <div className="mt-4 md:mb-5">
           {RegisterBtn()}
         </div>

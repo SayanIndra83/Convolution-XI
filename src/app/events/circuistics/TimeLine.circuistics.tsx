@@ -1,14 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion"; 
+
 const Timeline = () => {
-    const headerVariants = {
+  const headerVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.15 } }
   };
+
+  // Animation for the individual timeline cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
     <div
       id="timeline"
-      className="relative w-full pt-20 md:pt-25 pb-20 flex flex-col items-center justify-center overflow-hidden "
+      className="relative w-full h-auto py-10 flex flex-col items-center justify-center overflow-hidden"
     >
       
       {/* Background Grid Pattern */}
@@ -19,25 +27,83 @@ const Timeline = () => {
              backgroundSize: '30px 30px'
         }}
       ></div>
-      {/*main content */}
-      <div className="relative z-10 flex flex-col items-center justify-between w-full px-4 gap-20">
-       <motion.div
+
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col items-center justify-between w-full px-4 gap-12">
+        
+        {/* Header */}
+        <motion.div
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          className="flex flex-col items-center pointer-events-none select-none mb-5"
+          className="flex flex-col items-center pointer-events-none select-none"
         >
-          <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
+          <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-transparent bg-clip-text bg-gradient-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
             Timeline
           </h1>
         </motion.div>
-        
-        <span className="font-orbitron text-2xl md:text-3xl font-bold tracking-widest text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.3)] uppercase text-center mt-2">
-          Coming Soon...
-        </span>
+
+        {/* Vertical Timeline Structure */}
+        <motion.div 
+          className="relative w-full max-w-4xl mx-auto mt-4 ml-2 md:ml-auto border-l-2 border-blue-500/30 md:border-l-0 pr-4 md:pr-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ staggerChildren: 0.2 }}
+        >
+            {/* Central Glowing Line for Desktop */}
+            <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-[2px] bg-gradient-to-b from-blue-500/50 via-indigo-500/50 to-purple-500/50 -translate-x-1/2"></div>
+
+            {/* Timeline Item 1: Registration */}
+            <motion.div variants={cardVariants} className="relative pl-8 md:pl-0 w-full md:flex md:justify-between md:items-center mb-8 group">
+                <div className="hidden md:block w-[45%] text-right pr-8">
+                    <h4 className="font-orbitron text-xl font-bold text-fuchsia-400 uppercase">Registration close</h4>
+                </div>
+                <div className="absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
+                <div className="md:w-[45%] md:pl-8 text-left">
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-blue-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                        <span className="font-orbitron text-cyan-300 font-bold text-base tracking-widest uppercase drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">March 26, 2026</span>
+                        <h4 className="md:hidden font-orbitron text-lg font-bold text-fuchsia-400 mt-2">Registration close</h4>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">• Registrations close at 11:59 PM IST</p>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Start prepping for the D - day !</p>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Timeline Item 2: Prelims */}
+            <motion.div variants={cardVariants} className="relative pl-8 md:pl-0 w-full md:flex md:justify-between md:items-center mb-8 md:flex-row-reverse group">
+                <div className="hidden md:block w-[45%] text-left pl-8">
+                      <h4 className="font-orbitron text-xl font-bold text-cyan-400 uppercase">Preliminary Round</h4>
+                    </div>
+                <div className="absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full shadow-[0_0_15px_#6366f1] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
+                <div className="md:w-[45%] md:pr-8 text-left md:text-right">
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-indigo-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                           <span className="font-orbitron font-bold text-fuchsia-300 text-base tracking-widest uppercase drop-shadow-[0_0_8px_rgba(217,70,239,0.5)]">March 28, 2026</span>
+                        <h4 className="md:hidden font-orbitron text-lg font-bold text-cyan-400 mt-2">Preliminary Round</h4>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">The participants will be tested on their theoretical knowledge of electronics to qualify for the next round</p>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Timeline Item 3: Finals */}
+            <motion.div variants={cardVariants} className="relative pl-8 md:pl-0 w-full md:flex md:justify-between md:items-center group">
+                <div className="hidden md:block w-[45%] text-right pr-8">
+                      <h4 className="font-orbitron text-xl font-bold text-fuchsia-400 uppercase">Final Round</h4>
+                    </div>
+                <div className="absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full shadow-[0_0_15px_#a855f7] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
+                <div className="md:w-[45%] md:pl-8 text-left">
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-purple-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                        <span className="font-orbitron font-bold text-cyan-300 text-base tracking-widest uppercase drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">March 29, 2026</span>
+                        <h4 className="md:hidden font-orbitron text-lg font-bold text-fuchsia-400 mt-2">Final Round</h4>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">The finalists will have to build a fully functional circuit from scratch according to the provided problem statement.</p>
+                    </div>
+                </div>
+            </motion.div>
+
+            
+        </motion.div>
       </div>
-      
     </div>
   );
 };

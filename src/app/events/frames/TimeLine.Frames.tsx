@@ -2,10 +2,17 @@ import React from "react";
 import Image from "next/image";
 
 const Timeline = () => {
+  // --- Timeline Data ---
+  const timelineData = [
+    { date: "23rd March, 2026", title: "Registration Closes", time: "12:00 AM IST" },
+    { date: "23rd March, 2026", title: "Submission Deadline", time: "11:59 PM IST" },
+    { date: "27th March - 28th March 11:59 PM IST", title: "Voting Period" }
+  ];
+
   return (
     <div
       id="timeline"
-      className="relative w-full min-h-[50vh] lg:min-h-[80vh] flex flex-col items-center justify-center overflow-hidden "
+      className="relative w-full min-h-[50vh] lg:min-h-[80vh] pb-10 lg:pb-0 flex flex-col items-center justify-center overflow-hidden "
     >
       <div className="absolute top-0 left-0 w-full h-full bg-[#52BAFF] -z-20"></div>
 
@@ -55,14 +62,45 @@ const Timeline = () => {
       <div className="relative z-20 w-full max-w-6xl mx-auto flex items-center justify-center lg:justify-between px-6 lg:px-12 -translate-y-15 lg:-translate-y-30 mt-20 lg:mt-0">
 
        
-        <div className="relative z-30 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-1/2 lg:translate-y-24">
+        <div className="relative z-30 flex flex-col items-center text-center lg:text-left w-full lg:w-1/2 translate-y-20 lg:translate-y-28">
           
-          {/* Mobile: Pill style. Desktop: Simple plain text */}
-          <div className="px-6 lg:px-0 py-2 lg:py-0 bg-[#cdeffd]/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none rounded-full lg:rounded-none shadow-[0_8px_32px_rgba(0,0,0,0.1)] lg:shadow-none border border-white/40 lg:border-none">
-            <h2 className="uppercase font-rajdhani font-bold text-2xl md:text-4xl tracking-wide text-[#0A5C7A] lg:drop-shadow-sm">
-              Coming Soon...
-            </h2>
+          {/*Timeline*/}
+          <div className="relative w-full max-w-sm lg:max-w-md mx-auto">
+            {/* Central Vertical Line */}
+            <div className="absolute left-1/2 top-6 bottom-4 w-1 bg-[#0A5C7A]/20 -translate-x-1/2 rounded-full"></div>
+
+            {timelineData.map((item, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <div 
+                  key={index} 
+                  className={`relative flex items-center w-full mb-6 last:mb-0 ${isLeft ? 'justify-start' : 'justify-end'}`}
+                >
+                  {/* Timeline Dot (Center) */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#0A5C7A] rounded-full border-2 border-[#84D4FF] shadow-[0_0_10px_rgba(10,92,122,0.4)] z-10"></div>
+
+                  {/* Frosted Glass Card */}
+                  <div className={`w-[45%] ${isLeft ? 'pr-4 md:pr-6 text-right' : 'pl-4 md:pl-6 text-left'}`}>
+                    <div className="bg-white/40 backdrop-blur-md border border-white/60 p-4 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.05)] hover:bg-white/60 transition-colors duration-300">
+                      <h3 className="font-orbitron font-bold text-[#0A5C7A] text-sm md:text-base leading-tight mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="font-rajdhani font-semibold text-[#0A5C7A]/80 text-xs md:text-sm">
+                        {item.date}
+                      </p>
+                      <p className="font-rajdhani font-semibold text-[#0A5C7A]/80 text-xs md:text-sm">
+                        {item.time}
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              );
+            })}
           </div>
+          {/* ----------------------------------------------------------- */}
+
         </div>
 
         {/* camera and spotlight */}
