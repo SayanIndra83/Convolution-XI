@@ -32,17 +32,15 @@ const galleryImages = [
   { src: "/Galleria/24.jpg", isBig: false },
   { src: "/Galleria/25.jpg", isBig: true },
   { src: "/Galleria/26.jpg", isBig: false },
+  { src: "/Galleria/blur.jpg", isBig: false },
 ];
 
 const Gallery = () => {
-  // 2. Double the array for seamless scrolling
-  // We do this in JS, not DOM manipulation, to respect React's lifecycle
+  
   const scrollerContent = [...galleryImages, ...galleryImages];
 
-  // 3. Setup the Ref and InView hook
   const containerRef = useRef(null);
-  // 'amount: 0.3' means the animation starts when 30% of the gallery is visible
-  // 'once: false' ensures it pauses/plays every time you scroll away/back
+  
   const isInView = useInView(containerRef, { amount: 0.3, once: false });
 
   return (
@@ -114,8 +112,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-
-{/* <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-fuchsia-900/15 blur-[100px] rounded-full mix-blend-screen will-change-transform"></div>
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vh] bg-purple-900/50 blur-[100px] rounded-full mix-blend-screen will-change-transform"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[70vh] bg-cyan-900/20 blur-[100px] rounded-full mix-blend-screen will-change-transform"></div> */}
