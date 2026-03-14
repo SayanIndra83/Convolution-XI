@@ -74,7 +74,7 @@ const Mentors = () => {
       </div>
 
       
-                      <div className="flex justify-center md:flex-wrap lg:flex-nowrap flex-col md:flex-row gap-2 md:gap-x-6">
+                      <div className="flex justify-center maxWidthForSections  md:flex-wrap lg:flex-nowrap flex-col md:flex-row gap-2 md:gap-x-6">
                     {mentors.map((mentor, index) => (
                         <div
                             key={index}
