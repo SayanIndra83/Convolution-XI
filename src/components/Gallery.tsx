@@ -32,7 +32,6 @@ const galleryImages = [
   { src: "/Galleria/24.jpg", isBig: false },
   { src: "/Galleria/25.jpg", isBig: true },
   { src: "/Galleria/26.jpg", isBig: false },
-  { src: "/Galleria/blur.jpg", isBig: false },
 ];
 
 const Gallery = () => {
@@ -100,7 +99,8 @@ const Gallery = () => {
                   sizes="(max-width: 768px) 33vw, 20vw"
                   quality={60}
                   loading={index < 5 ? "eager" : "lazy"} 
-                  placeholder="empty" 
+                  placeholder="blur"
+                  blurDataURL="/Galleria/blur.jpg"
                 />
               </div>
             ))}
