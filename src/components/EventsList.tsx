@@ -43,10 +43,10 @@ const events: Event[] = [
   },
   { 
     id: "eureka", 
-    title: 'Eureka', 
+    title: 'Eureka!', 
     desc: "Crack the chaos — where only razor-sharp minds survive the puzzle storm.",
     icon: <FaLightbulb />,
-    image: '/assets/images/eureka.jpeg',
+    image: '/Eureka/eureka_img.jpeg',
     color: '#eab308' // Yellow
   },
   { 
