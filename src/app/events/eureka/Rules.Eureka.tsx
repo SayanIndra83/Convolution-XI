@@ -55,7 +55,7 @@ const Rules = () => {
         </div>
         <div className="mt-5">
           <Link
-            href="https://drive.google.com/drive/folders/1Y-jSXdMsgVieakzYUWNLzwzRTQNS-yX3"
+            href="https://drive.google.com/file/d/1wEd_GiyRp-DgfuOGcjQDSLw-N6fHNWuJ/view"
             target="_blank"
             className="shadow-white/70 hover:shadow-white/30  hover:bg-[#1C971C] bg-[#115211]   text-[#ffffff]  transition-all duration-300 group flex items-center gap-2 px-5 py-3 backdrop-blur-md rounded-full shadow-sm cursor-pointer overflow-hidden
                       "
