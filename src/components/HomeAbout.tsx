@@ -6,7 +6,7 @@ import { IoPlay } from "react-icons/io5";
 import AboutRobot from "../assets/images/About_Robot.png"
 import MobileAboutContent from './MobileAbout';
 
-const EVENT_DATE = "2026-03-27T00:00:00+05:30";
+const EVENT_DATE = "2026-03-28T00:00:00+05:30";
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -39,7 +39,6 @@ const AnimatedCounter = ({ from, to, delay = 0 }: { from: number; to: number, de
   const motionValue = useMotionValue(from);
   const springValue = useSpring(motionValue, { damping: 30, stiffness: 100 });
   
-  // OPTIMIZATION: Bypasses React state entirely. Framer Motion updates the DOM node directly.
   const displayValue = useTransform(springValue, (latest) => Math.floor(latest));
 
   useEffect(() => {

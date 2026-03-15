@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { CalendarClock, Users, Trophy, Sparkles } from 'lucide-react';
 import { motion } from "framer-motion";
 
-const EVENT_DATE = "2026-03-27T00:00:00+05:30";
+const EVENT_DATE = "2026-03-28T00:00:00+05:30";
 
 const MobileRefCounter = ({ from, to, delay = 0 }: { from: number; to: number; delay?: number }) => {
   const ref = useRef<HTMLSpanElement>(null);

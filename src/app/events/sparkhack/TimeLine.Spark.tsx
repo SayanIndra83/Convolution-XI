@@ -6,7 +6,7 @@ const Timeline = () => {
     {
       date: "March 18, 2026",
       title: "Registration Deadline",
-      desc: "Registration for SparkHack will end on 18th March at 12:00 AM ",
+      desc: "Registration for SparkHack will end on 18th March at 12:00 PM",
       icon: "🚨",
       color: "from-cyan-400 to-cyan-500",
       borderColor: "border-cyan-400"

@@ -12,7 +12,7 @@ const Timeline = () => {
     {
       date: "26th March",
       title: "Registration Deadline",
-      desc: "Registration for Inquizzitive will end on 26th March at 12:00 AM.",
+      desc: "Registration for Inquizzitive will end on 26th March at 11:59 PM.",
     },
     {
       date: "27th March",
