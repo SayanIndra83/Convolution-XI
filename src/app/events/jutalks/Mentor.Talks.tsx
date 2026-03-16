@@ -25,7 +25,7 @@ export default function Mentors() {
 
                 {/* Header Section */}
                 <div className="flex flex-col items-center pointer-events-none select-none mb-10 gap-2">
-                    <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-[#592A13] drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
+                    <h1 className="font-orbitron font-bold text-center text-3xl md:text-4xl tracking-wide text-[#592A13] whitespace-nowrap uppercase">
                         Mentor
                     </h1>
                     <p className="opacity-90 text-center text-[#592A13] mt-3 text-base md:text-lg font-rajdhani font-bold tracking-wide">
@@ -36,7 +36,7 @@ export default function Mentors() {
                     {mentors.map((mentor, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-5 sm:gap-6 p-4 w-full max-w-xl rounded-[1.5rem] bg-[#FCEBEA] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-1 transition-transform duration-300"
+                            className="flex items-center gap-5 sm:gap-6 p-4 w-full max-w-xl rounded-[1.5rem] bg-[#FCEBEA] hover:-translate-y-1 transition-transform duration-300"
                         >
                             <div className="relative shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-gray-300">
                                 {mentor.image ? (

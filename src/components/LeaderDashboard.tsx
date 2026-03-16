@@ -86,7 +86,7 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
         {/* Header */}
         <div className="flex flex-col gap-2 text-center mt-10 sm:mt-0">
           <h1 className='sm:text-3xl text-2xl font-orbitron font-bold text-gray-900'>Preview Dashboard</h1>
-          <p className="text-gray-500 font-medium">Detailed preview of all participant and team registrations</p>
+          <p className="text-gray-500 font-medium">Detailed preview of all participant and team registrations.</p>
         </div>
 
         {/* Navbar*/}

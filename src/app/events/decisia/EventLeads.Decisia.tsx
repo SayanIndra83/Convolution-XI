@@ -124,8 +124,16 @@ function Team() {
   };
 
   return (
-    <div id='team' className="team-section">
+    <div id='team' className="team-section pt-15">
       {/* Header Section */}
+       <div
+                className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
+                     backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                     backgroundSize: '30px 30px'
+                }}
+            ></div>
+            
       <div className='maxWidthForSections relative z-10'>
         <motion.div
           variants={headerVariants}

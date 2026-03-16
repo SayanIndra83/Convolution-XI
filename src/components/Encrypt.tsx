@@ -81,7 +81,7 @@ export default function Leaderdashboard() {
 
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-orbitron font-bold text-gray-900 text-center">Leader Dashboard</h1>
+          <h1 className="text-3xl font-orbitron font-bold text-gray-900 text-center">Admin Dashboard</h1>
           <p className="text-gray-500 mt-2 text-center">Overview of all kind of Registartions.</p>
         </div>
 

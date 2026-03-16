@@ -124,7 +124,7 @@ function Team() {
   };
 
   return (
-    <div id='team' className="relative w-full min-h-[50vh] px-2.5 py-10 overflow-hidden flex flex-col items-center justify-center mt-0 isolate">
+    <div id='team' className="relative w-full min-h-[50vh] px-2.5 pt-20 py-10 overflow-hidden flex flex-col items-center justify-center isolate">
        <div 
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -132,6 +132,15 @@ function Team() {
              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 85%, transparent 100%)'
         }}
       ></div>
+
+       <div
+                className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
+                     backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                     backgroundSize: '30px 30px'
+                }}
+            ></div>
+            
       {/* Premium dark background with gradient */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"></div>
       <div className='maxWidthForSections'>

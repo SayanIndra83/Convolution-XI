@@ -124,7 +124,7 @@ function Team() {
   };
 
   return (
-    <div id='team' className="relative w-full min-h-[50vh] px-2.5 py-10 overflow-hidden flex flex-col items-center justify-center mt-0 isolate">
+    <div id='team' className="relative w-full min-h-[50vh] px-2.5 pt-20 py-10 overflow-hidden flex flex-col items-center justify-center mt-0 isolate">
        <div 
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -132,7 +132,13 @@ function Team() {
              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 85%, transparent 100%)'
         }}
       ></div>
-      {/* Premium dark background with gradient */}
+       <div
+                className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
+                     backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                     backgroundSize: '30px 30px'
+                }}
+            ></div>
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"></div>
       <div className='maxWidthForSections'>
         <motion.div
@@ -155,7 +161,7 @@ function Team() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }} //when the page is 15% travelled then reveal
+          viewport={{ once: true, amount: 0.15 }} 
         >
           {teamMembers.map((member, index) => (
             <TeamCard key={index} member={member} variants={cardVariants} />

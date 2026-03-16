@@ -39,10 +39,10 @@ const thisYr: { name: string; description: string }[] = [
 ];
 
 const pics = [person1, person3, person4,person7, person5, person6];
-const pics2 = [];
+const pics2: any[] = [];
 const Panelist = () => {
   return (
-    <div id="panelist" className=" py-12 relative  flex items-center  ">
+    <div id="panelist" className=" pt-20 pb-10 relative  flex items-center  ">
       <div
         className="absolute top-0 left-0 w-full h-full -z-20 bg-[#FF97E3]"
       >
@@ -67,7 +67,7 @@ const Panelist = () => {
             return (
               <div
                 key={item.name}
-                className="flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop:blur-sm sm:w-[280px] w-auto rounded-2xl"
+                className="flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] w-auto rounded-2xl"
               >
                 <div className="overflow-hidden flex items-center rounded-full size-32 ">
                   <Image src={pics2[index]} alt="kaku" className=""></Image>
@@ -96,10 +96,14 @@ const Panelist = () => {
             return (
               <div
                 key={item.name}
-                className="flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop:blur-sm sm:w-[280px] w-auto  rounded-2xl"
+                className="group hover:-translate-y-2 hover:bg-[#ffff]/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] border border-transparent hover:border-white/50 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] w-auto  rounded-2xl"
               >
-                <div className="overflow-hidden flex items-center rounded-full size-32 ">
-                  <Image src={pics[index]} alt="kaku" className=""></Image>
+                <div className="overflow-hidden flex items-center rounded-full size-32 mb-2">
+                  <Image 
+                    src={pics[index]} 
+                    alt="kaku" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
 
                 <h1 className="sm:text-lg text-sm text-center font-orbitron font-semibold">

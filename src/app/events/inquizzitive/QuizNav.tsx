@@ -5,28 +5,29 @@ import { usePathname, useRouter } from "next/navigation";
 import { IoMenuOutline } from "react-icons/io5";
 import { FaBell } from "react-icons/fa6";
 import profileIcon from "@/assets/images/Robot_Profile.jpg";
-import MobileMenu from "./MobileNav.Talks";
-import FlipLink from "@/components/FlipLink";
+import MobileMenu from "./QuizNavMobile";
 import { useSession } from "next-auth/react";
 import ConvoLogo from "@/assets/images/Convologo.png";
-import TransitionLink from "@/components/TransitionLink";
 import Notifications from "@/components/Notification";
 import { userData } from "@/context/UserContext";
+import TransitionLink from "@/components/TransitionLink";
+import FlipLink from "@/components/FlipLink";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "#about", label: "About" },
+  { href: "#rules", label: "Rules" },
   { href: "#timeline", label: "Timeline" },
-  { href: "#judges", label: "Mentor" },
-  { href: "#panelist", label: "Panelists" },
+  { href: "#mentor", label: "Judges" },
+  // { href: "#master", label: "Quiz Master" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
 ];
-interface NavbarProps {
+interface EventNavProps {
   navTheme?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ navTheme }) => {
+const EventNav: React.FC<EventNavProps> = ({ navTheme }) => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   
   // Notification States
@@ -109,7 +110,7 @@ const Navbar: React.FC<NavbarProps> = ({ navTheme }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 w-full z-1000 bg-[#B020AC] backdrop-blur-sm border-b border-white/10 text-white">
+      <header className="fixed top-0 left-0 right-0 w-full z-1000 bg-black/10 backdrop-blur-md border-b border-white/10 text-white">
         <div className="flex items-center justify-between px-4 py-[10px] md:py-3 w-full maxWidthForSections mx-auto">
           
           <div className="shrink-0 transition-transform hover:scale-105 duration-300 cursor-pointer">
@@ -123,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ navTheme }) => {
           </div>
 
           {/*for large screen*/}
-          <ul className="hidden lg:flex items-center gap-x-5 xl:gap-x-7 text-sm font-bold uppercase tracking-wide text-white ">
+          <ul className="hidden lg:flex items-center gap-x-5 xl:gap-x-7 text-sm font-bold uppercase tracking-wide text-white">
             {navLinks.map((item, index) => (
               <li key={index}>
                 <div onClick={(e) => handleScroll(e, item.href)} className="cursor-pointer font-orbitron">
@@ -224,4 +225,4 @@ const Navbar: React.FC<NavbarProps> = ({ navTheme }) => {
   );
 };
 
-export default Navbar;
+export default EventNav;

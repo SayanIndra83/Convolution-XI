@@ -1,5 +1,5 @@
 "use client";
-import EventNav from "@/components/EventNavbar";
+import EventNav from "./QuizNav";
 import Footer from "./Footer.Inquizzitive";
 import Faq from "./Faq.Inquizzitive";
 import About from "./About.Inquizzitive";
@@ -7,6 +7,7 @@ import Rules from "./Rules.Inquizzitive";
 import Team from "./EventLeads.Inquizzitive";
 import Timeline from "./TimeLine.Inquizzitive"
 import Mentors from "./Mentor.Inquizzitive";
+import QuizMaster from "./QuizMaster";
 
 function page() {
   return (
@@ -16,6 +17,7 @@ function page() {
       <Rules/>
       <Timeline />
       <Mentors />
+      {/* <QuizMaster/> */}
       <Team/>
       <Faq/>
       <Footer/>
