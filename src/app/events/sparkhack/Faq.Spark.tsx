@@ -32,7 +32,7 @@ const Data = [
     {
         question: "When will registration end?",
         answer:
-            "The deadline for registering for SparkHack is on 18th March, 12:00AM while that for the submissions is open till 18th March, 11:59pm .",
+            "The deadline for registering for SparkHack is on 19th March, 6:00 PM while that for the submissions is open till 19th March, 11:59 PM.",
     },
 ];
 

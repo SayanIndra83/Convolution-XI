@@ -4,15 +4,15 @@ import { motion, Variants } from "framer-motion";
 const Timeline = () => {
   const timelineData = [
     {
-      date: "March 18, 2026",
+      date: "March 19, 2026",
       title: "Registration Deadline",
-      desc: "Registration for SparkHack will end on 18th March at 12:00 PM",
+      desc: "Registration for SparkHack will end on 19th March at 6:00 PM",
       icon: "🚨",
       color: "from-cyan-400 to-cyan-500",
       borderColor: "border-cyan-400"
     },
     {
-      date: "March 18, 2026",
+      date: "March 19, 2026",
       title: "PPT Submission Ends",
       desc: "Participants must submit their PPTs by 11:59 PM IST.",
       icon: "📑",
