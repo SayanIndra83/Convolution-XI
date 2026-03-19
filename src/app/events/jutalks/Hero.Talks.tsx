@@ -78,7 +78,7 @@ hover:bg-[#FCF0C4] shadow-[#FCF0C4] hover:shadow-[#512511]  bg-[#512511] hover:o
        return (
          <div className="flex items-center gap-2 px-8 py-3 bg-[#FCF0C4]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
               <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#512511]">
-             You have Registered for this Event
+             You have already registered
            </span>
          </div>
        );

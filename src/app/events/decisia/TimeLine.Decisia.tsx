@@ -60,9 +60,9 @@ const Timeline = () => {
                 <div className="absolute left-[-9px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-red-400 rounded-full shadow-[0_0_15px_#f97316] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
                 <div className="md:w-[45%] md:pr-8 text-left md:text-right">
                     <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-orange-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-                        <span className="font-orbitron text-red-100 text-base font-bold tracking-widest uppercase">March 20, 2026</span>
+                        <span className="font-orbitron text-red-100 text-base font-bold tracking-widest uppercase">March 23, 2026</span>
                         <h4 className="md:hidden font-orbitron text-lg font-bold text-gray-100 mt-2">Registration Deadline</h4>
-                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Registration for Decisia will end on 20th March at 12:00 PM.</p>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Registration for Decisia will end on 23rd March at 6:00 PM.</p>
                     </div>
                 </div>
             </motion.div>
@@ -73,9 +73,9 @@ const Timeline = () => {
                 <div className="absolute left-[-9px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-red-500 rounded-full shadow-[0_0_15px_#ef4444] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
                 <div className="md:w-[45%] md:pl-8 text-left">
                     <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-red-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-                        <span className="font-orbitron text-red-200 text-base font-bold tracking-widest uppercase">March 20, 2026</span>
+                        <span className="font-orbitron text-red-200 text-base font-bold tracking-widest uppercase">March 23, 2026</span>
                         <h4 className="md:hidden font-orbitron text-lg font-bold text-red-100 mt-2">Abstract Submission Ends</h4>
-                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Participants will have to submit their abstracts by 11:59 PM on 20th March.</p>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Participants will have to submit their abstracts by 11:59 PM on 23rd March.</p>
                     </div>
                 </div>
             </motion.div>
