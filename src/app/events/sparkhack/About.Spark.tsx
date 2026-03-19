@@ -41,6 +41,16 @@ export default function About() {
       );
     }
 
+    if (isRegistered) {
+      return (
+        <div className="flex items-center gap-2 px-8 py-3 bg-[#2c9bac] backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
+          <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-white">
+            You have Registered for this Event
+          </span>
+        </div>
+      );
+    }
+    
     if (isClosed) {
       return (
         <div className="flex items-center gap-2 px-8 py-3 bg-[#2c9bac] backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
@@ -51,15 +61,6 @@ export default function About() {
       );
     }
 
-    if (isRegistered) {
-      return (
-        <div className="flex items-center gap-2 px-8 py-3 bg-[#2c9bac] backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
-          <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-white">
-            You have Registered for this Event
-          </span>
-        </div>
-      );
-    }
 
     return (
       <TransitionLink
