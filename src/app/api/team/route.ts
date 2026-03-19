@@ -34,11 +34,11 @@ export async function POST(req: NextRequest) {
         }
 
         // for security
-        const closed_events: string[] = []; 
+        const closed_events: string[] = ["sparkhack"]; 
         
         if (closed_events.includes(eventName.toLowerCase())) {
             return NextResponse.json(
-                { message: `Registrations for ${getFriendlyEventName(eventName)} not yet started.` }, 
+                { message: `Registrations for ${getFriendlyEventName(eventName)} is closed.` }, 
                 { status: 403 }
             );
         }

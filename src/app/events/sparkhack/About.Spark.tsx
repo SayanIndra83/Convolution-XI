@@ -15,7 +15,7 @@ export default function About() {
   const contextData = useContext(userData);
   const eventName = "sparkhack";
   const eventMode = "team";
-  const isClosed = false; // Toggle this to true to shut down registrations
+  const isClosed = true; // Toggle this to true to shut down registrations
 
   const userEvents = contextData?.user?.eventsRegistered || [];
   const isRegistered = userEvents.some(
@@ -45,7 +45,7 @@ export default function About() {
       return (
         <div className="flex items-center gap-2 px-8 py-3 bg-[#2c9bac] backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
           <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-white">
-            Registrations not started yet
+            Registrations closed
           </span>
         </div>
       );

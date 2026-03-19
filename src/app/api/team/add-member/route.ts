@@ -25,9 +25,9 @@ export async function POST(req: NextRequest) {
         }
 
         // closed events for security
-        const closed_events: string[] = []; 
+        const closed_events: string[] = ["sparkhack"]; 
         if (closed_events.includes(team.eventName.toLowerCase())) {
-            return NextResponse.json({ message: `Registrations for ${getFriendlyEventName(team.eventName)} not started yet.` }, { status: 403 });
+            return NextResponse.json({ message: `Registrations for ${getFriendlyEventName(team.eventName)} is closed.` }, { status: 403 });
         }
 
         // max limits of events
