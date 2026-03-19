@@ -34,6 +34,12 @@ const judges: Judge[] = [
         image: "/AbolTabol/Ogo_bideshini.jpg",
         details: "https://www.instagram.com/ogobideshinee"
     },
+    {
+        name: "Sugata Munshi",
+        description:"Professor at Department of Electrical Engineering, Jadavpur University",
+        image:"/Mentors/sgm.png",
+        details:"https://scholar.google.com/citations?user=4QDUROsAAAAJ&hl=en"
+    }
 ];
 
 const mentors: Mentor[] = [
@@ -150,9 +156,9 @@ export default function Mentors() {
                         <div
                           key={item.name + index}
                           
-                          className="group hover:-translate-y-2 hover:bg-[#ffff]/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] border border-transparent hover:border-purple-500/30 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-rajdhani sm:px-4 sm:py-8 px-2 py-6 text-[#ffff] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm rounded-2xl w-[270px]"
+                          className="group hover:-translate-y-2 hover:bg-[#ffff]/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] border border-transparent hover:border-purple-500/30 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-rajdhani sm:px-4  px-2 sm:py-8 py-6 text-[#ffff] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm rounded-2xl w-[270px]"
                         >
-                          <div className="overflow-hidden flex items-center rounded-full size-32 ">
+                          <div className="overflow-hidden flex items-center rounded-full size-33 sm:size-38 ">
                             <img 
                             src={item.image} 
                             alt={item.name} 
