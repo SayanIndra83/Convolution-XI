@@ -22,15 +22,17 @@ type Judge = {
 
 const judges: Judge[] = [
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png", 
-        details: "https://www.youtube.com"
+        name: "Unmesh Ganguly",
+        description:"Actor, director, and the creative mind behind 'Bankura Memes'",
+        image: "/AbolTabol/Tukai.jpg", 
+        details:"https://www.instagram.com/unmesh_ganguly"
+        
     },
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png",
+        name: "Rajita Banerjee",
+        description:"The voice of 'Ogo Bideshinee', a digital creator and storyteller bringing Bengali heritage and culture to the global stage.",
+        image: "/AbolTabol/Ogo_bideshini.jpg",
+        details: "https://www.instagram.com/ogobideshinee"
     },
 ];
 
@@ -127,7 +129,7 @@ export default function Mentors() {
 
                 {/* Judges */}
 
-                {/* <motion.div 
+                <motion.div 
                 variants={headerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -174,7 +176,7 @@ export default function Mentors() {
                         </div>
                       );
                     })}
-        </div> */}
+        </div>
 
             </div>
         </section>
