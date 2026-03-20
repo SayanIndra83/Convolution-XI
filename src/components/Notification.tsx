@@ -33,6 +33,21 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
                         <span className="font-bold">&apos;Not Spam&apos;</span>{" "}
                         for future updates.</>,
     },
+    {
+      id: "static-3",
+      title: "Deadline Extended",
+      message: <>⏳ Great news! The registration deadline for <span className="font-bold text-orange-400">Abol Tabol</span> has been extended to <span className="font-bold">March 24th</span>. Don&apos;t miss out!</>,
+    },
+    {
+      id: "static-4",
+      title: "Deadline Extended",
+      message: <>⏳ More time to prepare! The deadline for <span className="font-bold text-purple-400">Decisia</span> has been extended to <span className="font-bold">March 23rd</span>. Wrap up those teams and submit your ideas💡!</>,
+    },
+    {
+      id: "static-5",
+      title: "Announcement",
+      message: <>📢 The <span className="font-bold text-green-400">Round 1 Shortlist</span> is officially out! Check our <span className="font-bold text-[#1BA0E8]">official social media handles</span> to see if your team made the cut.</>,
+    },
   ];
 
   // get the user notifications

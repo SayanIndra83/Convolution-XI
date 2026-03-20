@@ -20,7 +20,7 @@ const Timeline = () => {
       borderColor: "border-cyan-400"
     },
     {
-      date: "TBD",
+      date: "March 20, 2026",
       title: "Shortlist Announcement",
       desc: "The list of shortlisted teams for the presentation round will be released.",
       icon: "📢",
