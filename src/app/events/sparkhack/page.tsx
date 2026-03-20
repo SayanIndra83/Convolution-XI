@@ -17,7 +17,7 @@ export default function Page() {
 
       <ParticlesBackground theme="snow" />
 
-      <EventNav navTheme="bg-gradient-to-b from-[#52BAFF] to-[#a9b9d6]" />
+      <EventNav navTheme="bg-gradient-to-b from-[#60b6d1] via-[#85d3eb] to-[#a3e2f5]" />
       <div className="relative z-10">
         <About />
         <Rules />

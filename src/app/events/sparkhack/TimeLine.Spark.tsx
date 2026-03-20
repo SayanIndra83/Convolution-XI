@@ -122,10 +122,10 @@ const Timeline = () => {
                         {item.date}
                       </div>
                       
-                      <h3 className="font-orbitron text-xl font-bold text-slate-800 mb-2">
+                      <h4 className="font-orbitron text-lg sm:text-xl font-bold text-slate-800 mb-2">
                         {item.title}
-                      </h3>
-                      <p className="font-rajdhani font-semibold text-slate-600 text-base leading-relaxed">
+                      </h4>
+                      <p className="font-rajdhani font-semibold text-slate-600 text-sm sm:text-base leading-relaxed">
                         {item.desc}
                       </p>
 
