@@ -69,6 +69,16 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
     return teams.filter(team => team.eventName === activeTab);
   }, [activeTab, teams]);
 
+  const getStatusStyle = (status: string) => {
+    const s = status?.toLowerCase() || '';
+    if (s === 'confirmed' || s === 'accepted') {
+      return 'bg-green-50 text-green-600 border-green-100';
+    } else if (s === 'pending') {
+      return 'bg-red-50 text-red-600 border-red-100';
+    }
+    return 'bg-gray-100 text-gray-600 border-gray-200';
+  };
+
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col items-center px-6 md:px-10 pt-10 pb-10 font-rajdhani text-gray-900'>
       
@@ -129,7 +139,9 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
               <thead className="bg-gray-50 text-gray-800 uppercase font-bold text-sm tracking-wider sticky top-0 z-20 shadow-sm">
                 <tr>
                   {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Team Name</th>}
+                  {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Team Status</th>}
                   {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Role</th>}
+                  {teamEvents.includes(activeTab) && <th className="px-6 py-4 whitespace-nowrap">Invite Status</th>}
                   <th className="px-6 py-4 whitespace-nowrap">Name</th>
                   <th className="px-6 py-4 whitespace-nowrap">Email</th>
                   <th className="px-6 py-4 whitespace-nowrap">Contact No.</th>
@@ -150,7 +162,17 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
                           <tr className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-gray-50`}>
                             <td className="px-2 py-4 font-orbitron font-bold text-gray-900 whitespace-nowrap">{team.teamName}</td>
                             <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border ${getStatusStyle(team.status)}`}>
+                                {team.status}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
                               <span className="bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border border-blue-100">Leader</span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border ${getStatusStyle('accepted')}`}>
+                                Accepted
+                              </span>
                             </td>
                             <td className="px-2 py-4 font-bold text-gray-950 whitespace-nowrap">{team.leader.name}</td>
                             <td className="px-2 py-4 whitespace-nowrap font-semibold">{team.leader.email}</td>
@@ -164,9 +186,15 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
                           member.user && (
                             <tr key={`${team._id}-member-${idx}`} className={`transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-gray-50`}>
                               <td className="px-6 py-4 whitespace-nowrap text-gray-600 font-medium text-right pr-10">↳</td>
+                              <td className="px-6 py-4 whitespace-nowrap"></td> {/* Empty team status for members */}
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="bg-gray-100 text-gray-500 font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border border-gray-200">
                                   Member
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <span className={`font-bold px-2.5 py-1 rounded text-[11px] uppercase tracking-wide border ${getStatusStyle(member.status)}`}>
+                                  {member.status}
                                 </span>
                               </td>
                               <td className="px-2 py-4 font-bold text-gray-950 whitespace-nowrap">{member.user.name}</td>
@@ -180,7 +208,7 @@ export default function LeaderDashboard({ users, teams }: DashboardProps) {
                       </React.Fragment>
                     ))
                   ) : (
-                    <tr><td colSpan={7} className="px-6 py-12 text-center text-gray-400 font-bold text-lg">No teams found for {displayNames[activeTab]}.</td></tr>
+                    <tr><td colSpan={9} className="px-6 py-12 text-center text-gray-400 font-bold text-lg">No teams found for {displayNames[activeTab]}.</td></tr>
                   )
                   // solo
                 ) : (
