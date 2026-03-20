@@ -154,7 +154,7 @@ export default function Footer() {
                                             Phone
                                         </span>
                                         <a href="tel:+917679880740" className="font-semibold font-rajdhani block text-slate-200 hover:text-white transition-colors">
-                                            +917679880740
+                                            +91 76798 80740
                                         </a>
                                         <a href="tel:+919508034656" className="font-semibold font-rajdhani text-slate-200 hover:text-white transition-colors  block">
                                             +91 95080 34656

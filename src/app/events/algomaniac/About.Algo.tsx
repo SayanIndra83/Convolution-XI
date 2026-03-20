@@ -1,3 +1,4 @@
+// algomaniac/About.Algo.tsx
 "use client";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
@@ -116,10 +117,10 @@ export default function About() {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       {/* Main Content Wrapper - Pushed to the right on desktop */}
-      <div className="w-full max-w-7xl mx-auto flex justify-center md:justify-end z-10">
+      <div className="w-full max-w-7xl mx-auto flex justify-center lg:justify-end z-10">
 
-        {/* Inner Content - Takes up 55% width on desktop, 100% on mobile */}
-        <div className="w-full md:w-[55%] flex flex-col items-center text-center gap-8 md:gap-10">
+        {/* CHANGED: Added mt-40 md:mt-0 to push the text block down on mobile to avoid overlapping the astronaut */}
+        <div className="w-full md:w-[55%] flex flex-col items-center text-center gap-8 md:gap-10 mt-40 lg:mt-0">
 
           {/* Logo */}
           <div className="relative w-[80vw] max-w-[450px] h-auto aspect-[3/1.2]">

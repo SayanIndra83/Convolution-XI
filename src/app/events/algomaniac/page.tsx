@@ -176,7 +176,7 @@ export default function Page() {
           top="20%"
           right="5%"
           opacity={0.7}
-          animationClass="animate-[floating_3s_ease-in-out_infinite_reverse] astronaut-image"
+          animationClass="hidden lg:block  animate-[floating_3s_ease-in-out_infinite_reverse] astronaut-image"
         />
 
         {/* Asset 3: Lower Left (e.g., Spaceship or Tech Base) */}
@@ -187,7 +187,7 @@ export default function Page() {
           top="35%"
           left="10%"
           opacity={0.7}
-          animationClass="animate-[tilted-float_7s_ease-in-out_infinite] ufo-image"
+          animationClass="hidden xl:block  animate-[tilted-float_7s_ease-in-out_infinite] ufo-image"
         />
       </div>
 

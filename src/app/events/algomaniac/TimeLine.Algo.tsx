@@ -10,7 +10,7 @@ export default function Timeline() {
             {/* Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-4xl translate-x-0 md:translate-x-50">
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-4xl translate-x-0 xl:translate-x-50">
                 
                <h1 className="font-orbitron font-bold text-center text-3xl sm:text-4xl tracking-wide text-transparent bg-clip-text bg-gradient-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase relative inline-block mb-10">
                         Timeline
