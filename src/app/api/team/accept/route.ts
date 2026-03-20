@@ -119,26 +119,38 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        const acceptedMembers = team.members.filter((m: any) => m.status === "accepted");
-        const pendingMembers = team.members.filter((m: any) => m.status === "pending");
+        let acceptedCount = 0;
+        let pendingCount = 0;
+        const finalAcceptedMembers: any[] = [];
+
+        team.members.forEach((m: any) => {
+           
+            if (m.user._id.toString() === userId || m.status === "accepted") {
+                acceptedCount++;
+                finalAcceptedMembers.push(m);
+            } else if (m.status === "pending") {
+                pendingCount++;
+            }
+        });
 
         const minLimits: { [key: string]: number } = {
             "decisia": 2, "sparkhack": 2, "aboltabol": 1, 
             "circuistics": 2, "eureka": 2, "inquizzitive": 2,
         };
         const minSize = minLimits[team.eventName.toLowerCase()] || 2;
-        const currentTeamSize = acceptedMembers.length + 1; // Leader + Accepted
+        const currentTeamSize = acceptedCount + 1; // Leader + Accepted
 
         let teamConfirmed = false;
 
-        if (pendingMembers.length === 0 && currentTeamSize >= minSize) {
+        if (pendingCount === 0 && currentTeamSize >= minSize) {
             team.status = "confirmed";
             teamConfirmed = true;
             await team.save();
+       
             
             const allUser = [
                 { email: leader.email, name: leader.name },
-                ...acceptedMembers.map((m: any) => ({ email: m.user.email, name: m.user.name }))
+                ...finalAcceptedMembers.map((m: any) => ({ email: m.user.email, name: m.user.name }))
             ];
 
             await Notification.deleteOne({
@@ -220,7 +232,7 @@ export async function POST(req: NextRequest) {
                     await Promise.all(emailPromises);
                 } catch (e) { console.error("Failed to send final confirmation emails", e); }
             }
-        } else if (pendingMembers.length === 0 && currentTeamSize < minSize) {
+        } else if (pendingCount === 0 && currentTeamSize < minSize) {
             team.status = "pending";
             await team.save();
 
