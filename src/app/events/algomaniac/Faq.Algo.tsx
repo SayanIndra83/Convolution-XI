@@ -12,7 +12,7 @@ const Data = [
     {
         question: "When and where will the finals be held?",
         answer:
-            "The final round would be held at the Central Computer Laboratory, Department of Electrical Engineering, Jadavpur University. Exact date would soon be mentioned. Please plan your travel accordingly, and on-site parking will be available for your convenience. Looking forward to a successful event!",
+            "The final round would be held at the Central Computer Laboratory, Department of Electrical Engineering, Jadavpur University on March 29. Please plan your travel accordingly, and on-site parking will be available for your convenience. Looking forward to a successful event!",
     },
     {
         question: "Will I have to carry a laptop for the final round?",
