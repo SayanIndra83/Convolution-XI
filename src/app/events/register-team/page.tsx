@@ -298,7 +298,7 @@ export default function EventRegistrationForm() {
                       </div>
 
                       {errors.members && (
-                        <p className="text-red-400 text-xs font-rajdhani mt-2 ml-1 tracking-wide">
+                        <p className="text-red-400 text-sm font-medium italic font-rajdhani mt-1 ml-1 tracking-wide">
                           {Array.isArray(errors.members)
                             ? errors.members[0]?.message
                             : errors.members.message}
