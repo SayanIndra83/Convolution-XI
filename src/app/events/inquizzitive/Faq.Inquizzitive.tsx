@@ -9,7 +9,7 @@ const Data = [
     },
     {
          question: "When and where will the event be held?",
-         answer: "Offline on campus; Preliminary Rounds to be held on 27th March,2026. Finals will follow the prelims on the same day. Timeline will be updated soon.",
+         answer: "Offline on campus; Preliminary Rounds to be held on 27th March,2026. Finals will follow the prelims on the same day",
 
     },
     {
