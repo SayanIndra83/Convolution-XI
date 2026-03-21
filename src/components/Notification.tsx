@@ -46,7 +46,7 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
     {
       id: "static-5",
       title: "Announcement",
-      message: <>📢 The <span className="font-bold text-green-400">Round 1 Shortlist</span> is officially out! Check our <span className="font-bold text-[#1BA0E8]">official social media handles</span> to see if your team made the cut.</>,
+      message: <>📢 The <span className="font-bold text-green-400">Round 1 Shortlist</span> of <span className="font-black text-cyan-400">Sparkhack</span> is officially out! Check our <span className="font-bold text-[#1BA0E8]">official social media handles</span> to see if your team made the cut.</>,
     },
   ];
 
