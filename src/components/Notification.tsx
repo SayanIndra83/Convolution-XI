@@ -48,6 +48,11 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
       title: "Announcement",
       message: <>📢 The <span className="font-bold text-green-400">Round 1 Shortlist</span> of <span className="font-black text-cyan-400">Sparkhack</span> is officially out! Check our <span className="font-bold text-[#1BA0E8]">official social media handles</span> to see if your team made the cut.</>,
     },
+    {
+      id: "static-6",
+      title: "Deadline Extended",
+      message: <>⏳ The clock is ticking! Registration deadline for <span className="font-bold text-rose-400">Algomaniac</span> has been extended to <span className="font-bold">March 24th, 11:59pm IST</span>. Gear up for the ultimate coding showdown 🚀!</>,
+    },
   ];
 
   // get the user notifications
