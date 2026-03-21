@@ -128,7 +128,7 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
         className={`fixed inset-0 z-99999 flex items-center justify-center pointer-events-none`}
       >
         <div 
-          className={`relative flex flex-col w-[90vw] md:w-[60vw] max-w-2xl h-[65vh] bg-[#06091f]/20 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden transform transition-all duration-500 shadow-[0_0_60px_-15px_rgba(0,243,255,0.2)] will-change-transform
+          className={`relative flex flex-col w-[90vw] md:w-[60vw] max-w-2xl md:h-[80vh] h-[70vh] bg-[#06091f]/20 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden transform transition-all duration-500 shadow-[0_0_60px_-15px_rgba(0,243,255,0.2)] will-change-transform
             ${isVisible ? "scale-100 opacity-100 translate-y-0 pointer-events-auto" : "scale-95 opacity-0 translate-y-8 pointer-events-none"}
           `}
           onClick={(e) => e.stopPropagation()}
