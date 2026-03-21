@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
         const pendingMembers = team.members.filter((m: any) => m.status === "pending");
 
         const minLimits: { [key: string]: number } = {
-            "decisia": 2, "sparkhack": 2, "aboltabol": 1, 
+            "decisia": 1, "sparkhack": 2, "aboltabol": 1, 
             "circuistics": 2, "eureka": 2, "inquizzitive": 2,
         };
         const minSize = minLimits[team.eventName.toLowerCase()] || 2;

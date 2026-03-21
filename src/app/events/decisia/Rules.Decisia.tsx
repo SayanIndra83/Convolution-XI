@@ -5,7 +5,7 @@ import FlipLink from "@/components/FlipLink";
 
 const rules = [
   "Teams will register from the official Convolution website with their team name, email, phone no., and college name of each member in the group.",
-  "Teams will comprise of active college students, with a minimum of 2 and maximum of 5 members in each team inclusive of the Team Lead.",
+  "Teams will comprise of active college students, with a minimum of 1 and maximum of 5 members in each team inclusive of the Team Lead.",
   "Teams may consist participants from same or different streams, same or different years,but not from different institutions",
   "Prelims will be held online, where participants have to submit a 2-minute elevator pitch and a presentation with a maximum of 6 slides (preferably in PDF).",
   "Participants can provide an additional executive summary (within 2 slides) of the B-plan.",
