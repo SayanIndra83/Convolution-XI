@@ -17,7 +17,7 @@ function page() {
       <Rules/>
       <Timeline />
       <Mentors />
-      {/* <QuizMaster/> */}
+      <QuizMaster/>
       <Team/>
       <Faq/>
       <Footer/>

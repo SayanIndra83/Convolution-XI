@@ -4,7 +4,7 @@ import React from 'react'
 import { FaInfoCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import bjb from "../../../../public/Mentors/bjb.png"
+import bjb from "../../../../public/Mentors/qm.jpeg"
 
 
 export default function QuizMaster() {
@@ -53,7 +53,7 @@ export default function QuizMaster() {
                         <h2 className="font-rajdhani text-sm sm:text-[19px] font-bold text-white tracking-wide">
                             Samanway Banerjee
                         </h2>
-                        <Link target="_blank" href="https://drive.google.com/file/d/1ahUqmkCEYIUHHkHqoDIvbD5xlSZgNX4d/view" className="">
+                        <Link target="_blank" href="https://www.instagram.com/saswata_acharya?igsh=MWoxdXVtcDBicGo4bg==" className="">
                             <FaInfoCircle className="hover:text-purple-300 transition-colors duration-300" />
                         </Link>
                     </div>

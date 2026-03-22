@@ -14,12 +14,11 @@ import TransitionLink from "@/components/TransitionLink";
 import FlipLink from "@/components/FlipLink";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#rules", label: "Rules" },
+  { href: "#about", label: "Home" },
+  { href: "#rules", label: "About" },
   { href: "#timeline", label: "Timeline" },
   { href: "#mentor", label: "Judges" },
-  // { href: "#master", label: "Quiz Master" },
+  { href: "#master", label: "Quiz Master" },
   { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
 ];

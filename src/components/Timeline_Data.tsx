@@ -3,13 +3,13 @@ export const events = [
     id: '01', 
     date: 'MARCH 27', 
     time: 'MORNING', 
-    items: ['Inauguration', 'Inquizzitive (Prelims)'] 
+    items: ['Inauguration', 'Inquizzitive (Prelims round-1)'] 
   },
   { 
     id: '02', 
     date: 'MARCH 27', 
     time: 'AFTERNOON', 
-    items: ['Inquizzitive (Finals)' , 'Decisia (Finals)'] 
+    items: ['Inquizzitive (Prelims round-2)', 'Decisia (Finals)', 'Inquizzitive (Finals)' ] 
   },
   { 
     id: '03', 
@@ -21,13 +21,13 @@ export const events = [
     id: '04', 
     date: 'MARCH 28', 
     time: 'AFTERNOON', 
-    items: ['Eureka! (Prelims)', 'Abol Tabol (Finals)'] 
+    items: ['Eureka! (Prelims round-1)', 'Abol Tabol (Finals)'] 
   },
   { 
     id: '05', 
     date: 'MARCH 29', 
     time: 'MORNING', 
-    items: ['Circuistics (Finals)', 'Eureka! (Finals)'] 
+    items: ['Circuistics (Finals)','Eureka! (Prelims round-2)', 'Eureka! (Finals)'] 
   },
   { 
     id: '06', 
