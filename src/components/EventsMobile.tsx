@@ -144,10 +144,10 @@ const EventsMobile = ({ events = [] }: { events: Event[] }) => {
 
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px] opacity-40" />
-        <div className="absolute top-[3%] left-[-20%] w-[70%] h-[70%] bg-purple-900/40 blur-[100px] rounded-full mix-blend-screen" />
-        <div className="absolute top-[3%] right-[-20%] w-[70%] h-[70%] bg-fuchsia-950/30 blur-[100px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[3%] left-[-20%] w-[70%] h-[100%] bg-purple-900/30 blur-[100px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[3%] right-[-20%] w-[70%] h-[90%] bg-fuchsia-950/30 blur-[100px] rounded-full mix-blend-screen" />
         <div className="absolute bottom-[2%] right-[-20%] w-[60%] h-[60%] bg-cyan-900/40 blur-[100px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-0 left-0 w-full h-10 bg-linear-to-t from-[#030712e5]  to-transparent z-69"></div>
+        <div className="absolute bottom-0 left-0 w-full h-10 bg-linear-to-t from-[#03071290] to-transparent  z-69 transform-gpu"></div>
         <div
         className="absolute inset-0 opacity-[0.12] md:opacity-[0.15]"
         style={{ backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`, backgroundSize: '30px 30px' }}

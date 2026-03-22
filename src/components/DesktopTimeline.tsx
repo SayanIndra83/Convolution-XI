@@ -4,7 +4,7 @@ import React, { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { events } from '../components/Timeline_Data';
-
+import { motion } from 'framer-motion';
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -16,8 +16,6 @@ const DesktopTimeline = () => {
   const grayRailRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Array<HTMLDivElement | null>>([]);
   
-  // Use a ref for the active node to avoid re-renders during the animation frame
-  // We only trigger state update when the index actually changes
   const activeNodeRef = useRef<number>(-1);
   const [activeNode, setActiveNode] = useState<number>(-1);
   
@@ -106,7 +104,10 @@ const DesktopTimeline = () => {
 
     return () => ctx.revert();
   }, []);
-
+const sectionVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden flex flex-col items-center bg-[#030712] text-white selection:bg-cyan-500/30">
       
@@ -129,12 +130,17 @@ const DesktopTimeline = () => {
         </div>
 
        {/* --- HEADER --- */}
-       <div className="absolute top-[5vh] z-50 flex flex-col items-center pointer-events-none select-none">
+        <motion.div
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="absolute top-[5vh] z-50 flex flex-col items-center pointer-events-none select-none">
            <h1 className="font-orbitron font-bold text-center text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
             Timeline
             <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-purple-200/60 to-transparent"></span>
           </h1>
-      </div>
+      </motion.div>
 
       {/* Timeline Track*/}
       <div ref={trackRef} className="absolute top-0 left-0 h-full flex flex-row items-start pt-[55vh] pl-[50vw] w-max will-change-transform">

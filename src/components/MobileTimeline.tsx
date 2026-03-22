@@ -183,6 +183,10 @@ const MobileTimeline = () => {
         return prevActiveNode; 
     });
   });
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
   return (
     <div ref={containerRef} className="relative  w-full min-h-screen bg-black text-white font-mono pb-20 overflow-hidden">
 
@@ -193,7 +197,7 @@ const MobileTimeline = () => {
   className="absolute inset-0 z-0 pointer-events-none"
   style={{
     backgroundImage: `
-      radial-gradient(90vw 100vh at 10% 20%, rgb(88 6 95 / 40%) 0%, transparent 100%),
+      radial-gradient(90vw 100vh at 10% 20%, rgb(88 6 95 / 30%) 0%, transparent 100%),
       radial-gradient(100vw 70vh at 90% 40%, rgba(22, 78, 99, 0.3) 0%, transparent 100%),
       radial-gradient(95vw 80vh at 10% 80%, rgba(88, 28, 135, 0.3) 0%, transparent 100%),
       radial-gradient(100vw 65vh at 90% 90%, rgba(22, 78, 99, 0.2) 0%, transparent 100%)`
@@ -204,7 +208,7 @@ const MobileTimeline = () => {
           <div className="absolute bottom-[25%] left-[-15%] w-[90vw] h-screen rounded-full bg-purple-900/20 blur-[100px] z-0 transform-gpu"></div>
           <div className="absolute bottom-[5%] right-[-20%] w-[105vw] h-[90vh] rounded-full bg-cyan-900/20 blur-[100px] z-0 transform-gpu"></div> */}
           <div className="absolute bottom-0 left-0 w-full h-20 bg-linear-to-t from-[#030712e0] to-transparent  z-69 transform-gpu"></div>
-          <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-[#030712] to-transparent  z-69 transform-gpu"></div>
+          <div className="absolute top-0 left-0 w-full h-10 bg-linear-to-b from-[#0307128d] to-transparent  z-69 transform-gpu"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-size-[3rem_3rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-10 z-0"></div>
 
            <div 
@@ -219,12 +223,17 @@ const MobileTimeline = () => {
     
 
       {/*Header*/}
-      <div className="relative z-50 pt-15 pb-8 flex flex-col items-center justify-center">
+      <motion.div
+                variants={sectionVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+      className="relative z-50 pt-15 pb-8 flex flex-col items-center justify-center">
         <h1 className="font-orbitron font-bold text-center text-4xl sm:text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
          Timeline
         <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-purple-200/60 to-transparent"></span>
         </h1>
-        </div>
+        </motion.div>
 
       {/*rail */}
       <div ref={railContainerRef} className="absolute top-38 left-0 w-13.5 h-full z-0 pointer-events-none">
