@@ -340,17 +340,17 @@ const CommandDeck = () => {
                 <div className="grid grid-cols-2 gap-3 w-full max-w-[360px]">
                     {!isAuthenticated ? (
                         <>
-                            <SciFiButton label="Login" href={"/login"} color="fuchsia" />
+                            <SciFiButton label="Login" href={"/login"} color="cyan" />
                             <SciFiButton label="Register" href={"/register"} color="fuchsia" />
                         </>
                     ) :
                         <>
-                            <SciFiButton label="Team" href="#team" color="fuchsia" />
-                            <SciFiButton label="Gallery" href="#gallery" color="fuchsia" />
+                            <SciFiButton label="Events" href="#events" color="cyan" />
+                            <SciFiButton label="Timeline" href="#timeline" color="fuchsia" />
                         </>
                     }
+                    <SciFiButton label="Team" href="#team" color="fuchsia" />
                     <SciFiButton label="FAQ" href="#faq" color="cyan" />
-                    <SciFiButton label="Events" href="#events" color="cyan" />
 
                 </div>
                 <div className="mt-4 w-32 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
@@ -363,12 +363,12 @@ const CommandDeck = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                     {!isAuthenticated ? (
-                        <SciFiButton label="Login" href={"/login"} color="cyan" />
+                        <SciFiButton label="Login" href={"/login"} color="fuchsia" />
                     ) :
-                        <SciFiButton label="Team" href="#team" color="cyan" />
+                        <SciFiButton label="Events" href="#events" color="fuchsia" />
                     }
 
-                    <SciFiButton label="Events" href="#events" color="fuchsia" />
+                    <SciFiButton label="Team" href="#team" color="cyan" />
                 </div>
             </div>
 
@@ -380,7 +380,7 @@ const CommandDeck = () => {
                     {!isAuthenticated ? (
                         <SciFiButton label="Register" href={"/register"} color="cyan" />
                     ) :
-                        <SciFiButton label="Gallery" href="#gallery" color="cyan" />
+                        <SciFiButton label="Timeline" href="#timeline" color="cyan" />
                     }
 
                     <SciFiButton label="FAQ" href="#faq" color="fuchsia" />
