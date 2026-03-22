@@ -40,7 +40,7 @@ const Sponsors: React.FC = () => {
     // Reduced min-height to 60vh as requested
     <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center">
       {/* <Cursor magnetic /> */}
-      <DecorativeIcons />
+
       {/* Grid Background */}
       <div className="tech-grid pointer-events-none" />
       <div className="absolute top-0 left-0 bg-linear-to-b from-black/90 to-transparent h-15 w-full pointer-events-none z-69"></div>
@@ -234,7 +234,7 @@ const Sponsors: React.FC = () => {
           </motion.div>
         </div> */}
 
-        <div className="relative mt-8 opacity-100"> // Changed from absolute/opacity-30 to relative/opacity-100
+        <div className="relative mt-8 opacity-100">
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
             Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
           </h2>
