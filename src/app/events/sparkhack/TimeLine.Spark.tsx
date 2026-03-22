@@ -36,7 +36,7 @@ const Timeline = () => {
       borderColor: "border-indigo-400"
     },
     {
-      date: "TBD",
+      date: "March 23, 2026",
       title: "Online Pitch Results",
       desc: "Results of the 2nd round will be announced, and the top 10 teams will be shortlisted.",
       icon: "🚀",
