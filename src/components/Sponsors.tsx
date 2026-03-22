@@ -38,12 +38,12 @@ const Sponsors: React.FC = () => {
 
   return (
     // Reduced min-height to 60vh as requested
-    <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center">  
+    <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center">
       {/* <Cursor magnetic /> */}
-
+      <DecorativeIcons />
       {/* Grid Background */}
       <div className="tech-grid pointer-events-none" />
-              <div className="absolute top-0 left-0 bg-linear-to-b from-black/90 to-transparent h-15 w-full pointer-events-none z-69"></div>
+      <div className="absolute top-0 left-0 bg-linear-to-b from-black/90 to-transparent h-15 w-full pointer-events-none z-69"></div>
 
       <div className="py-12 h-full w-full relative z-10 flex flex-col items-center">
         <motion.div
@@ -51,20 +51,15 @@ const Sponsors: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-           className="flex flex-col items-center pointer-events-none select-none mb-12">
+          className="flex flex-col items-center pointer-events-none select-none mb-12">
           <h1 className="font-orbitron font-bold text-center text-3xl sm:text-4xl tracking-wide text-transparent bg-clip-text bg-linear-to-b from-blue-200 to-purple-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap uppercase">
             Our Sponsors
             <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-purple-200/60 to-transparent"></span>
           </h1>
         </motion.div>
 
-        {/* =============================================
-            PREVIOUS CONTENT (COMMENTED OUT)
-            =============================================
-        */}
-        {/*
-        <div className="opacity-0 w-full h-full flex flex-col items-center justify-center">
-          <motion.p 
+        <div className="w-full h-full flex flex-col items-center justify-center">
+          <motion.p
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
@@ -73,138 +68,182 @@ const Sponsors: React.FC = () => {
           >
             <FlipLink>Main&nbsp;Sponsor</FlipLink>
           </motion.p>
-          <motion.div 
+          <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="flex gap-4 justify-center mb-10">
+            className="flex gap-2 justify-center mb-10">
             <a
-              href="/"
+              href="https://www.kei-ind.com/"
               target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
+              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
             >
-              <p className="text-white/80 text-center">Coming Soon..</p>
+              <Image
+                src="/sponsors/kei.png"
+                alt="main sponsor" height={150} width={150}
+                className="bg-cover"
+              />
             </a>
           </motion.div>
 
-          <motion.p 
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-2xl mb-4 w-fit"
-          >
-            <FlipLink >Co-Sponsor</FlipLink>
-          </motion.p>
-          <motion.div 
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="flex gap-4 justify-center mb-10">
-            <a
-              href="/"
-              target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
-            >
-              <p className="text-white/80 text-center">Coming Soon..</p>
-            </a> 
-          </motion.div>
-
-          <motion.p 
+          <motion.p
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             className="text-white text-center text-xl mb-4 w-fit"
           >
-            <FlipLink>Associate&nbsp;Sponsor</FlipLink>
+            <FlipLink>Co&nbsp;Sponsor</FlipLink>
           </motion.p>
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="flex gap-4 justify-center">
+            className="flex justify-center items-center mb-10 gap-4">
             <motion.a
               variants={itemVariants}
-              href="/"
+              href="https://www.techno.co.in/"
               target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
+              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
             >
-              <p className="text-white/80 text-center">Coming Soon..</p>
+              <Image
+                src="/sponsors/techno.png"
+                alt="main sponsor" height={200} width={200}
+                className="bg-cover"
+              />
             </motion.a>
             <motion.a
               variants={itemVariants}
-              href="/"
+              href="https://signotron.in/"
               target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
+              className="hover:scale-105 px-4 py-7 bg-white/40 rounded-3xl"
             >
-              <p className="text-white/80 text-center">Coming Soon..</p>
+              <Image
+                src="/sponsors/signotron.png"
+                alt="main sponsor" height={200} width={200}
+                className="bg-cover"
+              />
             </motion.a>
           </motion.div>
 
-          <motion.p 
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-white text-center text-2xl mb-4 w-fit"
+          >
+            <FlipLink>Associate&nbsp;Sponsor</FlipLink>
+          </motion.p>
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex gap-4 justify-center mb-4">
+            <a
+              href="https://iocl.com/"
+              target="_blank"
+              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
+            >
+              <Image
+                src="/sponsors/iocl.png"
+                alt="main sponsor" height={80} width={100}
+                className="bg-cover"
+              />
+            </a>
+          </motion.div>
+
+          <motion.p
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             className="text-white text-center text-xl mb-4 mt-10 w-fit"
           >
-            <FlipLink>Event&nbsp;Partners</FlipLink>
+            <FlipLink>Technical&nbsp;Sponsor</FlipLink>
           </motion.p>
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center">
+            className="flex flex-wrap gap-7">
             <motion.a
               variants={itemVariants}
               href="https://www.theiet.org/"
               target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
+              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
             >
-              <p className="text-white/80 text-center">Coming Soon..</p>
+              <Image
+                src={iet}
+                alt="main sponsor" height={100} width={100}
+                className="bg-cover"
+              />
+            </motion.a>
+            <motion.a
+              variants={itemVariants}
+              href="https://www.ntplindia.com/"
+              target="_blank"
+              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+            >
+              <Image
+                src={ntpl}
+                alt="main sponsor" height={100} width={100}
+                className="bg-cover"
+              />
+            </motion.a>
+            <motion.a
+              variants={itemVariants}
+              href="https://signalprocessingsociety.org/"
+              target="_blank"
+              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+            >
+              <Image
+                src={sps}
+                alt="main sponsor" height={100} width={100}
+                className="bg-cover"
+              />
+            </motion.a>
+            <motion.a
+              variants={itemVariants}
+              href="https://ieeedeis.org/"
+              target="_blank"
+              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+            >
+              <Image
+                src={deis}
+                alt="main sponsor" height={100} width={100}
+                className="bg-cover"
+              />
+            </motion.a>
+            <motion.a
+              variants={itemVariants}
+              href="https://ieee-pes.org/"
+              target="_blank"
+              className="hover:scale-105 p-6 bg-white/40 rounded-3xl"
+            >
+              <Image
+                src={pes}
+                alt="main sponsor" height={100} width={100}
+                className="bg-cover"
+              />
             </motion.a>
           </motion.div>
-
-          <motion.p 
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-xl mb-4 mt-10 w-fit"><FlipLink>Digital&nbsp;Media&nbsp;Partner</FlipLink></motion.p>
-          <motion.div 
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="flex gap-4 justify-center">
-            <a
-              href="https://www.telegraphindia.com/edugraph"
-              target="_blank"
-              className="hover:scale-105 glassmorphism-bg p-3 rounded-lg"
-            >
-              <p className="text-white/80 text-center">Coming Soon..</p>
-            </a>
-          </motion.div>
         </div>
-        */}
 
-        
-        <div
-          className="relative mt-8 opacity-100" // Changed from absolute/opacity-30 to relative/opacity-100
-        >
+        {/* <div className="relative mt-8 opacity-100"> // Changed from absolute/opacity-30 to relative/opacity-100
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
             Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
           </h2>
-        </div>
+        </div> */}
+
       </div>
 
     </div>
-    
+
   );
 };
 
