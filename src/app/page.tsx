@@ -97,7 +97,7 @@ export default function Home() {
         <Timeline/>
         <Team />
         <Gallery/>
-        <Sponsors/>
+        {/* <Sponsors/> */}
         <FaqSection />
         {/* <Playground/> */}
         <Footer />

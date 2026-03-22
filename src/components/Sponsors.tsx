@@ -1,19 +1,12 @@
 'use client';
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-// import "@/app/sponsors.css";
-// Imports kept for when you uncomment the content later
-import techEle from "@/assets/images/ConvoSponsors/techno ele.webp";
-import exide from "@/assets/images/ConvoSponsors/Exide.webp";
-import megatherm from "@/assets/images/ConvoSponsors/Megatherm.png";
+import "@/app/sponsors.css";
 import iet from "@/assets/images/ConvoSponsors/iet.png";
 import ntpl from "@/assets/images/ConvoSponsors/NTPL.png";
 import pes from "@/assets/images/ConvoSponsors/pees.png";
-import raydus from "@/assets/images/ConvoSponsors/raydus.png";
 import deis from "@/assets/images/ConvoSponsors/deis.png";
 import sps from "@/assets/images/ConvoSponsors/sps.png";
-import telegraph from "@/assets/images/ConvoSponsors/telegrapg.png";
-import comsoc from "@/assets/images/ConvoSponsors/comsoc.png";
 import DecorativeIcons from "./DecorativeIcons";
 import '@/app/sponsors.css';
 import FlipLink from "./FlipLink";
@@ -38,9 +31,9 @@ const Sponsors: React.FC = () => {
 
   return (
     // Reduced min-height to 60vh as requested
-    <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center">
+    <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center maxWidthForSections">
       {/* <Cursor magnetic /> */}
-
+      <DecorativeIcons />
       {/* Grid Background */}
       <div className="tech-grid pointer-events-none" />
       <div className="absolute top-0 left-0 bg-linear-to-b from-black/90 to-transparent h-15 w-full pointer-events-none z-69"></div>
@@ -58,7 +51,7 @@ const Sponsors: React.FC = () => {
           </h1>
         </motion.div>
 
-        {/* <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-full h-full flex flex-col items-center justify-center">
           <motion.p
             variants={sectionVariants}
             initial="hidden"
@@ -77,7 +70,7 @@ const Sponsors: React.FC = () => {
             <a
               href="https://www.kei-ind.com/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
+              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
             >
               <Image
                 src="/sponsors/kei.png"
@@ -106,7 +99,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.techno.co.in/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
+              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
             >
               <Image
                 src="/sponsors/techno.png"
@@ -118,7 +111,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signotron.in/"
               target="_blank"
-              className="hover:scale-105 px-4 py-7 bg-white/40 rounded-3xl"
+              className="hover:scale-105 px-4 py-7 bg-white/70 rounded-3xl"
             >
               <Image
                 src="/sponsors/signotron.png"
@@ -146,7 +139,7 @@ const Sponsors: React.FC = () => {
             <a
               href="https://iocl.com/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/40 rounded-3xl"
+              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
             >
               <Image
                 src="/sponsors/iocl.png"
@@ -170,12 +163,12 @@ const Sponsors: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-wrap gap-7">
+            className="flex flex-wrap gap-7  justify-center">
             <motion.a
               variants={itemVariants}
               href="https://www.theiet.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
             >
               <Image
                 src={iet}
@@ -187,7 +180,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.ntplindia.com/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
             >
               <Image
                 src={ntpl}
@@ -199,7 +192,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signalprocessingsociety.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
             >
               <Image
                 src={sps}
@@ -211,7 +204,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieeedeis.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/40 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
             >
               <Image
                 src={deis}
@@ -223,7 +216,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieee-pes.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/40 rounded-3xl"
+              className="hover:scale-105 p-6 bg-white/70 rounded-3xl"
             >
               <Image
                 src={pes}
@@ -232,14 +225,7 @@ const Sponsors: React.FC = () => {
               />
             </motion.a>
           </motion.div>
-        </div> */}
-
-        <div className="relative mt-8 opacity-100">
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
-            Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
-          </h2>
         </div>
-
       </div>
 
     </div>
