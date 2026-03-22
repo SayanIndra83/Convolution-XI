@@ -4,7 +4,7 @@ import Image from "next/image";
 const Timeline = () => {
   // --- Timeline Data ---
   const timelineData = [
-    { date: "23rd March, 2026", title: "Registration Closes", time: "12:00 PM IST" },
+    { date: "23rd March, 2026", title: "Registration Closes", time: "6:00 PM IST" },
     { date: "23rd March, 2026", title: "Submission Deadline", time: "11:59 PM IST" },
     { date: "27th March - 28th March 11:59 PM IST", title: "Voting Period" }
   ];
