@@ -17,15 +17,14 @@ import { userData } from "@/context/UserContext";
 const desktopNavLinks = [
   { href: "/#home", label: "Home" },
   { label: "About", href: "/#about" },
-  // {
-  //   label: "Event",
-  //   href: "#",
-  //   subItems: [
-  //     { href: "/#events", label: "Events" },
-  //     { href: "/#timeline", label: "Timeline" },
-  //   ],
-  // },
-  {label: "Events", href:"/#events"},
+  {
+    label: "Event",
+    href: "#",
+    subItems: [
+      { href: "/#events", label: "Events" },
+      { href: "/#timeline", label: "Timeline" },
+    ],
+  },
   {
     label: "More",
     href: "#",
@@ -43,7 +42,7 @@ const mobileNavLinks = [
   { href: "/#home", label: "Home" },
   { href: "/#about", label: "About" },
   { href: "/#events", label: "Events" },
-  // { href: "/#timeline", label: "Timeline" },
+  { href: "/#timeline", label: "Timeline" },
   { href: "/#team", label: "Team" },
   { href: "/#gallery", label: "Gallery" },
   { href: "/#sponsors", label: "Sponsors" },

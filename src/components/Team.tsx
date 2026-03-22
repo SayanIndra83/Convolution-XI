@@ -185,7 +185,7 @@ function Team() {
   return (
     <div id='team' className="team-section">
       <div className="team-bg-gradient"></div>
-                  <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-[#030712e5]  to-transparent z-10"></div>
+                  <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-[#030712e0]  to-transparent z-10"></div>
 
       
       {/* Spotlight Glow - Optimized in CSS */}

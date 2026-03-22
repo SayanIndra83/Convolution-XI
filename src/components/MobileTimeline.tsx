@@ -163,11 +163,12 @@ const MobileTimeline = () => {
   const beamScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const beamHeight = useTransform(scrollYProgress, [0, 1], [0, railHeight]);
 
-  useMotionValueEvent(beamHeight, "change", (latestHeight) => {
+ useMotionValueEvent(beamHeight, "change", (latestHeight) => {
     if (latestHeight < 10) {
-      if (activeNode !== -1) setActiveNode(-1);
+      setActiveNode((prev) => prev !== -1 ? -1 : prev); 
       return;
     }
+
 
     let newActive = -1;
     nodePositions.current.forEach((pos, index) => {
@@ -175,12 +176,13 @@ const MobileTimeline = () => {
         newActive = index;
       }
     });
-
-    if (newActive !== activeNode) {
-      setActiveNode(newActive);
-    }
+    setActiveNode((prevActiveNode) => {
+        if (newActive !== prevActiveNode) {
+            return newActive;
+        }
+        return prevActiveNode; 
+    });
   });
-
   return (
     <div ref={containerRef} className="relative  w-full min-h-screen bg-black text-white font-mono pb-20 overflow-hidden">
 
@@ -201,7 +203,7 @@ const MobileTimeline = () => {
           <div className="absolute top-[25%] right-[-15%] w-[90vw] h-csreen rounded-full bg-cyan-900/30 blur-[100px] z-0 transform-gpu"></div>
           <div className="absolute bottom-[25%] left-[-15%] w-[90vw] h-screen rounded-full bg-purple-900/20 blur-[100px] z-0 transform-gpu"></div>
           <div className="absolute bottom-[5%] right-[-20%] w-[105vw] h-[90vh] rounded-full bg-cyan-900/20 blur-[100px] z-0 transform-gpu"></div> */}
-          <div className="absolute bottom-0 left-0 w-full h-20 bg-linear-to-t from-[#030712] to-transparent  z-69 transform-gpu"></div>
+          <div className="absolute bottom-0 left-0 w-full h-20 bg-linear-to-t from-[#030712e0] to-transparent  z-69 transform-gpu"></div>
           <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-[#030712] to-transparent  z-69 transform-gpu"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-size-[3rem_3rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-10 z-0"></div>
 
@@ -214,7 +216,7 @@ const MobileTimeline = () => {
                  ></div>
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-black-950/20 via-transparent to-transparent z-20 pointer-events-none"></div>
+    
 
       {/*Header*/}
       <div className="relative z-50 pt-15 pb-8 flex flex-col items-center justify-center">

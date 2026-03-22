@@ -59,21 +59,18 @@ const DesktopTimeline = () => {
           trigger: containerRef.current,
           pin: true,
           anticipatePin: 1,
-          scrub: 0.1, // Added a slight smoothing factor (0.5s) to reduce jitter
+          scrub: 0.1,
           start: 'top top',
           end: `+=${totalDist}`, 
           invalidateOnRefresh: true,
-          fastScrollEnd: true, // Prevents glitching on fast scrolls
+          fastScrollEnd: true,
           onRefresh: updateMeasurements,
           onUpdate: (self) => {
-            // Optimized Active Node Logic
             const { triggerPoints } = stateRef.current;
-            // Calculate progress based on the "moving" part of the animation only
             const moveProgress = Math.min(self.progress * (totalDist / moveDist), 1);
             const currentWidth = moveProgress * maxLineWidth;
             
             let newActive = -1;
-            // Reverse loop is often faster for finding the last active element
             for (let i = triggerPoints.length - 1; i >= 0; i--) {
                 if (currentWidth >= (triggerPoints[i] - 20)) { // 20px buffer
                     newActive = i;
@@ -81,7 +78,6 @@ const DesktopTimeline = () => {
                 }
             }
 
-            // Only trigger React State update if the node has CHANGED
             if (activeNodeRef.current !== newActive) {
                 activeNodeRef.current = newActive;
                 setActiveNode(newActive);
@@ -90,22 +86,20 @@ const DesktopTimeline = () => {
         }
       });
 
-      // Use force3D: true to ensure GPU acceleration
       tl.to(trackRef.current, { 
         x: () => -stateRef.current.moveDist, 
         ease: 'none', 
-        duration: 1, // Normalized duration
+        duration: 1,
         force3D: true 
       }, 0);
 
       tl.to(lineRef.current, { 
         width: () => stateRef.current.maxLineWidth, 
         ease: 'none', 
-        duration: 1, // Normalized duration matches track movement
+        duration: 1,
         force3D: true 
       }, 0);
       
-      // The "hold" time at the end
       tl.to({}, { duration: (holdDist / moveDist) }, ">");
 
     }, containerRef);
@@ -126,9 +120,9 @@ const DesktopTimeline = () => {
           }}
         >
             <div className="absolute inset-0 bg-[#00040f]/95 z-0"></div>
-            <div className="absolute top-[-10%] left-[20%] w-[60vw] h-100 bg-fuchsia-950/30 blur-[100px] z-0"></div>
+            <div className="absolute top-[-10%] left-[20%] w-[60vw] h-100 bg-fuchsia-950/25 blur-[100px] z-0"></div>
             <div className="absolute bottom-[-10%] right-[20%] w-[60vw] h-100 bg-cyan-950/30 blur-[100px] z-0"></div>
-            <div className="absolute bottom-0 left-0 w-full h-15 bg-linear-to-t from-[#030712e5]  to-transparent z-69"></div>
+            <div className="absolute bottom-0 left-0 w-full h-15 bg-linear-to-t from-[#030712e0]  to-transparent z-69"></div>
             <div className="absolute top-0 left-0 w-full h-15 bg-linear-to-b from-[#030712e5]  to-transparent z-69"></div>
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#22d3ee_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05] z-0"></div>
           </div>
