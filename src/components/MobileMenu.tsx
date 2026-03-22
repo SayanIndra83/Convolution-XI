@@ -99,13 +99,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, links, onLinkC
 
           {/* links */}
           <nav className="flex-1 flex flex-col justify-start pt-4 md:pt-8 overflow-y-auto no-scrollbar">
-            <ul className="flex flex-col gap-6 md:gap-8">
+            <ul className="flex flex-col gap-8 ">
               {links.map((item, index) => (
                 <li key={index} className="overflow-hidden">
                   <Link
                     href={item.href}
                     onClick={(e) => onLinkClick(e, item.href)}
-                    className={`font-orbitron font-bold block text-lg md:text-xl tracking-wider text-white/90 hover:text-cyan-400 transform transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+                    className={`font-orbitron font-bold block text-[19px] md:text-xl tracking-wider text-white/90 hover:text-cyan-400 transform transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
                       ${isOpen ? "translate-y-0 opacity-100" : "translate-y-[120%] opacity-0"}
                     `}
                     style={{ transitionDelay: isOpen ? `${300 + (index * 100)}ms` : '0ms' }}
