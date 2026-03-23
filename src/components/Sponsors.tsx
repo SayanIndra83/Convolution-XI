@@ -225,14 +225,14 @@ const Sponsors: React.FC = () => {
             </motion.a>
           </motion.div>
         </div> */}
-      
-      <div className="relative mt-8 opacity-100">
+
+        <div className="relative mt-8 opacity-100">
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
             Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
           </h2>
-          </div>
+        </div>
+      </div>
     </div>
-</div>
   );
 };
 
