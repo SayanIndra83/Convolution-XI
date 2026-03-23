@@ -349,7 +349,7 @@ const CommandDeck = () => {
                             <SciFiButton label="Timeline" href="#timeline" color="fuchsia" />
                         </>
                     }
-                    <SciFiButton label="Team" href="#team" color="fuchsia" />
+                    <SciFiButton label="Contact" href="#contact" color="fuchsia" />
                     <SciFiButton label="FAQ" href="#faq" color="cyan" />
 
                 </div>
@@ -368,7 +368,7 @@ const CommandDeck = () => {
                         <SciFiButton label="Events" href="#events" color="fuchsia" />
                     }
 
-                    <SciFiButton label="Team" href="#team" color="cyan" />
+                    <SciFiButton label="Contact" href="#contact" color="cyan" />
                 </div>
             </div>
 
