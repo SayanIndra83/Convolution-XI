@@ -62,7 +62,7 @@ const Timeline = () => {
                     <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-orange-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
                         <span className="font-orbitron text-red-100 text-base font-bold tracking-widest uppercase">March 23, 2026</span>
                         <h4 className="md:hidden font-orbitron text-lg font-bold text-gray-100 mt-2">Registration Deadline</h4>
-                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Registration for Decisia will end on 23rd March at 6:00 PM.</p>
+                        <p className="font-rajdhani font-semibold text-gray-300 mt-2">Registration for Decisia will end on 23rd March at 8:00 PM.</p>
                     </div>
                 </div>
             </motion.div>
