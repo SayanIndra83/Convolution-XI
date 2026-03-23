@@ -5,9 +5,8 @@ import "@/app/sponsors.css";
 import iet from "@/assets/images/ConvoSponsors/iet.png";
 import ntpl from "@/assets/images/ConvoSponsors/NTPL.png";
 import pes from "@/assets/images/ConvoSponsors/pees.png";
-import deis from "@/assets/images/ConvoSponsors/deis.png";
+import deis from "@/assets/images/ConvoSponsors/deis.jpg";
 import sps from "@/assets/images/ConvoSponsors/sps.png";
-import DecorativeIcons from "./DecorativeIcons";
 import '@/app/sponsors.css';
 import FlipLink from "./FlipLink";
 import { motion } from "framer-motion";
@@ -30,10 +29,7 @@ const Sponsors: React.FC = () => {
   };
 
   return (
-    // Reduced min-height to 60vh as requested
     <div id="sponsors" className="relative w-full h-auto flex flex-col items-center justify-center maxWidthForSections">
-      {/* <Cursor magnetic /> */}
-      {/* Grid Background */}
       <div className="tech-grid pointer-events-none" />
       <div className="absolute top-0 left-0 bg-linear-to-b from-black/90 to-transparent h-15 w-full pointer-events-none z-69"></div>
 
@@ -50,15 +46,15 @@ const Sponsors: React.FC = () => {
           </h1>
         </motion.div>
 
-        {/* <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-full h-full flex flex-col items-center justify-center">
           <motion.p
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-2xl mb-4 w-fit"
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center text-xl md:text-2xl mb-4 w-fit"
           >
-            <FlipLink>Main&nbsp;Sponsor</FlipLink>
+           Main Sponsor
           </motion.p>
           <motion.div
             variants={sectionVariants}
@@ -69,7 +65,7 @@ const Sponsors: React.FC = () => {
             <a
               href="https://www.kei-ind.com/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/kei.png"
@@ -84,9 +80,9 @@ const Sponsors: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-xl mb-4 w-fit"
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center md:text-2xl text-xl mb-4 w-fit"
           >
-            <FlipLink>Co&nbsp;Sponsor</FlipLink>
+            Co-sponsors
           </motion.p>
           <motion.div
             variants={containerVariants}
@@ -98,7 +94,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.techno.co.in/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
+              className="hover:scale-105 duration-300 transition-all p-4 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/techno.png"
@@ -110,7 +106,7 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signotron.in/"
               target="_blank"
-              className="hover:scale-105 px-4 py-7 bg-white/70 rounded-3xl"
+              className="hover:scale-105 duration-300 transition-all px-4 py-7 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/signotron.png"
@@ -125,9 +121,9 @@ const Sponsors: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-2xl mb-4 w-fit"
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center text-xl md:text-2xl mb-4 w-fit"
           >
-            <FlipLink>Associate&nbsp;Sponsor</FlipLink>
+           Associate Sponsors
           </motion.p>
           <motion.div
             variants={sectionVariants}
@@ -138,11 +134,11 @@ const Sponsors: React.FC = () => {
             <a
               href="https://iocl.com/"
               target="_blank"
-              className="hover:scale-105 p-4 bg-white/70 rounded-3xl"
+              className="hover:scale-105 duration-300 transition-all p-4 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/iocl.png"
-                alt="main sponsor" height={80} width={100}
+                alt="main sponsor" height={140} width={140}
                 className="bg-cover"
               />
             </a>
@@ -153,9 +149,9 @@ const Sponsors: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            className="text-white text-center text-xl mb-4 mt-10 w-fit"
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center text-xl md:text-2xl mb-4 mt-10 w-fit"
           >
-            <FlipLink>Technical&nbsp;Sponsor</FlipLink>
+            Event Partners
           </motion.p>
           <motion.div
             variants={containerVariants}
@@ -167,11 +163,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.theiet.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
                 src={iet}
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={120} width={120}
                 className="bg-cover"
               />
             </motion.a>
@@ -179,11 +175,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.ntplindia.com/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
                 src={ntpl}
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={120} width={120}
                 className="bg-cover"
               />
             </motion.a>
@@ -191,11 +187,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signalprocessingsociety.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
                 src={sps}
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={120} width={120}
                 className="bg-cover"
               />
             </motion.a>
@@ -203,11 +199,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieeedeis.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/70 rounded-3xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
                 src={deis}
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={120} width={120}
                 className="bg-cover"
               />
             </motion.a>
@@ -215,22 +211,51 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieee-pes.org/"
               target="_blank"
-              className="hover:scale-105 p-6 bg-white/70 rounded-3xl"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
             >
               <Image
                 src={pes}
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={120} width={120}
                 className="bg-cover"
               />
             </motion.a>
           </motion.div>
-        </div> */}
 
-        <div className="relative mt-8 opacity-100">
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center md:text-2xl text-xl mt-10 mb-4 w-fit"
+          >
+            Media Partner
+          </motion.p>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex justify-center items-center gap-4">
+            <motion.a
+              variants={itemVariants}
+              href="https://www.techno.co.in/"
+              target="_blank"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+            >
+              <Image
+                src="/sponsors/telegraph.png"
+                alt="media partner" height={200} width={200}
+                className="bg-cover"
+              />
+            </motion.a>
+          </motion.div>
+        </div>
+
+        {/* <div className="relative mt-8 opacity-100">
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
             Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
           </h2>
-        </div>
+        </div> */}
       </div>
     </div>
   );
