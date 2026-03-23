@@ -51,7 +51,7 @@ export default function QuizMaster() {
                     
                     <div className="flex items-center gap-2 mt-1">
                         <h2 className="font-rajdhani text-sm sm:text-[19px] font-bold text-white tracking-wide">
-                            Samanway Banerjee
+                            Saswata Acharya
                         </h2>
                         <Link target="_blank" href="https://www.instagram.com/saswata_acharya?igsh=MWoxdXVtcDBicGo4bg==" className="">
                             <FaInfoCircle className="hover:text-purple-300 transition-colors duration-300" />
