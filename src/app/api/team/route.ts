@@ -52,7 +52,6 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
-
         // check if leaderEmail is same as any of the teamMembers
         if (teamMembers.includes(leaderEmail)) {
             return NextResponse.json(

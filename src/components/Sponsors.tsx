@@ -137,8 +137,36 @@ const Sponsors: React.FC = () => {
               className="hover:scale-105 duration-300 transition-all p-4 bg-white rounded-2xl"
             >
               <Image
-                src="/sponsors/iocl.png"
-                alt="main sponsor" height={140} width={140}
+                src="/sponsors/iocl2.png"
+                alt="main sponsor" height={200} width={200}
+                className="bg-cover"
+              />
+            </a>
+          </motion.div>
+
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center text-xl md:text-2xl mt-7 mb-4 w-fit"
+          >
+           Event Sponsor
+          </motion.p>
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex gap-4 justify-center mb-4">
+            <a
+              href="https://www.theiet.org/"
+              target="_blank"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
+            >
+              <Image
+                src={iet}
+                alt="main sponsor" height={130} width={130}
                 className="bg-cover"
               />
             </a>
@@ -151,7 +179,7 @@ const Sponsors: React.FC = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center text-xl md:text-2xl mb-4 mt-10 w-fit"
           >
-            Event Partners
+            Technical Sponsors
           </motion.p>
           <motion.div
             variants={containerVariants}
@@ -159,18 +187,6 @@ const Sponsors: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             className="flex flex-wrap gap-7  justify-center">
-            <motion.a
-              variants={itemVariants}
-              href="https://www.theiet.org/"
-              target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
-            >
-              <Image
-                src={iet}
-                alt="main sponsor" height={120} width={120}
-                className="bg-cover"
-              />
-            </motion.a>
             <motion.a
               variants={itemVariants}
               href="https://www.ntplindia.com/"
@@ -228,7 +244,7 @@ const Sponsors: React.FC = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center md:text-2xl text-xl mt-10 mb-4 w-fit"
           >
-            Media Partner
+            Digital Media Partner
           </motion.p>
           <motion.div
             variants={containerVariants}
@@ -238,13 +254,43 @@ const Sponsors: React.FC = () => {
             className="flex justify-center items-center gap-4">
             <motion.a
               variants={itemVariants}
-              href="https://www.techno.co.in/"
+              href="https://www.telegraphindia.com/edugraph"
               target="_blank"
               className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/telegraph.png"
                 alt="media partner" height={200} width={200}
+                className="bg-cover"
+              />
+            </motion.a>
+          </motion.div>
+
+
+          <motion.p
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="tracking-wide text-transparent bg-clip-text bg-linear-to-b from-white to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] font-orbitron uppercase font-bold text-center md:text-2xl text-xl mt-10 mb-4 w-fit"
+          >
+            Beverage Partner
+          </motion.p>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex justify-center items-center gap-4">
+            <motion.a
+              variants={itemVariants}
+              href="https://www.redcowdairy.in/"
+              target="_blank"
+              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+            >
+              <Image
+                src="/sponsors/redcow.png"
+                alt="media partner" height={150} width={150}
                 className="bg-cover"
               />
             </motion.a>
