@@ -165,12 +165,12 @@ export default function SignupForm() {
                       placeholder='Enter full name'
                       name='name'
                       value={formData.name}
-                      readOnly
+                      onChange={handleChange}
                       required
                       spellCheck={false}
                       autoCorrect="off"
                       autoCapitalize="off"
-                      className='w-full bg-transparent px-2 text-[15px] text-gray-600 placeholder-cyan-600/50 outline-none font-rajdhani tracking-wider'
+                      className='w-full bg-transparent px-2 text-[15px] text-cyan-100 placeholder-cyan-600/50 outline-none font-rajdhani tracking-wider'
                     />
                   </div>
                 </div>
