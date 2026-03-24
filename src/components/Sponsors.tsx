@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import "@/app/sponsors.css";
-import iet from "@/assets/images/ConvoSponsors/iet.png";
 import ntpl from "@/assets/images/ConvoSponsors/NTPL.png";
 import pes from "@/assets/images/ConvoSponsors/pees.png";
 import deis from "@/assets/images/ConvoSponsors/deis.jpg";
@@ -46,7 +45,7 @@ const Sponsors: React.FC = () => {
           </h1>
         </motion.div>
 
-        {/* <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-full h-full flex flex-col items-center justify-center">
           <motion.p
             variants={sectionVariants}
             initial="hidden"
@@ -106,11 +105,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signotron.in/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all px-4 py-7 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all px-4 py-5 bg-white rounded-2xl"
             >
               <Image
                 src="/sponsors/signotron.png"
-                alt="main sponsor" height={200} width={200}
+                alt="main sponsor" height={210} width={210}
                 className="bg-cover"
               />
             </motion.a>
@@ -165,8 +164,8 @@ const Sponsors: React.FC = () => {
               className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
-                src={iet}
-                alt="main sponsor" height={130} width={130}
+                src="/Sponsors/iet_ju.jpeg"
+                alt="main sponsor" height={100} width={100}
                 className="bg-cover"
               />
             </a>
@@ -295,13 +294,13 @@ const Sponsors: React.FC = () => {
               />
             </motion.a>
           </motion.div>
-        </div> */}
+        </div>
 
-        <div className="relative mt-8 opacity-100">
+        {/* <div className="relative mt-8 opacity-100">
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-rajdhani font-semibold text-white tracking-tighter whitespace-nowrap capitalize">
             Coming <span className="text-transparent font-rajdhani w-fit bg-clip-text bg-linear-to-b from-white to-gray-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] whitespace-nowrap">soon..</span>
           </h2>
-        </div>
+        </div> */}
       </div>
     </div>
   );
