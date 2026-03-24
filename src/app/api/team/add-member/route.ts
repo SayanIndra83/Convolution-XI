@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         }
 
         // for security
-        const closed_events: string[] = ["sparkhack", "decisia"]; 
+        const closed_events: string[] = ["sparkhack", "decisia", "aboltabol"]; 
         if (closed_events.includes(team.eventName.toLowerCase())) {
             return NextResponse.json({ message: `Registrations for ${getFriendlyEventName(team.eventName)} is closed.` }, { status: 403 });
         }
