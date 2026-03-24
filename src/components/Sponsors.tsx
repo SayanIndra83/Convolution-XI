@@ -164,7 +164,7 @@ const Sponsors: React.FC = () => {
               className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
             >
               <Image
-                src="/Sponsors/iet_ju.jpeg"
+                src="/sponsors/iet_ju.jpeg"
                 alt="main sponsor" height={100} width={100}
                 className="bg-cover"
               />
