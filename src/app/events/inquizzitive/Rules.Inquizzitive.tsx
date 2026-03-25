@@ -2,17 +2,18 @@ import React from "react";
 import Image from "next/image";
 
 const rules = [
-  "Teams can have a maximum of 4 members (including the team lead).",
+    "Teams can have a maximum of 4 members (including the team lead).",
     "Teams may be formed across different institutes and different years but all participants must be students.",
     "The event will be strictly monitored. Any attempt to use electronics/ browse the internet/ communicating with other teams and other malpractices will be penalised with immediate disqualification.",
     "The Team Leader will have to register the Team on the official Convolution website with their team name and email of each member in the group.",
-    "Online registrations are encouraged to prevent on-day problems with other event clashes. There is no provision of on-spot registrations.",
-    "There will be 2 rounds: Prelims and Finals.",
-    "Prelims is a written round where all teams answer the same set of questions on pen and paper.",
+    "Due to certain constraints, the event will be open to the first 100 team registrations. Online registrations are encouraged to prevent on-day problems with other event clashes.",
+    "There will be 3 rounds: Prelims 1, Prelims 2 and Finals.",
+    "Prelims 1 is a written round where all teams answer the same set of questions on pen and paper. The top 30 teams qualify for Prelims 2.",
+    "Prelims 2 is also a written round. Teams are ranked based on the number of correct responses, and the top 8 teams advance to the Finals.",
     "Finals will feature multi-format rounds, as decided by the Quiz Master.",
-    "The top 8 teams advance to the Finals .",
     "Tie breaker (Prelims): Tie breakers will be decided on the basis of star marked questions.",
-    "Tie breaker (Finals): Tie breakers will be decided on the basis of scores of Prelims.",
+    "Tie breaker (Finals): Tie breakers will be decided on the basis of scores of Prelims 2 and Prelims 1.",
+    "All the rounds will be held offline on-campus.",
     "The Quiz Master’s decision is final and binding."
 ];
 
