@@ -21,10 +21,10 @@ export async function POST(req: NextRequest) {
         }
 
         // for security
-        const closed_events: string[] = []; 
+        const closed_events: string[] = ["frames"]; 
         if (closed_events.includes(eventName.toLowerCase())) {
             return NextResponse.json(
-                { message: `Registrations for ${getFriendlyEventName(eventName)} not started yet.` },
+                { message: `Registrations for ${getFriendlyEventName(eventName)} are closed.` },
                 { status: 403 }
             );
         }

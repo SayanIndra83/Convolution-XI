@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         
         if (closed_events.includes(eventName.toLowerCase())) {
             return NextResponse.json(
-                { message: `Registrations for ${getFriendlyEventName(eventName)} is closed.` }, 
+                { message: `Registrations for ${getFriendlyEventName(eventName)} are closed.` }, 
                 { status: 403 }
             );
         }
