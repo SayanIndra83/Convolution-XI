@@ -117,7 +117,7 @@ thrilling challenges for an experience that is both unforgettable and intensely 
         <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#115211]/80 border border-[#115211]/50 shadow-[0_8px_20px_rgba(17,82,17,0.2)] backdrop-blur-md hover:border-yellow-400/80 hover:bg-[#115211] transition-all duration-300">
             <span className="text-yellow-400 text-xl drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]">🏆</span>
             <span className="font-orbitron font-bold text-yellow-400 tracking-widest uppercase text-sm md:text-base drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]">
-                Prize Pool: ₹ 13,500
+                Prize Pool: ₹ 10,000
             </span>
         </div>
 

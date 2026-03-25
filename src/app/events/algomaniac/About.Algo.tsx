@@ -63,15 +63,7 @@ export default function About() {
       );
     }
 
-    if (isClosed) {
-      return (
-        <div className="flex items-center gap-2 px-8 py-3 bg-white backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
-          <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#0D30BB]">
-            Registrations not started yet
-          </span>
-        </div>
-      );
-    }
+    
 
     if (isRegistered) {
       return (
@@ -83,6 +75,16 @@ export default function About() {
       );
     }
 
+    if (isClosed) {
+      return (
+        <div className="flex items-center gap-2 px-8 py-3 bg-white backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
+          <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#0D30BB]">
+            Registrations closed
+          </span>
+        </div>
+      );
+    }
+    
     return (
       <button
         onClick={handleSolo}

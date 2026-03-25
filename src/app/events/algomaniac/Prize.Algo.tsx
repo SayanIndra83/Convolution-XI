@@ -16,7 +16,7 @@ const prizes: Prize[] = [
     {
         id: "silver",
         title: "Silver Prize",
-        amount: "₹ 4000",
+        amount: "₹ 3000",
         image: "/Algomaniac/silver prize.png", 
         glow: "group-hover:shadow-[0_8px_32px_0_rgba(56,189,248,0.3)]",
         borderGlow: "group-hover:border-sky-400/50",
@@ -24,7 +24,7 @@ const prizes: Prize[] = [
     {
         id: "gold",
         title: "Gold Prize",
-        amount: "₹ 6000",
+        amount: "₹ 5000",
         image: "/Algomaniac/gold prize.png", 
         glow: "group-hover:shadow-[0_8px_32px_0_rgba(250,204,21,0.3)]",
         borderGlow: "group-hover:border-yellow-400/50",

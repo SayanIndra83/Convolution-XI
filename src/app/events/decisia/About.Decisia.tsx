@@ -118,7 +118,7 @@ export default function About() {
         <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#010a5f]/40 border border-yellow-500/40 shadow-[0_0_20px_rgba(234,179,8,0.15)] backdrop-blur-md hover:border-yellow-400/80 hover:bg-[#010a5f]/60 transition-all duration-300">
             <span className="text-yellow-400 text-xl drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]">🏆</span>
             <span className="font-orbitron font-bold text-yellow-400 tracking-widest uppercase text-sm md:text-base drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]">
-                Prize Pool: ₹ 13,500
+                Prize Pool: ₹ 12,000
             </span>
         </div>
 
