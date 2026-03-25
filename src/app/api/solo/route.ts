@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         }
 
         // for security
-        const closed_events: string[] = ["frames"]; 
+        const closed_events: string[] = ["frames", "algomaniac"]; 
         if (closed_events.includes(eventName.toLowerCase())) {
             return NextResponse.json(
                 { message: `Registrations for ${getFriendlyEventName(eventName)} are closed.` },
