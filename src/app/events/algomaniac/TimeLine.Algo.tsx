@@ -32,7 +32,7 @@ export default function Timeline() {
                       <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-fuchsia-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
                         <span className="font-orbitron text-cyan-300 font-semibold text-sm tracking-widest uppercase drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">March 25, 2026</span>
                         <h4 className="md:hidden font-orbitron text-lg font-bold text-fuchsia-400 mt-2">Registration Deadline</h4>
-                        <p className="font-rajdhani  font-semibold text-gray-300 mt-2">Registration for Algomaniac will end on 25th March at 6:00 PM IST.</p>
+                        <p className="font-rajdhani  font-semibold text-gray-300 mt-2">Registration for Algomaniac will end on 25th March at 7:00 PM IST.</p>
                       </div>
                     </div>
                   </div>
