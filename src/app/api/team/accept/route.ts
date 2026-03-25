@@ -213,6 +213,12 @@ export async function POST(req: NextRequest) {
                             <a href="https://chat.whatsapp.com/GgoWFSuXzp59E3mGsTy2mP?mode=gi_t" style="display: inline-block; padding: 10px 15px; background-color: #25D366; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Join WhatsApp Group</a>
                         </div></div>`
                     }
+                    else if (Event === "circuistics"){
+                        gform=`<div style="padding: 15px; background-color: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 4px;">
+                            <p style="margin: 0 0 10px 0; line-height: 1.5;">Please join our official WhatsApp group for further updates and announcements.</p> 
+                            <a href="https://chat.whatsapp.com/J0CwKJP61F39CD7E9Cukgt?mode=gi_t" style="display: inline-block; padding: 10px 15px; background-color: #25D366; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Join WhatsApp Group</a>
+                        </div>`
+                }
                     const emailPromises = allUser.map(obj => {
                         return transporter.sendMail({
                             from: `Support <${process.env.EMAIL_USER}>`,
