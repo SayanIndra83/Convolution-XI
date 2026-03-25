@@ -36,15 +36,10 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
     {
       id: "static-3",
       title: "Deadline Extended",
-      message: <>⏳ Great news! The registration deadline for <span className="font-bold text-orange-400">Abol Tabol</span> has been extended to <span className="font-bold">March 24th</span>. Don&apos;t miss out!</>,
+      message: <>⏳ The clock is ticking! Registration deadline for <span className="font-bold text-rose-400">Algomaniac</span> has been extended to <span className="font-bold">March 25th, 6:00pm IST</span>. Gear up for the ultimate coding showdown 🚀!</>,
     },
     {
       id: "static-4",
-      title: "Deadline Extended",
-      message: <>⏳ The clock is ticking! Registration deadline for <span className="font-bold text-rose-400">Algomaniac</span> has been extended to <span className="font-bold">March 24th, 11:59pm IST</span>. Gear up for the ultimate coding showdown 🚀!</>,
-    },
-    {
-      id: "static-5",
       title: "Announcement",
       message: <>⚡ The <span className="font-black text-cyan-400">Sparkhack</span> <span className="font-bold text-green-400">Round 2 Shortlist</span> is finally out! Visit our <span className="font-bold text-[#1BA0E8]">social media pages</span> to check the results.</>,
     },
