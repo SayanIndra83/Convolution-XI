@@ -62,15 +62,24 @@ const DaysCounter = () => {
       const difference = +new Date(EVENT_DATE) - +new Date();
       if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        if (days === 0) return "EVENT LIVE";
         return `${days} Days`;
       }
-      else return "STARTED";
+      else return "EVENT LIVE";
     };
     setStatus(calculateTime());
   }, []);
 
-  if (status === "STARTED") {
-    return <span className="font-rajdhani text-lg font-bold tracking-widest text-white animate-pulse">STARTED</span>;
+  if (status === "EVENT LIVE") {
+    return (
+      <span className="flex items-center gap-2 font-rajdhani text-xl font-bold tracking-widest text-green-400">
+        <span className="relative flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+        </span>
+        LIVE NOW
+      </span>
+    );
   }
   return <span className="font-rajdhani text-base sm:text-xl lg:text-2xl font-bold tabular-nums tracking-tight">{status}</span>;
 };
@@ -88,7 +97,7 @@ const Background = () => {
 
       {/* purple */}
       <div 
-        className="absolute top-[-7%] left-[-15%] w-[71vw] h-[60vh] lg:h-[103vh]  transform-gpu translate-z-0"
+        className="absolute top-[-7%] left-[-15%] w-[71vw] h-[60vh] lg:h-[103vh] transform-gpu translate-z-0"
         style={{
           background: 'radial-gradient(closest-side, rgba(112, 26, 117, 35%), transparent)'
         }}
@@ -96,7 +105,7 @@ const Background = () => {
 
     {/* cyan */}
       <div 
-        className="absolute bottom-[-10%] right-[-15%] w-[65vw] h-[79vh]  transform-gpu translate-z-0"
+        className="absolute bottom-[-10%] right-[-15%] w-[65vw] h-[79vh] transform-gpu translate-z-0"
         style={{
           background: 'radial-gradient(closest-side, rgba(22, 78, 99, 30%), transparent)'
         }}
@@ -104,13 +113,13 @@ const Background = () => {
 
       {/* fucshia */}
       <div 
-        className="absolute top-[6%] left-[24%] w-[64vw] h-[50vh] lg:h-[89vh]  transform-gpu translate-z-0"
+        className="absolute top-[6%] left-[24%] w-[64vw] h-[50vh] lg:h-[89vh] transform-gpu translate-z-0"
         style={{
           background: 'radial-gradient(closest-side, rgba(168, 85, 247, 0.20), transparent)'
         }}
       ></div>
       
-      <div className="absolute bottom-0 left-0 w-full h-10 pointer-events-none bg-gradient-to-b from-transparent to-[#030712b7]" />
+      <div className="absolute bottom-0 left-0 w-full h-10 pointer-events-none bg-linear-to-b from-transparent to-[#030712b7]" />
     </div>
   );
 };
@@ -211,7 +220,7 @@ export default function AboutSection() {
             />
             <StatCard
               icon={CalendarClock}
-              label="Remaining"
+              label=""
               value={<DaysCounter />}
               colorClass="from-purple-400 to-purple-600"
               borderClass="border-purple-500"
@@ -272,59 +281,8 @@ export default function AboutSection() {
                   loading="eager"
                   className="h-full w-auto object-contain object-bottom contrast-125 saturate-110 select-none" 
                 />
-                
-                {/* <div className="video-div flex flex-col items-center gap-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div onClick={playVideo}
-                    className="h-14 w-14 rounded-full flex items-center justify-center bg-cyan-300 hover:scale-105 hover:bg-cyan-500 active:scale-95 cursor-pointer pointer-events-auto transition-transform">
-                    <IoPlay className="h-10 w-10 text-black" />
-                  </div>
-                  <h3 className='click text-fuchsia-600 font-rajdhani font-semibold text-sm uppercase'>Click Me</h3>
-                </div> */}
               </motion.div>
             </div>
-
-            {/* {isVideoOpen && (
-
-              <div
-
-                className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
-
-                onClick={closeVideo} // Clicking anywhere on the black background closes it
-
-              >
-
-                <button className="absolute top-5 right-5 text-white/50 hover:text-white transition-colors">
-
-                  <IoClose size={40} />
-
-                </button>
-
-
-
-                <div className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.25)] border border-white/10">
-
-                  <iframe
-
-                    className="w-full h-full"
-
-                    src="https://www.youtube.com/embed/QmcoPYUfbJ8?autoplay=1&start=9&rel=0"
-
-                    title="Convolution Teaser"
-
-                    frameBorder="0"
-
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-
-                    allowFullScreen
-
-                  ></iframe>
-
-                </div>
-
-              </div>
-
-            )} */}
-            
           </div>
         </motion.div>
 

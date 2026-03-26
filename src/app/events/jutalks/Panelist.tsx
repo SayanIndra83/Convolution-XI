@@ -51,7 +51,7 @@ const thisYr: { name: string; description: string }[] = [
 },
 {
   name: "Pratyay Mukherjee",
-  description:"Principal Researcher at Hashgraph and Visiting Faculty member at Indian Statistical Institute"
+  description:"Computer Scientist - Cryptography Expert, Podcaster"
 },
 {
   name: "Narendra Nath Chatterjee",

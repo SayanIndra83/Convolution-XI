@@ -86,7 +86,7 @@ const Timeline = () => {
                 <div className="absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full shadow-[0_0_15px_#6366f1] ring-4 ring-black/50 group-hover:scale-125 transition-transform z-10"></div>
                 <div className="md:w-[45%] md:pr-8 text-left md:text-right">
                     <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl hover:border-indigo-500/50 hover:bg-white/10 transition-all shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-                           <span className="font-orbitron font-bold text-fuchsia-300 text-base tracking-widest uppercase">TBD</span>
+                           <span className="font-orbitron font-bold text-fuchsia-300 text-base tracking-widest uppercase">March 26, 2026</span>
                         <h4 className="md:hidden font-orbitron text-lg font-bold text-cyan-400 mt-2">Publishing Results of Prelims</h4>
                         <p className="font-rajdhani font-semibold text-gray-300 mt-2">The top 9 teams will be shortlisted for the final round.</p>
                     </div>

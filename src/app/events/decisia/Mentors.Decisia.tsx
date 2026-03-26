@@ -38,15 +38,22 @@ const mentors: Mentor[] = [
 
 const judges: Judge[] = [
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png", 
-        details: "https://www.youtube.com"
+        name: "Vivaswan Bhattacharya",
+        description:"Chief Technical Consultant at Converse Global Consulting, Angel Investor at Inflection Point Ventures",
+        image: "/Mentors/vivaswan.jpg", 
+        details: "https://www.linkedin.com/in/vivaswan-bhattacharya-a415318?utm_source=share_via&utm_content=profile&utm_medium=member_android"
     },
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png",
+        name: "Mayank Bhartiya",
+        description:"IIM C '23 passout, Founding Partner of Mikata Consulting, Visiting prof at SXU",
+        image: "/Mentors/mayank.jpg",
+        details:"https://www.linkedin.com/in/mayankbhartia7/"
+    },
+    {
+        name: "Saurav Kumar Gorai",
+        description:"Head of Marketing, RICE Group, previously Head of Marketing at AUDI Kolkata",
+        image: "/Mentors/saurav.jpg",
+        details:"https://www.linkedin.com/in/saurav-kumar-gorai-924b8221?utm_source=share_via&utm_content=profile&utm_medium=member_android"
     },
 ];
 
@@ -123,7 +130,7 @@ export default function Mentors() {
                     ))}
                 </div>
 
-                {/* <motion.div 
+                <motion.div 
                     variants={headerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -171,7 +178,7 @@ export default function Mentors() {
                             </div>
                         );
                     })}
-                </div> */}
+                </div>
 
             </div>
         </section>

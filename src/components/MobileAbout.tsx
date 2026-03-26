@@ -65,12 +65,35 @@ const MobileRefCounter = ({ from, to, delay = 0 }: { from: number; to: number; d
 };
 
 const MobileDaysCounter = () => {
-  const [days, setDays] = useState("...");
+  const [status, setStatus] = useState("...");
+
   useEffect(() => {
-    const diff = +new Date(EVENT_DATE) - +new Date();
-    setDays(diff > 0 ? `${Math.floor(diff / (1000 * 60 * 60 * 24))} Days` : "STARTED");
+    const calculateTime = () => {
+      const diff = +new Date(EVENT_DATE) - +new Date();
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        if (days === 0) return "EVENT LIVE";
+        return `${days} Days`;
+      }
+      return "EVENT LIVE";
+    };
+    setStatus(calculateTime());
   }, []);
-  return <span className="font-rajdhani text-base font-bold tabular-nums">{days}</span>;
+
+  if (status === "EVENT LIVE") {
+    return (
+      <span className="flex items-center gap-1.5 font-rajdhani text-base font-bold tracking-widest text-green-400">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+        </span>
+        LIVE NOW
+      </span>
+    );
+  }
+
+
+  return <span className="font-rajdhani text-base font-bold tabular-nums">{status}</span>;
 };
 
 const CardBackground = ({ bgColorClass }: { bgColorClass: string }) => (
@@ -131,7 +154,7 @@ export default function MobileAboutContent({ userCount }: { userCount: number })
         />
         <MobileStatCard
           icon={CalendarClock}
-          label="Remaining"
+          label=""
           value={<MobileDaysCounter />}
           colorClass="from-purple-400 to-purple-600"
           borderClass="border-purple-500"
