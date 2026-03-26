@@ -11,7 +11,7 @@ import current1 from '@/assets/images/JuTalks/sreelekha.jpeg'
 import current2 from '@/assets/images/JuTalks/subhamita.jpeg'
 import current3 from '@/assets/images/JuTalks/pratyay.jpg'
 import current4 from '@/assets/images/JuTalks/narendranath.jpeg'
-// import current5 from '@/assets/images/JuTalks/3.png'
+import current5 from '@/assets/images/JuTalks/snehashis.jpeg'
 
 const items: { name: string; description: string }[] = [
   {
@@ -50,6 +50,10 @@ const thisYr: { name: string; description: string }[] = [
   description:"Acclaimed Indian vocalist blending classical and contemporary music"
 },
 {
+  name: "Snehasish Ganguly",
+  description:"Former President of the Cricket Association of Bengal"
+},
+{
   name: "Pratyay Mukherjee",
   description:"Computer Scientist - Cryptography Expert, Podcaster"
 },
@@ -60,7 +64,8 @@ const thisYr: { name: string; description: string }[] = [
 ];
 
 const pics = [person1, person3, person4,person7, person5, person6];
-const pics2: any[] = [current1, current2, current3, current4];
+const pics2: any[] = [current1, current2, current5, current3, current4];
+
 const Panelist = () => {
   return (
     <div id="panelist" className=" pt-20 pb-10 relative  flex items-center  ">
@@ -78,20 +83,24 @@ const Panelist = () => {
               </h1>
             </div>
             
-            <span className="font-rajdhani text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_4px_10px_rgba(89,42,19,0.2)] text-center mt-2">
+            {/* <span className="font-rajdhani text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_4px_10px_rgba(89,42,19,0.2)] text-center mt-2">
               To be declared soon ...
-            </span>
-              {/* <div className="sm:flex flex-wrap gap-2 grid justify-center grid-cols-2 sm:gap-4">
+            </span> */}
+              <div className="sm:flex flex-wrap gap-2 grid justify-center grid-cols-2 sm:gap-4">
           {thisYr.map((item, index) => {
             return (
               <div
                 key={item.name}
-                className="group hover:-translate-y-2 hover:bg-[#ffff]/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] border border-transparent hover:border-white/50 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] w-auto  rounded-2xl"
+                className={`group hover:-translate-y-2 hover:bg-[#ffff]/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] border border-transparent hover:border-white/50 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] rounded-2xl ${
+                  index === thisYr.length - 1 && thisYr.length % 2 !== 0 
+                    ? "col-span-2 justify-self-center w-[calc(50%-4px)] sm:col-span-1" 
+                    : "w-auto"
+                }`}
               >
                 <div className="overflow-hidden flex items-center rounded-full size-32 mb-2">
                   <Image 
                     src={pics2[index]} 
-                    alt="kaku" 
+                    alt="Chacha" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
@@ -105,7 +114,7 @@ const Panelist = () => {
               </div>
             );
           })}
-        </div> */}
+        </div>
           </div>
 
        
@@ -127,7 +136,7 @@ const Panelist = () => {
                 <div className="overflow-hidden flex items-center rounded-full size-32 mb-2">
                   <Image 
                     src={pics[index]} 
-                    alt="kaku" 
+                    alt="Chacha" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
