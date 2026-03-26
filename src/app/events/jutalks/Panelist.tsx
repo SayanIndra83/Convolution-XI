@@ -7,6 +7,12 @@ import person5 from "@/assets/images/JuTalks/moumita.png";
 import person6 from '@/assets/images/JuTalks/ishan.png'
 import person7 from '@/assets/images/JuTalks/3.png'
 
+import current1 from '@/assets/images/JuTalks/sreelekha.jpeg'
+import current2 from '@/assets/images/JuTalks/subhamita.jpeg'
+import current3 from '@/assets/images/JuTalks/pratyay.jpg'
+import current4 from '@/assets/images/JuTalks/narendranath.jpeg'
+// import current5 from '@/assets/images/JuTalks/3.png'
+
 const items: { name: string; description: string }[] = [
   {
     name: "Mr. Sabyasachi Chakraborty",
@@ -35,11 +41,26 @@ const items: { name: string; description: string }[] = [
 ];
 
 const thisYr: { name: string; description: string }[] = [
-
+{
+  name: "Sreelekha Mitra",
+  description:"Celebrated Indian Actor and Director"
+},
+{
+  name: "Shubhamita Banerjee",
+  description:"Acclaimed Indian vocalist blending classical and contemporary music"
+},
+{
+  name: "Pratyay Mukherjee",
+  description:"Principal Researcher at Hashgraph and Visiting Faculty member at Indian Statistical Institute"
+},
+{
+  name: "Narendra Nath Chatterjee",
+  description:"Senior Android Engineer at Ajaib - Jakarta, Indonesia"
+},
 ];
 
 const pics = [person1, person3, person4,person7, person5, person6];
-const pics2: any[] = [];
+const pics2: any[] = [current1, current2, current3, current4];
 const Panelist = () => {
   return (
     <div id="panelist" className=" pt-20 pb-10 relative  flex items-center  ">
@@ -60,30 +81,35 @@ const Panelist = () => {
             <span className="font-rajdhani text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_4px_10px_rgba(89,42,19,0.2)] text-center mt-2">
               To be declared soon ...
             </span>
-          </div>
-
-        {/* <div className="sm:flex flex-wrap gap-2 grid justify-center grid-cols-2 sm:gap-4">
+              {/* <div className="sm:flex flex-wrap gap-2 grid justify-center grid-cols-2 sm:gap-4">
           {thisYr.map((item, index) => {
             return (
               <div
                 key={item.name}
-                className="flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] w-auto rounded-2xl"
+                className="group hover:-translate-y-2 hover:bg-[#ffff]/40 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] border border-transparent hover:border-white/50 transition-all duration-300 flex flex-col sm:gap-y-2 gap-y-1 items-center font-sans sm:px-4 sm:py-8 px-2 py-6 text-[#512511] bg-[#ffff]/20 shadow-sm shadow-black/20 backdrop-blur-sm sm:w-[280px] w-auto  rounded-2xl"
               >
-                <div className="overflow-hidden flex items-center rounded-full size-32 ">
-                  <Image src={pics2[index]} alt="kaku" className=""></Image>
+                <div className="overflow-hidden flex items-center rounded-full size-32 mb-2">
+                  <Image 
+                    src={pics2[index]} 
+                    alt="kaku" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
 
-                <h1 className="sm:text-lg text-sm text-center font-semibold">
+                <h1 className="sm:text-lg text-sm text-center font-orbitron font-semibold">
                   {item.name}{" "}
                 </h1>
-                <p className="text-center sm:text-base text-xs">
+                <p className="text-center font-semibold font-rajdhani sm:text-base text-xs">
                   {item.description}
                 </p>
               </div>
             );
           })}
-        </div>
-         */}
+        </div> */}
+          </div>
+
+       
+        
 
         {/* ----------------------prev yrs-------------------------------- */}
        <div className="flex flex-col items-center pointer-events-none select-none mb-10 gap-2">

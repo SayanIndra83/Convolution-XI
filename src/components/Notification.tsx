@@ -35,13 +35,18 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
     },
     {
       id: "static-3",
-      title: "Deadline Extended",
-      message: <>⏳ The clock is ticking! Registration deadline for <span className="font-bold text-rose-400">Algomaniac</span> has been extended to <span className="font-bold">March 25th, 6:00pm IST</span>. Gear up for the ultimate coding showdown 🚀!</>,
+      title: "Announcement",
+      message: <>⚡ The <span className="font-black text-cyan-400">Sparkhack</span> <span className="font-bold text-green-400">Round 2 Shortlist</span> is finally out! Visit our <span className="font-bold text-[#1BA0E8]">social media pages</span> to check the results.</>,
     },
     {
       id: "static-4",
       title: "Announcement",
-      message: <>⚡ The <span className="font-black text-cyan-400">Sparkhack</span> <span className="font-bold text-green-400">Round 2 Shortlist</span> is finally out! Visit our <span className="font-bold text-[#1BA0E8]">social media pages</span> to check the results.</>,
+      message: <>🎭 The <span className="font-black text-purple-400">Abol Tabol</span> <span className="font-bold text-green-400">Shortlisted Candidates</span> are announced! Head over to our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to check the results.</>,
+    },
+    {
+      id: "static-5",
+      title: "Announcement",
+      message: <>💡 The <span className="font-black text-emerald-400">Deci$ia</span> <span className="font-bold text-green-400">Shortlisted Candidates</span> are announced! Visit our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to see the list.</>,
     },
   ];
 
