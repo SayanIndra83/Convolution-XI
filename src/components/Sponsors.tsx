@@ -64,11 +64,11 @@ const Sponsors: React.FC = () => {
             <a
               href="https://www.kei-ind.com/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/kei.png"
-                alt="main sponsor" height={150} width={150}
+                alt="main sponsor" height={140} width={140}
                 className="bg-cover"
               />
             </a>
@@ -93,11 +93,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.techno.co.in/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all p-2 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/techno.png"
-                alt="main sponsor" height={200} width={200}
+                alt="main sponsor" height={190} width={190}
                 className="bg-cover"
               />
             </motion.a>
@@ -105,11 +105,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signotron.in/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all px-4 py-5 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all px-2 py-3 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/signotron.png"
-                alt="main sponsor" height={210} width={210}
+                alt="main sponsor" height={190} width={190}
                 className="bg-cover"
               />
             </motion.a>
@@ -133,11 +133,11 @@ const Sponsors: React.FC = () => {
             <a
               href="https://iocl.com/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all p-2 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/iocl2.png"
-                alt="main sponsor" height={200} width={200}
+                alt="main sponsor" height={170} width={170}
                 className="bg-cover"
               />
             </a>
@@ -161,11 +161,22 @@ const Sponsors: React.FC = () => {
             <a
               href="https://www.theiet.org/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl flex items-center justify-center"
             >
               <Image
                 src="/sponsors/iet_ju.jpeg"
-                alt="main sponsor" height={100} width={100}
+                alt="main sponsor" height={90} width={90}
+                className="bg-cover"
+              />
+            </a>
+            <a
+              href="https://megatherm.com/"
+              target="_blank"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl flex items-center justify-center"
+            >
+              <Image
+                src="/sponsors/Megatherm.png"
+                alt="main sponsor" height={150} width={150}
                 className="bg-cover"
               />
             </a>
@@ -190,11 +201,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.ntplindia.com/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl flex items-center justify-center"
             >
               <Image
                 src={ntpl}
-                alt="main sponsor" height={120} width={120}
+                alt="main sponsor" height={110} width={110}
                 className="bg-cover"
               />
             </motion.a>
@@ -202,11 +213,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://signalprocessingsociety.org/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl flex items-center justify-center"
             >
               <Image
                 src={sps}
-                alt="main sponsor" height={120} width={120}
+                alt="main sponsor" height={110} width={110}
                 className="bg-cover"
               />
             </motion.a>
@@ -214,11 +225,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieeedeis.org/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl flex items-center justify-center"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl flex items-center justify-center"
             >
               <Image
                 src={deis}
-                alt="main sponsor" height={120} width={120}
+                alt="main sponsor" height={110} width={110}
                 className="bg-cover"
               />
             </motion.a>
@@ -226,11 +237,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://ieee-pes.org/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl"
             >
               <Image
                 src={pes}
-                alt="main sponsor" height={120} width={120}
+                alt="main sponsor" height={110} width={110}
                 className="bg-cover"
               />
             </motion.a>
@@ -255,11 +266,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.telegraphindia.com/edugraph"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/telegraph.png"
-                alt="media partner" height={200} width={200}
+                alt="media partner" height={170} width={170}
                 className="bg-cover"
               />
             </motion.a>
@@ -285,11 +296,11 @@ const Sponsors: React.FC = () => {
               variants={itemVariants}
               href="https://www.redcowdairy.in/"
               target="_blank"
-              className="hover:scale-105 duration-300 transition-all  p-4 bg-white rounded-2xl"
+              className="hover:scale-105 duration-300 transition-all  p-2 bg-white rounded-xl"
             >
               <Image
                 src="/sponsors/redcow.png"
-                alt="media partner" height={150} width={150}
+                alt="media partner" height={130} width={130}
                 className="bg-cover"
               />
             </motion.a>
