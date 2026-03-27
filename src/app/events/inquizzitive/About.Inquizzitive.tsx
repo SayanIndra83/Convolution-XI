@@ -13,7 +13,7 @@ export default function About() {
   const contextData = useContext(userData);
   const eventName = "inquizzitive";
   const eventMode = "team";
-  const isClosed = false; // Toggle this to true to shut down registrations
+  const isClosed = true; // Toggle this to true to shut down registrations
 
  const userEvents = contextData?.user?.eventsRegistered || [];
   const isRegistered = userEvents.some(
@@ -35,15 +35,7 @@ export default function About() {
       );
     }
 
-    if (isClosed) {
-      return (
-        <div className="flex items-center gap-2 px-8 py-3 bg-[#ffff]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
-              <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#34246B]">
-                Registrations not started yet
-              </span>
-            </div>
-      );
-    }
+    
 
     if (isRegistered) {
       return (
@@ -52,6 +44,16 @@ export default function About() {
             You have already registered
           </span>
         </div>
+      );
+    }
+
+    if (isClosed) {
+      return (
+        <div className="flex items-center gap-2 px-8 py-3 bg-[#ffff]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
+              <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#34246B]">
+                Registrations closed
+              </span>
+            </div>
       );
     }
 
