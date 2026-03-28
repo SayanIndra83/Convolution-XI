@@ -38,16 +38,22 @@ const mentors: Mentor[] = [
 
 const judges: Judge[] = [
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png", 
-        details: "https://youtube.com" 
+        name: "Rishiraj Acharya",
+        description:"Machine Learning Engineer, IntelliTeck Health",
+        image: "/Mentors/rishiraj.jpeg", 
     },
     {
-        name: "Subham Chaudhuri",
-        description:"Famous content creator, popularly knows as 'Bong Short'",
-        image: "/Mentors/bjb.png",
+        name: "Roit Banerjee",
+        description:"DevOps Engineer (R&D) Keysight Technologies",
+        image: "/Mentors/ronit.jpeg", 
     },
+    {
+        name: "Biswajit Bhattacharyya",
+        description:"Professor at Department of Electrical Engineering, Jadavpur University",
+        image: "/Mentors/bjb.png", 
+        details:"https://www.researchgate.net/scientific-contributions/Biswajit-Bhattacharyya-2083293274"
+    },
+    
 ];
 
 export default function Mentors() {

@@ -48,6 +48,11 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
       title: "Announcement",
       message: <>💡 The <span className="font-black text-emerald-400">Deci$ia</span> <span className="font-bold text-green-400">Shortlisted Candidates</span> are announced! Visit our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to see the list.</>,
     },
+    {
+      id: "static-6",
+      title: "Announcement",
+      message: <>💻 The <span className="font-black text-green-400">Algomaniac</span> <span className="font-bold text-amber-400">Finalists</span> are announced! Visit our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to check the results.</>,
+    },
   ];
 
   // get the user notifications
