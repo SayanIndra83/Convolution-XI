@@ -43,7 +43,7 @@ const judges: Judge[] = [
         image: "/Mentors/rishiraj.jpeg", 
     },
     {
-        name: "Roit Banerjee",
+        name: "Ronit Banerjee",
         description:"DevOps Engineer (R&D) Keysight Technologies",
         image: "/Mentors/ronit.jpeg", 
     },
