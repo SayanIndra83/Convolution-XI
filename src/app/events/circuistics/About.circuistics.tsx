@@ -14,7 +14,7 @@ export default function About() {
 
   const eventName = "circuistics";
   const eventMode = "team";
-  const isClosed = false; // Toggle this to true to shut down registrations
+  const isClosed = true; // Toggle this to true to shut down registrations
 
   // check if user is already registered
  const userEvents = contextData?.user?.eventsRegistered || [];
@@ -36,21 +36,23 @@ export default function About() {
       );
     }
 
-    if (isClosed) {
-      return (
-        <div className="flex items-center gap-2 px-8 py-3 bg-white backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
-          <span className="font-orbitron text-sm md:text-base font-bold tracking-wide text-[#0D30BB]">
-            Registrations not started yet
-          </span>
-        </div>
-      );
-    }
+    
 
     if (isRegistered) {
       return (
         <div className="flex items-center gap-2 px-8 py-3 bg-white backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
           <span className="font-orbitron text-sm md:text-base font-bold tracking-wide text-[#0D30BB]">
             You have already registered
+          </span>
+        </div>
+      );
+    }
+
+    if (isClosed) {
+      return (
+        <div className="flex items-center gap-2 px-8 py-3 bg-white backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
+          <span className="font-orbitron text-sm md:text-base font-bold tracking-wide text-[#0D30BB]">
+            Registrations closed
           </span>
         </div>
       );
