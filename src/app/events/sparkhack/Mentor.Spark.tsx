@@ -153,7 +153,7 @@ export default function Mentors() {
                     ))}
                 </motion.div>
 
-                {/* <motion.div
+                <motion.div
                     variants={headerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -206,7 +206,7 @@ export default function Mentors() {
                             </p>
                         </motion.div>
                     ))}
-                </motion.div> */}
+                </motion.div>
 
             </div>
         </section>
