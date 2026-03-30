@@ -49,8 +49,7 @@ const AnimatedCounter = ({ from, to, delay = 0 }: { from: number; to: number, de
       return () => clearTimeout(timer);
     }
   }, [isInView, to, motionValue, delay]);
-
-  // Use motion.span here so it can accept the raw useTransform value
+  
   return <motion.span ref={ref} className="tabular-nums">{displayValue}</motion.span>;
 };
 
@@ -72,12 +71,12 @@ const DaysCounter = () => {
 
   if (status === "EVENT LIVE") {
     return (
-      <span className="flex items-center gap-2 font-rajdhani text-xl font-bold tracking-widest text-green-400">
+      <span className="flex items-center gap-2 font-rajdhani text-xl font-bold tracking-widest text-red-400">
         <span className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
         </span>
-        LIVE NOW
+        CONCLUDED
       </span>
     );
   }

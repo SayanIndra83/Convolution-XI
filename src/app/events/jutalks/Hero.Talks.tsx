@@ -18,7 +18,7 @@ export default function Hero() {
    const [loading, setLoading] = useState(false);
  
    const eventName = "jutalks";
-   const isClosed = false; // Toggle this to true to shut down registrations
+   const isClosed = true; // Toggle this to true to shut down registrations
  
    const userEvents = contextData?.user?.eventsRegistered || [];
    const isRegistered = userEvents.some(
@@ -64,21 +64,22 @@ hover:bg-[#FCF0C4] shadow-[#FCF0C4] hover:shadow-[#512511]  bg-[#512511] hover:o
        );
      }
  
-     if (isClosed) {
-       return (
-         <div className="flex items-center gap-2 px-8 py-3 bg-[#FCF0C4]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
-              <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#512511]">
-              Registrations not started yet
-           </span>
-         </div>
-       );
-     }
  
      if (isRegistered) {
        return (
          <div className="flex items-center gap-2 px-8 py-3 bg-[#FCF0C4]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
               <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#512511]">
              You have already registered
+           </span>
+         </div>
+       );
+     }
+
+     if (isClosed) {
+       return (
+         <div className="flex items-center gap-2 px-8 py-3 bg-[#FCF0C4]  backdrop-blur-md border border-white/10 rounded-full cursor-not-allowed opacity-70">
+              <span className="font-orbitron text-sm md:text-base font-bold  tracking-wide text-[#512511]">
+              Registrations closed
            </span>
          </div>
        );
