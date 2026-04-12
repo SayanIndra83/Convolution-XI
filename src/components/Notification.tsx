@@ -36,22 +36,12 @@ export default function Notifications({ isOpen, onClose }: NotificationProps) {
     {
       id: "static-3",
       title: "Announcement",
-      message: <>⚡ The <span className="font-black text-cyan-400">Sparkhack</span> <span className="font-bold text-green-400">Round 2 Shortlist</span> is finally out! Visit our <span className="font-bold text-[#1BA0E8]">social media pages</span> to check the results.</>,
+      message: <>🏆 The wait is over! The <span className="font-black text-yellow-400">Final Winners</span> for all events are now live. Head over to our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to see who took the crown! 🔥</>,
     },
     {
       id: "static-4",
-      title: "Announcement",
-      message: <>🎭 The <span className="font-black text-purple-400">Abol Tabol</span> <span className="font-bold text-green-400">Shortlisted Candidates</span> are announced! Head over to our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to check the results.</>,
-    },
-    {
-      id: "static-5",
-      title: "Announcement",
-      message: <>💡 The <span className="font-black text-emerald-400">Deci$ia</span> <span className="font-bold text-green-400">Shortlisted Candidates</span> are announced! Visit our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to see the list.</>,
-    },
-    {
-      id: "static-6",
-      title: "Announcement",
-      message: <>💻 The <span className="font-black text-green-400">Algomaniac</span> <span className="font-bold text-amber-400">Finalists</span> are announced! Visit our <span className="font-bold text-[#1BA0E8]">social media platforms</span> to check the results.</>,
+      title: "Thank You",
+      message: <>🎉 And that&apos;s a wrap! A massive thank you from the <span className="font-bold text-fuchsia-400">Convolution26</span> team for making this edition a huge success. We hope you had a blast!</>,
     },
   ];
 
