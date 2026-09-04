@@ -6,8 +6,7 @@ import dbConnect from "./db";
 import User from "@/models/user.model";
 import bcrypt from "bcryptjs";
 
-// --- 1. Type Augmentation (Fixes TS errors) ---
-// You can move this to a separate types.d.ts file if you prefer
+
 declare module "next-auth" {
   interface Session {
     user: {
@@ -48,17 +47,12 @@ export const authOptions: NextAuthOptions = {
         const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
         if (!isPasswordValid) return null;
 
-        // --- CHANGE 1: DO NOT BLOCK LOGIN ---
-        // We comment this out so the user can log in and see the "Verify Email" page.
-        // If you block them here, they can't access the "Resend Email" button.
-        // if (!user.isVerified) throw new Error("Please verify your email first!");
-
         return {
           id: user._id.toString(),
           name: user.name,
           email: user.email,
           image: user.image || null,
-          isVerified: user.isVerified, // Pass this to the token
+          isVerified: user.isVerified,
           role: user.role,
         };
       },
@@ -88,18 +82,17 @@ export const authOptions: NextAuthOptions = {
             email: user.email,
             image: user?.image,
             password: null, 
-            isVerified: true, // --- CHANGE 2: OAuth users are trusted/verified by default
+            isVerified: true,
           });
         }
         
         user.id = existingUser._id.toString();
-        user.isVerified = existingUser.isVerified; // Ensure we pass this for the JWT
+        user.isVerified = existingUser.isVerified;
       }
       return true;
     },
 
     async jwt({ token, user }) {
-      // 1. Initial Sign In (User object is available)
       if (user) {
         token.id = user.id;
         token.name = user.name;
@@ -109,10 +102,7 @@ export const authOptions: NextAuthOptions = {
         token.role = user.role;
       }
 
-      // --- CHANGE 3: Refresh Verification Status ---
-      // This runs on every session check (e.g., page reload). 
-      // We check the DB to see if the user has verified since logging in.
-      if (!user) { // Only do this if we are not in the initial sign-in phase
+      if (!user) {
         await dbConnect();
         const dbUser = await User.findById(token.id);
         if (dbUser) {
